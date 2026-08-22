@@ -3,28 +3,107 @@ title: Cursos y grados
 description: Guía de uso de "Cursos y grados".
 ---
 
+Este módulo muestra todos los cursos del año lectivo activo, organizados por
+sede, y permite asignar jornada, director de grupo y consultar cupos y
+estudiantes de cada uno. También define la edad esperada por grado, usada
+para el reporte DANE de extraedad.
+
 <Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+  Agrega aquí capturas de pantalla de la tabla de cursos y de la tabla de
+  grados académicos.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
 
-Explicación breve de para qué sirve esta sección.
+- Un contador de **Cursos del año activo** (ejemplo: `25 de 25 cursos`) con
+  filtro por sede (`Todas`, `Sucursal Principal`, `Sucursal Norte`).
+- Una tabla de cursos agrupados por sede, con columnas:
+
+| Columna | Descripción |
+| --- | --- |
+| Curso | Nombre del curso (ejemplo: `Prejardín-1`, `2-1`, `11-2`) |
+| Jornada | `Jornada Mañana`, `Jornada Tarde` o `Sin asignar` |
+| Director de grupo | Docente asignado como director del curso, o `Sin asignar` |
+| Cupos | Estudiantes matriculados sobre el total de cupos (ejemplo: `1 / 30`) |
+| Estudiantes | Acceso a **Ver estudiantes** del curso, o "Sin estudiantes registrados" |
+
+- Accesos rápidos a **Materias** y **Logros** de cada curso.
+- Una tabla de **Grados académicos — Edad esperada (DANE)**, con el nivel
+  (Preescolar, Básica Primaria, Secundaria), el grado y la edad esperada para
+  ese grado (ejemplo: `Transición → 5 años`, `1 → 6 años`, `11 → 16 años`).
+
+<Callout type="warn">
+  La edad esperada por grado es la referencia que usa el reporte
+  [Reportes](/docs/sistema-gestion-escolar/administrativo/sistemas/reportes)
+  (DANE — Edades por grado) para detectar estudiantes en posible extraedad.
+</Callout>
+
+## Asignar jornada y director de grupo a un curso
 
 <Steps>
 <Step>
 
-### Paso 1
+### Ubica el curso
 
-Descripción del primer paso, con una captura de pantalla debajo.
+En la tabla de cursos, localiza la sede y el curso que quieres configurar.
 
 </Step>
 <Step>
 
-### Paso 2
+### Asigna la jornada
 
-Descripción del segundo paso.
+En la columna **Jornada**, selecciona `Jornada Mañana` o `Jornada Tarde`.
+
+</Step>
+<Step>
+
+### Asigna el director de grupo
+
+En la columna **Director de grupo**, selecciona un docente de la lista de
+docentes registrados en
+[Docentes](/docs/sistema-gestion-escolar/administrativo/registro/docente).
+
+</Step>
+</Steps>
+
+## Consultar cupos y estudiantes de un curso
+
+<Steps>
+<Step>
+
+### Revisa la disponibilidad
+
+En la columna **Cupos**, observa la proporción de estudiantes matriculados
+frente al total disponible (ejemplo: `2-1` con `1 / 30`).
+
+</Step>
+<Step>
+
+### Consulta el listado de estudiantes
+
+Si el curso tiene estudiantes matriculados, haz clic en **Ver estudiantes**
+para ver el detalle.
+
+</Step>
+</Steps>
+
+## Editar la edad esperada de un grado
+
+<Steps>
+<Step>
+
+### Ubica el grado
+
+En la tabla **Grados académicos — Edad esperada (DANE)**, busca el nivel y
+grado que quieres ajustar.
+
+</Step>
+<Step>
+
+### Gestiona el valor
+
+Haz clic en **Gestionar** y actualiza la edad esperada (en años) para ese
+grado.
 
 </Step>
 </Steps>

@@ -1,30 +1,69 @@
 ---
-title: Periodos
-description: Guía de uso de "Periodos".
+title: Períodos
+description: Guía de uso de "Períodos".
 ---
 
+Este módulo permite gestionar los períodos académicos (bimestres, trimestres,
+etc.) del año lectivo activo, cada uno con su propio porcentaje dentro de la
+nota final.
+
 <Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+  Agrega aquí una captura de pantalla de la tabla de períodos académicos.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
 
-Explicación breve de para qué sirve esta sección.
+Un banner indica el **año lectivo activo** (los períodos siempre se gestionan
+dentro de ese año) y una tabla de **Períodos académicos** con:
+
+| Columna | Descripción |
+| --- | --- |
+| Período | Nombre del período (ejemplo: `Primer Periodo`, `Segundo Periodo`, `Tercer Periodo`) |
+| Estado | `Activo` o `Inactivo` |
+| Método | Forma de cálculo de la nota (ejemplo: `Promedio`) |
+| Porcentaje | Peso del período en la nota final del año (ejemplo: `30%`) |
+| Notas | Rango de fechas para el registro de notas |
+| Recuperación | Rango de fechas para recuperaciones, si aplica |
+| Acciones | Activar/Desactivar y **Gestionar** |
+
+También se muestra el **Total asignado**, que debe sumar 100% entre todos los
+períodos del año (ejemplo: `30% + 30% + 40% = 100%`).
+
+<Callout type="warn">
+  Solo puede haber **un período activo** a la vez. Al activar uno, revisa que
+  el total de porcentajes de todos los períodos siga sumando 100%.
+</Callout>
+
+## Gestionar un período
 
 <Steps>
 <Step>
 
-### Paso 1
+### Ubica el período
 
-Descripción del primer paso, con una captura de pantalla debajo.
+En la tabla de **Períodos académicos**, localiza el período que quieres
+configurar (por ejemplo, `Segundo Periodo`).
 
 </Step>
 <Step>
 
-### Paso 2
+### Ajusta su estado
 
-Descripción del segundo paso.
+Usa **Activar** o **Desactivar** para controlar cuál período está vigente
+para el registro de notas.
+
+</Step>
+<Step>
+
+### Configura sus detalles
+
+Haz clic en **Gestionar** para editar el método de cálculo, el porcentaje, las
+fechas de registro de notas y las fechas de recuperación.
 
 </Step>
 </Steps>
+
+<Callout type="info">
+  El período activo aquí es el que se usa por defecto al generar
+  [Boletines](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines).
+</Callout>

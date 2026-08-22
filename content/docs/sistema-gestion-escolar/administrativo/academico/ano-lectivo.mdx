@@ -3,28 +3,81 @@ title: Año lectivo
 description: Guía de uso de "Año lectivo".
 ---
 
+Este módulo permite crear y administrar los años lectivos de la institución.
+El año lectivo activo determina qué información se muestra en el resto del
+sistema (matrícula, cursos, períodos, horarios, boletines, etc.).
+
 <Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+  Agrega aquí capturas de pantalla de la lista de años lectivos y del
+  formulario de creación.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
 
-Explicación breve de para qué sirve esta sección.
+- Un banner con el **Año lectivo activo** (por ejemplo, `2027`) y su rango de
+  fechas.
+- Una pestaña **Años registrados** con la tabla de todos los años creados:
+  año, fecha de inicio, fecha de fin, duración, estado (`Activo` /
+  `Inactivo`) y acciones.
+- Una pestaña **Crear año lectivo** con el formulario de alta.
+
+<Callout type="warn">
+  Solo puede existir **un año lectivo activo** a la vez. Al activar un año
+  distinto, el anterior pasa automáticamente a `Inactivo`.
+</Callout>
+
+## Crear un nuevo año lectivo
 
 <Steps>
 <Step>
 
-### Paso 1
+### Abre el formulario
 
-Descripción del primer paso, con una captura de pantalla debajo.
+Haz clic en la pestaña **Crear año lectivo**.
 
 </Step>
 <Step>
 
-### Paso 2
+### Completa los datos
 
-Descripción del segundo paso.
+- **Nombre del año lectivo**: usa un nombre descriptivo (por ejemplo, `2028`).
+- **Fecha de inicio** y **Fecha de finalización**.
+
+</Step>
+<Step>
+
+### Guarda el año lectivo
+
+Haz clic en **Guardar año lectivo**. El nuevo año aparecerá en la tabla de
+**Años registrados**, en estado `Inactivo` hasta que se active.
+
+</Step>
+</Steps>
+
+## Activar un año lectivo
+
+<Steps>
+<Step>
+
+### Ubica el año en la tabla
+
+En **Años registrados**, busca la fila del año lectivo que quieres poner en
+uso.
+
+</Step>
+<Step>
+
+### Actívalo
+
+Haz clic en **Activar**. Este año pasará a ser el **año lectivo activo** y el
+anterior quedará en `Inactivo`.
+
+<Callout type="info">
+  Antes de activar un nuevo año lectivo, revisa
+  [Períodos](/docs/sistema-gestion-escolar/administrativo/academico/periodos)
+  y [Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
+  para configurarlos dentro del nuevo ciclo.
+</Callout>
 
 </Step>
 </Steps>

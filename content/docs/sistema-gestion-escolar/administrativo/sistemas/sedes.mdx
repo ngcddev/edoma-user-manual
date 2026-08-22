@@ -3,28 +3,57 @@ title: Sedes
 description: Guía de uso de "Sedes".
 ---
 
-<Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+Las **sedes** son las distintas ubicaciones físicas de la institución (por
+ejemplo, `Sucursal Principal` y `Sucursal Norte`). No son un módulo aparte con
+su propia pantalla, sino un dato transversal que se usa como filtro y como
+campo obligatorio en la mayoría de los módulos administrativos.
+
+<Callout type="warn">
+  En la versión actual (MVP) no existe una pantalla dedicada para crear o
+  editar sedes desde la interfaz de Administrativo; las sedes disponibles
+  vienen preconfiguradas para la institución. Actualiza este contenido si tu
+  instalación ya cuenta con una pantalla de gestión de sedes.
 </Callout>
 
-## ¿Qué encontrarás aquí?
+<Callout type="info">
+  Agrega aquí una captura de pantalla de los indicadores de sedes en el
+  Dashboard.
+</Callout>
 
-Explicación breve de para qué sirve esta sección.
+## Dónde aparecen las sedes en el sistema
+
+- **Dashboard**: muestra cada sede con el número de cursos activos que tiene
+  (ejemplo: `Sucursal Principal · 1`, `Sucursal Norte · 0`).
+- **Registro de estudiantes / docentes**: se usa como filtro de la lista y
+  como campo obligatorio al registrar (`Sede *`).
+- **Cursos y grados**: los cursos se agrupan y filtran por sede.
+- **Horarios**: primero se elige la sede y luego el curso a programar.
+- **Reportes**: el reporte de edades por grado se genera por sede y año
+  lectivo.
+- **Boletines**: la configuración del boletín (período, estructura, escala y
+  publicación) se hace **por sede**, permitiendo escalas o secciones
+  distintas entre `Sucursal Principal` y `Sucursal Norte`.
+
+## Consultar la ocupación de una sede
 
 <Steps>
 <Step>
 
-### Paso 1
+### Ve al Dashboard
 
-Descripción del primer paso, con una captura de pantalla debajo.
+Revisa el bloque **SEDES** en la parte superior para ver cuántos cursos
+activos tiene cada sede.
 
 </Step>
 <Step>
 
-### Paso 2
+### Filtra por sede en otros módulos
 
-Descripción del segundo paso.
+En [Estudiantes](/docs/sistema-gestion-escolar/administrativo/registro/estudiantes),
+[Docentes](/docs/sistema-gestion-escolar/administrativo/registro/docente) y
+[Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
+usa el filtro **Todas las sedes** para ver la información de una sede en
+particular.
 
 </Step>
 </Steps>

@@ -3,28 +3,92 @@ title: Reportes
 description: Guía de uso de "Reportes".
 ---
 
+Este módulo genera el reporte de **edades por grado** (formato DANE), usado
+para identificar estudiantes en posible situación de extraedad.
+
 <Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+  Agrega aquí una captura de pantalla del reporte generado para una sede y
+  año lectivo.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
 
-Explicación breve de para qué sirve esta sección.
+- Un formulario para **Seleccionar sede y año** (año lectivo).
+- Un acceso directo a **Editar edades esperadas**, que lleva a la tabla de
+  edad esperada por grado en
+  [Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
+- Al elegir sede y año, el reporte muestra:
+  - **Estudiantes reportados**: total de estudiantes con fecha de nacimiento
+    registrada.
+  - **En posible extraedad**: estudiantes con 2 o más años por encima de la
+    edad esperada para su grado (criterio estándar de extraedad).
+  - **Sin fecha de nacimiento registrada**: estudiantes que no pueden
+    evaluarse por falta de este dato.
+  - Una tabla de **Distribución de edades por grado**, con los niveles
+    Preescolar, Básica Primaria y Secundaria, y un desglose opcional por sexo
+    (H/M).
+
+<Callout type="warn">
+  Si un estudiante no tiene fecha de nacimiento registrada, no se puede
+  calcular su extraedad. Corrige el dato desde
+  [Estudiantes](/docs/sistema-gestion-escolar/administrativo/registro/estudiantes)
+  (opción **Editar**).
+</Callout>
+
+## Generar el reporte de edades por grado
 
 <Steps>
 <Step>
 
-### Paso 1
+### Selecciona la sede
 
-Descripción del primer paso, con una captura de pantalla debajo.
+En **Seleccionar sede y año**, elige la sede que quieres analizar (por
+ejemplo, `Sucursal Principal`).
 
 </Step>
 <Step>
 
-### Paso 2
+### Selecciona el año lectivo
 
-Descripción del segundo paso.
+Elige el año lectivo a consultar (ejemplo: `2027`).
+
+</Step>
+<Step>
+
+### Revisa los indicadores generales
+
+Consulta el total de estudiantes reportados, los que están en posible
+extraedad y los que no tienen fecha de nacimiento registrada.
+
+</Step>
+<Step>
+
+### Consulta el detalle por grado
+
+Desplázate horizontalmente por la tabla **Distribución de edades por grado**
+para ver cuántos estudiantes hay por edad en cada grado, y activa **Ver
+desglose por sexo (H/M)** si lo necesitas.
+
+</Step>
+</Steps>
+
+## Ajustar la edad esperada por grado
+
+<Steps>
+<Step>
+
+### Abre la edición
+
+Haz clic en **Editar edades esperadas**.
+
+</Step>
+<Step>
+
+### Actualiza el valor
+
+Se te llevará a
+[Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
+donde puedes ajustar la edad esperada de cada grado con **Gestionar**.
 
 </Step>
 </Steps>

@@ -3,28 +3,122 @@ title: Estudiantes
 description: Guía de uso de "Estudiantes".
 ---
 
+Este módulo permite consultar, registrar y administrar a los estudiantes de la
+institución en todas las sedes.
+
 <Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+  Agrega aquí capturas de pantalla de la lista de estudiantes y del formulario
+  de registro.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
 
-Explicación breve de para qué sirve esta sección.
+- Una **Lista** de estudiantes con buscador (por nombre o documento) y
+  filtros por sede, curso y estado (`Activo`, `Pendiente`, `Inactivo`).
+- Cada fila muestra: estudiante, documento, curso, sede, tutor legal, estado
+  y acciones (**Ver detalle**, **Editar**, **Desactivar**).
+- Un formulario de **Registrar estudiante** para dar de alta a un nuevo
+  estudiante.
+
+## Registrar un nuevo estudiante
 
 <Steps>
 <Step>
 
-### Paso 1
+### Abre el formulario de registro
 
-Descripción del primer paso, con una captura de pantalla debajo.
+En la pestaña **Lista**, haz clic en **Registrar estudiante**.
 
 </Step>
 <Step>
 
-### Paso 2
+### Completa la identificación
 
-Descripción del segundo paso.
+- **Tipo de documento** (Registro Civil, Tarjeta de Identidad, Cédula de
+  Ciudadanía, Permiso de Protección Temporal, Otro).
+- **Número de documento**.
+- **Lugar de expedición** (ejemplo: `MEDELLIN, ANTIOQUIA`).
+
+</Step>
+<Step>
+
+### Completa los datos personales
+
+Primer y segundo nombre, primer y segundo apellido, género, fecha de
+nacimiento y lugar de nacimiento (ejemplo: `BOGOTA, CUNDINAMARCA`).
+
+</Step>
+<Step>
+
+### Completa residencia y contacto
+
+Dirección de residencia (ejemplo: `CALLE 10 # 5-20`), teléfono de contacto y
+estrato socioeconómico (1 a 6).
+
+</Step>
+<Step>
+
+### Completa la información de salud
+
+Tipo de sangre (RH), EPS, nivel del SISBEN (opcional) y si el estudiante posee
+alguna discapacidad.
+
+</Step>
+<Step>
+
+### Completa el contexto social
+
+Indica si el estudiante es víctima del conflicto armado (campo requerido para
+reportes oficiales).
+
+</Step>
+<Step>
+
+### Completa la información académica
+
+- **Situación del año anterior**: Promovido, Reprobado, Nuevo (primer
+  ingreso) o Trasladado.
+- **Institución educativa anterior** (si aplica).
+- **Sede** y **Curso asignado** (el listado de cursos depende de la sede
+  elegida).
+
+</Step>
+<Step>
+
+### Asigna el tutor legal
+
+Busca al padre/acudiente por nombre o documento en **Buscar padre /
+acudiente**.
+
+<Callout type="warn">
+  Si el padre o acudiente no aparece en la búsqueda, primero debes registrarlo
+  en [Padres de familia](/docs/sistema-gestion-escolar/administrativo/registro/padres-de-familia).
+</Callout>
+
+</Step>
+<Step>
+
+### Guarda el registro
+
+Haz clic en **Registrar estudiante**. El nuevo estudiante aparecerá en la
+lista, inicialmente en estado `Pendiente` o `Activo` según el flujo de la
+institución.
 
 </Step>
 </Steps>
+
+## Gestionar estudiantes existentes
+
+Desde la lista puedes:
+
+- **Ver detalle**: consulta toda la información registrada del estudiante.
+- **Editar**: corrige o actualiza cualquier dato del formulario de registro.
+- **Desactivar**: cambia el estado del estudiante a `Inactivo` cuando ya no
+  está matriculado (por ejemplo, retiro o traslado), sin eliminar su
+  historial.
+
+<Callout type="info">
+  Un estudiante puede figurar como `Inactivo` y sin curso asignado (ejemplo:
+  un estudiante retirado que conserva su tutor legal para trámites
+  posteriores).
+</Callout>

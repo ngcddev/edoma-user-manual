@@ -3,28 +3,188 @@ title: Boletines
 description: Guía de uso de "Boletines".
 ---
 
+Este módulo configura y genera los boletines de calificaciones de cada sede,
+mediante un asistente de 4 pasos: **Período**, **Estructura**, **Escala** y
+**Publicación**.
+
 <Callout type="info">
-  Esta página es un placeholder. Reemplaza este contenido con los pasos reales
-  y capturas de pantalla del sistema.
+  Agrega aquí capturas de pantalla de cada paso del asistente y de un boletín
+  generado.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
 
-Explicación breve de para qué sirve esta sección.
+- Un selector de sede (`Sucursal Principal`, `Sucursal Norte`): la
+  configuración se hace **por sede**, así que cada una puede tener su propia
+  estructura y escala.
+- Un botón **Generar boletines** para producir los boletines con la
+  configuración vigente.
+- Un indicador **Todo guardado** que confirma que los cambios se guardan
+  automáticamente mientras configuras.
+
+<Callout type="warn">
+  Las fechas y el tipo de cada período (bimestral, trimestral, etc.) no se
+  configuran aquí, sino en
+  [Períodos](/docs/sistema-gestion-escolar/administrativo/academico/periodos).
+</Callout>
+
+## Paso 1 — Período
 
 <Steps>
 <Step>
 
-### Paso 1
+### Selecciona la sede
 
-Descripción del primer paso, con una captura de pantalla debajo.
+En la parte superior, elige la sede a configurar (ejemplo: `Sucursal
+Principal`).
 
 </Step>
 <Step>
 
-### Paso 2
+### Confirma el año lectivo y el período
 
-Descripción del segundo paso.
+El año lectivo se muestra automáticamente (ejemplo: `2027`). Elige el período
+sobre el que se generará el boletín (ejemplo: `Segundo Periodo` o `Tercer
+Periodo`).
+
+</Step>
+<Step>
+
+### Continúa
+
+Haz clic en **Siguiente** para pasar a la Estructura.
 
 </Step>
 </Steps>
+
+## Paso 2 — Estructura
+
+Activa o desactiva cada sección del boletín. Algunas son obligatorias y no se
+pueden desactivar:
+
+| Sección | Obligatoria | Descripción |
+| --- | --- | --- |
+| Encabezado institucional | Sí | Logo, nombre, resolución/NIT, sede y período |
+| Datos del estudiante | Sí | Nombre, curso, año lectivo, documento, jornada |
+| Notas acumulativas | No | Promedio acumulado con períodos anteriores del año |
+| Tabla de asignaturas, notas y desempeño | No | I.H., nota definitiva, desempeño, faltas y competencias |
+| Puesto y promedio general | No | Puesto en el grado y promedio definitivo del período |
+| Estado: Aprobó / Reprobó | No | Resultado académico final del período |
+| Escala de valoración (referencia) | No | Superior / Alto / Básico / Bajo con rangos |
+| Firma del rector y director de grupo | No | Dos columnas de firma con nombre y cargo |
+| Pie de página institucional | No | Dirección, email y teléfono de la institución |
+
+<Steps>
+<Step>
+
+### Activa o desactiva secciones
+
+Usa los interruptores para incluir o excluir cada sección opcional según lo
+que necesite tu institución.
+
+</Step>
+<Step>
+
+### Ordena las secciones
+
+El orden de las secciones puede ajustarse arrastrándolas.
+
+</Step>
+<Step>
+
+### Continúa
+
+Haz clic en **Siguiente** para pasar a la Escala.
+
+</Step>
+</Steps>
+
+## Paso 3 — Escala
+
+Define la **escala de valoración** de la sede: los rangos numéricos
+(`Desde` – `Hasta`) y la etiqueta visible de cada nivel de desempeño.
+
+| Nivel | Rango de ejemplo | Etiqueta visible |
+| --- | --- | --- |
+| Bajo | 0 – 2.9 | Desempeño Bajo |
+| Básico | 3 – 3.9 | Desempeño Básico |
+| Alto | 4 – 4.5 | Desempeño Alto |
+| Superior | 4.6 – 5 | Desempeño Superior |
+
+<Steps>
+<Step>
+
+### Define la nota mínima aprobatoria
+
+Indica el valor numérico a partir del cual una nota se considera aprobatoria.
+
+</Step>
+<Step>
+
+### Ajusta los rangos de cada nivel
+
+Completa **Desde** y **Hasta** para `Bajo`, `Básico`, `Alto` y `Superior`, y
+personaliza la etiqueta visible de cada uno si lo necesitas.
+
+</Step>
+<Step>
+
+### Continúa
+
+Haz clic en **Siguiente** para pasar a Publicación.
+
+</Step>
+</Steps>
+
+<Callout type="info">
+  Puedes tener escalas distintas por sede: ajusta cada una de forma
+  independiente seleccionando la sede correspondiente en la parte superior.
+</Callout>
+
+## Paso 4 — Publicación
+
+<Steps>
+<Step>
+
+### Revisa el estado de publicación
+
+Por defecto, los boletines de la sede aparecen como **Sin publicar**, es
+decir, no visibles para los padres de familia.
+
+</Step>
+<Step>
+
+### Publica los boletines
+
+Haz clic en **Publicar ahora** para que los boletines de esta sede queden
+visibles en el portal de padres de familia.
+
+</Step>
+</Steps>
+
+## Generar los boletines
+
+<Steps>
+<Step>
+
+### Completa los 4 pasos
+
+Asegúrate de haber configurado Período, Estructura, Escala y Publicación para
+la sede.
+
+</Step>
+<Step>
+
+### Genera los boletines
+
+Haz clic en **Generar boletines** (botón en la parte superior de la
+pantalla).
+
+</Step>
+</Steps>
+
+<Callout type="warn">
+  Antes de generar boletines, verifica que todas las notas del período estén
+  completas desde
+  [Sistema de evaluación](/docs/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion).
+</Callout>

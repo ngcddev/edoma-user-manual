@@ -1,6 +1,7 @@
 {
   "pages": [
     "registrar-notas",
+    "registrar-asistencia",
     "horario",
     "observador",
     "direccion-de-grupo",
