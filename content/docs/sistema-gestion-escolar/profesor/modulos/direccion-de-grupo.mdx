@@ -12,7 +12,7 @@ import { Users, TrendingUp, CalendarCheck, ShieldAlert, Download, FileText } fro
 import { Frame, StatGrid, Stat, Section, SectionTitle, Table, Tr, Td, Badge, Btn, EmptyState } from '@/components/docs-mockup';
 
 <Frame>
-  <div className="mb-3 text-sm font-medium">Director de Grupo — 2-1</div>
+  <div className="mb-3 text-sm font-medium">Director de Grupo — 3-1</div>
   <StatGrid>
     <Stat icon={Users} label="Estudiantes" value={1} sub="Sin alertas activas" />
     <Stat icon={TrendingUp} label="Promedio general" value="3.7" sub="Período activo" />
@@ -22,11 +22,11 @@ import { Frame, StatGrid, Stat, Section, SectionTitle, Table, Tr, Td, Badge, Btn
 
   <Section>
     <SectionTitle icon={FileText} action={<span className="flex items-center gap-1"><Download className="size-3" /> Exportar</span>}>
-      Notas de todas las materias — 2-1
+      Notas de todas las materias — 3-1
     </SectionTitle>
-    <Table columns={['Estudiante', 'Ciencias Sociales', 'Biología', 'Física', 'Promedio']}>
+    <Table columns={['Estudiante', 'Matemáticas', 'Lengua Castellana', 'Inglés', 'Promedio']}>
       <Tr>
-        <Td>Paja Barrios, Santiago</Td>
+        <Td>Sofía Ramírez Vega</Td>
         <Td muted>3.2</Td>
         <Td muted>4.3</Td>
         <Td muted>3.1</Td>
@@ -36,19 +36,19 @@ import { Frame, StatGrid, Stat, Section, SectionTitle, Table, Tr, Td, Badge, Btn
   </Section>
 
   <Section>
-    <SectionTitle icon={CalendarCheck}>Asistencias del grupo — 2-1</SectionTitle>
+    <SectionTitle icon={CalendarCheck}>Asistencias del grupo — 3-1</SectionTitle>
     <EmptyState icon={CalendarCheck} title="No hay registros de asistencia para este año lectivo" />
   </Section>
 
   <Section>
-    <SectionTitle icon={ShieldAlert} action="+ Nueva anotación">Observador del grupo — 2-1</SectionTitle>
+    <SectionTitle icon={ShieldAlert} action="+ Nueva anotación">Observador del grupo — 3-1</SectionTitle>
     <EmptyState icon={ShieldAlert} title="Sin anotaciones registradas para el grupo" />
   </Section>
 </Frame>
 
 ## ¿Qué encontrarás aquí?
 
-- Encabezado con el curso a cargo (ejemplo: `Director de Grupo — 2-1`), el
+- Encabezado con el curso a cargo (ejemplo: `Director de Grupo — 3-1`), el
   año lectivo, el período activo y la institución.
 - **Tarjetas de resumen** del curso:
   - **Estudiantes**: total de estudiantes en el curso.
@@ -56,7 +56,7 @@ import { Frame, StatGrid, Stat, Section, SectionTitle, Table, Tr, Td, Badge, Btn
   - **Asistencia del grupo**: porcentaje de asistencia consolidado.
   - **Obs. activas**: observaciones del observador con seguimiento activo.
 - **Notas de todas las materias**: una tabla con cada estudiante y su nota
-  en cada asignatura (Ciencias Sociales, Biología, Física, etc.), más su
+  en cada asignatura (Matemáticas, Lengua Castellana, Inglés, etc.), más su
   promedio general y nivel de desempeño. Se puede filtrar por rango de nota
   (`Superior`, `Alto`, `Básico`, `Bajo`) y **Exportar** la tabla.
 - **Asistencias del grupo**: resumen de asistencia por estudiante con la

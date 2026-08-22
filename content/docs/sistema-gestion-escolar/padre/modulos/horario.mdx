@@ -9,25 +9,25 @@ año lectivo activo.
 import { Frame, ScheduleGrid } from '@/components/docs-mockup';
 
 <Frame>
-  <div className="mb-3 text-sm font-medium">Curso: 2-1 · Año lectivo: 2027</div>
+  <div className="mb-3 text-sm font-medium">Curso: 3-1 · Año lectivo: 2027</div>
   <ScheduleGrid
     days={[
       { label: 'Lunes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Ciencias Sociales — Sin salón', tone: 0 },
+        { time: '07:00 - 07:55', subject: 'Matemáticas — Sin salón', tone: 0 },
         { time: '08:50 - 09:30', subject: 'Ciencias Naturales — Sin salón', tone: 1 },
         'break',
-        { time: '09:40 - 10:35', subject: 'Biología — Sin salón', tone: 2 },
+        { time: '09:40 - 10:35', subject: 'Lengua Castellana — Sin salón', tone: 2 },
       ]},
       { label: 'Martes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Ciencias Sociales — Sin salón', tone: 0 },
-        { time: '08:50 - 09:30', subject: 'Constitución Política — Sin salón', tone: 3 },
+        { time: '07:00 - 07:55', subject: 'Matemáticas — Sin salón', tone: 0 },
+        { time: '08:50 - 09:30', subject: 'Educación Física — Sin salón', tone: 3 },
         'break',
-        { time: '10:35 - 11:30', subject: 'Física — Sin salón', tone: 4 },
+        { time: '10:35 - 11:30', subject: 'Inglés — Sin salón', tone: 4 },
       ]},
       { label: 'Miércoles', blocks: [
-        { time: '07:00 - 07:55', subject: 'Ciencias Sociales — Sin salón', tone: 0 },
+        { time: '07:00 - 07:55', subject: 'Matemáticas — Sin salón', tone: 0 },
         'break',
-        { time: '09:40 - 10:35', subject: 'Estadística — Sin salón', tone: 4 },
+        { time: '09:40 - 10:35', subject: 'Matemáticas — Sin salón', tone: 0 },
       ]},
     ]}
   />
@@ -35,11 +35,11 @@ import { Frame, ScheduleGrid } from '@/components/docs-mockup';
 
 ## ¿Qué encontrarás aquí?
 
-- El curso del estudiante y el año lectivo (ejemplo: `Curso: 2-1 · Año
+- El curso del estudiante y el año lectivo (ejemplo: `Curso: 3-1 · Año
   lectivo: 2027`).
 - Un **Horario semanal** organizado por día (Lunes a Viernes), con cada
   bloque mostrando:
-  - Nombre de la asignatura (ejemplo: `Biología`, `Ciencias Sociales`).
+  - Nombre de la asignatura (ejemplo: `Lengua Castellana`, `Matemáticas`).
   - Rango de hora (ejemplo: `07:00 a. m. - 07:55 a. m.`).
   - Salón asignado (o `Sin salón` si aún no se ha definido).
   - Nombre del docente a cargo.

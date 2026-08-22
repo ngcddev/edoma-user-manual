@@ -16,9 +16,9 @@ y disponibilidad de cupos por curso.
         <Building2 className="size-5" />
       </div>
       <div>
-        <div className="font-medium">Institución Educativa</div>
+        <div className="font-medium">Institución Educativa Nuevo Horizonte</div>
         <div className="flex items-center gap-1 text-xs text-fd-muted-foreground">
-          <MapPin className="size-3" /> Sucursal Principal
+          <MapPin className="size-3" /> Sede Central
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@ y disponibilidad de cupos por curso.
     </div>
     <div>
       <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">SEDES</div>
-      <div>Sucursal Principal <span className="font-medium">1</span> · Sucursal Norte <span className="font-medium">0</span></div>
+      <div>Sede Central <span className="font-medium">1</span> · Sede Norte <span className="font-medium">0</span></div>
     </div>
   </div>
 
@@ -71,11 +71,11 @@ y disponibilidad de cupos por curso.
     </div>
     <div className="space-y-3">
       {[
-        { name: 'Prejardín-1 — Sede Sucursal Principal', used: 0, total: 25 },
-        { name: 'Jardín-1 — Sede Sucursal Principal', used: 0, total: 25 },
-        { name: 'Transición-1 — Sede Sucursal Principal', used: 0, total: 25 },
-        { name: '2-1 — Sede Sucursal Principal', used: 1, total: 30 },
-        { name: '1-1 — Sede Sucursal Principal', used: 0, total: 30 },
+        { name: 'Prejardín-1 — Sede Central', used: 0, total: 25 },
+        { name: 'Jardín-1 — Sede Central', used: 0, total: 25 },
+        { name: 'Transición-1 — Sede Central', used: 0, total: 25 },
+        { name: '3-1 — Sede Central', used: 1, total: 30 },
+        { name: '1-1 — Sede Central', used: 0, total: 30 },
       ].map((c) => (
         <div key={c.name}>
           <div className="mb-1 flex items-center justify-between text-xs">
@@ -99,7 +99,7 @@ Al ingresar al sistema, el Dashboard muestra un panel con:
   activo (por ejemplo, `2027 · Activo`) y período académico activo (por
   ejemplo, `Primer Periodo`).
 - **Sedes**: listado de las sedes registradas con el número de cursos activos
-  en cada una (por ejemplo, `Sucursal Principal · 1`, `Sucursal Norte · 0`).
+  en cada una (por ejemplo, `Sede Central · 1`, `Sede Norte · 0`).
 - **Tarjetas de resumen**:
   - **Estudiantes**: total registrados y cuántos están activos.
   - **Docentes**: total registrados y cuántos están activos.
@@ -107,7 +107,7 @@ Al ingresar al sistema, el Dashboard muestra un panel con:
   - **Cursos activos**: total de cursos y cuántas sedes los agrupan.
 - **Distribución de estudiantes por curso**: una lista con los cursos que
   tienen menor disponibilidad de cupos (ejemplo: `Prejardín-1 — 0/25`,
-  `2-1 — 1/30`), con acceso a **Ver todos** para el detalle completo en
+  `3-1 — 1/30`), con acceso a **Ver todos** para el detalle completo en
   [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
 
 <Steps>

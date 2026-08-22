@@ -16,30 +16,30 @@ import { Frame, Btn, ScheduleGrid, FakeInput } from '@/components/docs-mockup';
     <Btn icon={RefreshCw}>Correr Horario por Sede</Btn>
   </div>
   <div className="mb-3 flex gap-2">
-    <FakeInput>Sucursal Principal</FakeInput>
-    <FakeInput>6-1</FakeInput>
+    <FakeInput>Sede Central</FakeInput>
+    <FakeInput>3-1</FakeInput>
   </div>
   <ScheduleGrid
     days={[
       { label: 'Lunes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Ciencias Sociales', tone: 0 },
-        { time: '07:55 - 08:50', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '07:00 - 07:55', subject: 'Matemáticas', tone: 0 },
+        { time: '07:55 - 08:50', subject: 'Matemáticas', tone: 0 },
         { time: '08:50 - 09:30', subject: 'Ciencias Naturales', tone: 1 },
         'break',
-        { time: '09:40 - 10:35', subject: 'Biología', tone: 2 },
+        { time: '09:40 - 10:35', subject: 'Lengua Castellana', tone: 2 },
       ]},
       { label: 'Martes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Ciencias Sociales', tone: 0 },
-        { time: '07:55 - 08:50', subject: 'Ciencias Sociales', tone: 0 },
-        { time: '08:50 - 09:30', subject: 'Constitución Política', tone: 3 },
+        { time: '07:00 - 07:55', subject: 'Matemáticas', tone: 0 },
+        { time: '07:55 - 08:50', subject: 'Matemáticas', tone: 0 },
+        { time: '08:50 - 09:30', subject: 'Educación Física', tone: 3 },
         'break',
         { time: '09:40 - 10:35', subject: 'Ciencias Naturales', tone: 1 },
       ]},
       { label: 'Miércoles', blocks: [
-        { time: '07:00 - 07:55', subject: 'Ciencias Sociales', tone: 0 },
-        { time: '07:55 - 08:50', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '07:00 - 07:55', subject: 'Matemáticas', tone: 0 },
+        { time: '07:55 - 08:50', subject: 'Matemáticas', tone: 0 },
         'break',
-        { time: '09:40 - 10:35', subject: 'Estadística', tone: 4 },
+        { time: '09:40 - 10:35', subject: 'Matemáticas', tone: 0 },
       ]},
     ]}
   />
@@ -88,7 +88,7 @@ huecos en la jornada.
 ### Selecciona sede y curso
 
 En **Selección de curso**, elige primero la **Sede** y luego el **Curso**
-(ejemplo: `Sucursal Principal` → `6-1`).
+(ejemplo: `Sede Central` → `3-1`).
 
 </Step>
 <Step>

@@ -4,7 +4,7 @@ description: Guía de uso de "Sedes".
 ---
 
 Las **sedes** son las distintas ubicaciones físicas de la institución (por
-ejemplo, `Sucursal Principal` y `Sucursal Norte`). No son un módulo aparte con
+ejemplo, `Sede Central` y `Sede Norte`). No son un módulo aparte con
 su propia pantalla, sino un dato transversal que se usa como filtro y como
 campo obligatorio en la mayoría de los módulos administrativos.
 
@@ -21,15 +21,15 @@ import { Frame } from '@/components/docs-mockup';
 <Frame>
   <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">SEDES</div>
   <div className="mt-1 flex flex-wrap items-center gap-4 text-sm">
-    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sucursal Principal <span className="font-medium">1</span></span>
-    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sucursal Norte <span className="font-medium">0</span></span>
+    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sede Central <span className="font-medium">1</span></span>
+    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sede Norte <span className="font-medium">0</span></span>
   </div>
 </Frame>
 
 ## Dónde aparecen las sedes en el sistema
 
 - **Dashboard**: muestra cada sede con el número de cursos activos que tiene
-  (ejemplo: `Sucursal Principal · 1`, `Sucursal Norte · 0`).
+  (ejemplo: `Sede Central · 1`, `Sede Norte · 0`).
 - **Registro de estudiantes / docentes**: se usa como filtro de la lista y
   como campo obligatorio al registrar (`Sede *`).
 - **Cursos y grados**: los cursos se agrupan y filtran por sede.
@@ -38,7 +38,7 @@ import { Frame } from '@/components/docs-mockup';
   lectivo.
 - **Boletines**: la configuración del boletín (período, estructura, escala y
   publicación) se hace **por sede**, permitiendo escalas o secciones
-  distintas entre `Sucursal Principal` y `Sucursal Norte`.
+  distintas entre `Sede Central` y `Sede Norte`.
 
 ## Consultar la ocupación de una sede
 
