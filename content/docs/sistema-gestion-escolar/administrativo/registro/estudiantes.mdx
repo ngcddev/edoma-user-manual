@@ -6,10 +6,59 @@ description: Guía de uso de "Estudiantes".
 Este módulo permite consultar, registrar y administrar a los estudiantes de la
 institución en todas las sedes.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla de la lista de estudiantes y del formulario
-  de registro.
-</Callout>
+import { UserPlus, List as ListIcon, Fingerprint, Home, IdCard } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
+
+<Frame>
+  <Toolbar>
+    <TabBtn active icon={ListIcon}>Lista</TabBtn>
+    <TabBtn icon={UserPlus}>Registrar estudiante</TabBtn>
+  </Toolbar>
+  <FilterBar>
+    <FakeInput grow>Buscar por nombre, documento...</FakeInput>
+    <FakeInput>Todas las sedes</FakeInput>
+    <FakeInput>Todos los cursos</FakeInput>
+    <FakeInput>Todos los estados</FakeInput>
+  </FilterBar>
+  <Table columns={['Estudiante', 'Curso', 'Sede', 'Tutor legal', 'Estado']}>
+    <Tr>
+      <Td>Maria Gomez Torres</Td>
+      <Td muted>2-1</Td>
+      <Td muted>Sucursal Principal</Td>
+      <Td muted>Carlos Gomez</Td>
+      <Td><Badge tone="success">Activo</Badge></Td>
+    </Tr>
+    <Tr>
+      <Td>Juan Ramirez Diaz</Td>
+      <Td muted>—</Td>
+      <Td muted>—</Td>
+      <Td muted>Ana Diaz</Td>
+      <Td><Badge tone="danger">Inactivo</Badge></Td>
+    </Tr>
+  </Table>
+</Frame>
+
+<Frame>
+  <FieldGroupTitle icon={Fingerprint}>Identificación</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Tipo de documento" type="select" required />
+    <Field label="Número de documento" placeholder="Ej: 1023456789" required />
+    <Field label="Lugar de expedición" placeholder="Ej: MEDELLIN, ANTIOQUIA" required full />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={IdCard}>Datos personales</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Primer nombre" placeholder="Ej: MARIA" required />
+    <Field label="Segundo nombre" placeholder="Ej: FERNANDA" />
+    <Field label="Primer apellido" placeholder="Ej: ORTIZ" required />
+    <Field label="Segundo apellido" placeholder="Ej: TORRES" />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={Home}>Residencia y contacto</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Dirección de residencia" placeholder="Ej: CALLE 10 # 5-20" required full />
+  </FieldGrid>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -92,7 +141,7 @@ acudiente**.
 
 <Callout type="warn">
   Si el padre o acudiente no aparece en la búsqueda, primero debes registrarlo
-  en [Padres de familia](/docs/sistema-gestion-escolar/administrativo/registro/padres-de-familia).
+  en [Padres de familia](/sistema-gestion-escolar/administrativo/registro/padres-de-familia).
 </Callout>
 
 </Step>

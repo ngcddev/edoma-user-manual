@@ -6,10 +6,61 @@ description: Guía de uso de "Docentes".
 Este módulo permite consultar, registrar y administrar a los docentes de la
 institución.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla de la lista de docentes y del formulario de
-  registro.
-</Callout>
+import { UserPlus, List as ListIcon, IdCard, Mail, GraduationCap, Building2 } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
+
+<Frame>
+  <Toolbar>
+    <TabBtn active icon={ListIcon}>Lista</TabBtn>
+    <TabBtn icon={UserPlus}>Registrar docente</TabBtn>
+  </Toolbar>
+  <FilterBar>
+    <FakeInput grow>Buscar por nombre, documento...</FakeInput>
+    <FakeInput>Todas las sedes</FakeInput>
+    <FakeInput>Todos los estados</FakeInput>
+  </FilterBar>
+  <Table columns={['Docente', 'Correo', 'Sede', 'Título académico', 'Estado']}>
+    <Tr>
+      <Td>Jesus Calambas Rivera</Td>
+      <Td muted>jesus.calambas@ejemplo.co</Td>
+      <Td muted>Sucursal Principal</Td>
+      <Td muted>Licenciado</Td>
+      <Td><Badge tone="success">Activo</Badge></Td>
+    </Tr>
+    <Tr>
+      <Td>Noemy Galvis</Td>
+      <Td muted>noemy.galvis@ejemplo.co</Td>
+      <Td muted>Sucursal Principal</Td>
+      <Td muted>Profesional</Td>
+      <Td><Badge tone="success">Activo</Badge></Td>
+    </Tr>
+  </Table>
+</Frame>
+
+<Frame>
+  <FieldGroupTitle icon={IdCard}>Documento de identidad</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Tipo de documento" type="select" required />
+    <Field label="Número de documento" required />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={Mail}>Información de contacto</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Correo electrónico" placeholder="nombre.apellido@gmail.com" required />
+    <Field label="Número de teléfono" required />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={GraduationCap}>Información profesional</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Título académico" type="select" required />
+    <Field label="Años de experiencia" type="select" required />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={Building2}>Asignación académica</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Sede" type="select" placeholder="Seleccione una sede" required full />
+  </FieldGrid>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -78,8 +129,8 @@ Selecciona la **Sede** donde ejercerá el docente (`Sucursal Principal` o
 
 Haz clic en **Registrar docente**. El docente quedará disponible para ser
 asignado como director de grupo o profesor en
-[Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
-y en [Horarios](/docs/sistema-gestion-escolar/administrativo/academico/horarios).
+[Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
+y en [Horarios](/sistema-gestion-escolar/administrativo/academico/horarios).
 
 </Step>
 </Steps>

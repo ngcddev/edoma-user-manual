@@ -15,10 +15,16 @@ campo obligatorio en la mayoría de los módulos administrativos.
   instalación ya cuenta con una pantalla de gestión de sedes.
 </Callout>
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla de los indicadores de sedes en el
-  Dashboard.
-</Callout>
+import { MapPin } from 'lucide-react';
+import { Frame } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">SEDES</div>
+  <div className="mt-1 flex flex-wrap items-center gap-4 text-sm">
+    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sucursal Principal <span className="font-medium">1</span></span>
+    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sucursal Norte <span className="font-medium">0</span></span>
+  </div>
+</Frame>
 
 ## Dónde aparecen las sedes en el sistema
 
@@ -49,9 +55,9 @@ activos tiene cada sede.
 
 ### Filtra por sede en otros módulos
 
-En [Estudiantes](/docs/sistema-gestion-escolar/administrativo/registro/estudiantes),
-[Docentes](/docs/sistema-gestion-escolar/administrativo/registro/docente) y
-[Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
+En [Estudiantes](/sistema-gestion-escolar/administrativo/registro/estudiantes),
+[Docentes](/sistema-gestion-escolar/administrativo/registro/docente) y
+[Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
 usa el filtro **Todas las sedes** para ver la información de una sede en
 particular.
 

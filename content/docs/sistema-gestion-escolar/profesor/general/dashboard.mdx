@@ -7,10 +7,36 @@ El **Dashboard** es la pantalla principal del rol Profesor. Resume tus cursos
 asignados, el período activo y tus tareas pendientes del día, con accesos
 directos a cada módulo.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del Dashboard con tus cursos y
-  pendientes reales.
-</Callout>
+import { GraduationCap, Users, CalendarDays, ClipboardList, CalendarCheck, Calendar, ShieldAlert, UserCog, TrendingUp } from 'lucide-react';
+import { Frame, StatGrid, Stat, ActionRow, Btn } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex flex-wrap items-center gap-x-8 gap-y-2 rounded-lg border border-fd-border bg-fd-background p-4 text-sm">
+    <div>
+      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">PERÍODO ACTIVO</div>
+      <div>Primer Periodo</div>
+    </div>
+    <div>
+      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">CURSOS ASIGNADOS</div>
+      <div>2-1</div>
+    </div>
+  </div>
+
+  <StatGrid>
+    <Stat icon={GraduationCap} label="Cursos" value={1} />
+    <Stat icon={Users} label="Estudiantes" value={1} />
+    <Stat icon={CalendarDays} label="Clases hoy" value={0} />
+  </StatGrid>
+
+  <div className="mt-4 space-y-2">
+    <ActionRow icon={ClipboardList} title="Registrar Notas" subtitle="Evaluaciones" action={<Btn>Entrar</Btn>} />
+    <ActionRow icon={CalendarCheck} title="Registrar Asistencia" subtitle="Registro diario" action={<Btn tone="success">Ir</Btn>} />
+    <ActionRow icon={Calendar} title="Mirar Horario" subtitle="Consulta tus clases" action={<Btn tone="primary">Ver</Btn>} />
+    <ActionRow icon={ShieldAlert} title="Observador" subtitle="Notación al estudiante" action={<Btn>Anotar</Btn>} />
+    <ActionRow icon={UserCog} title="Director de Grupo" subtitle="Gestión del curso" action={<Btn tone="success">Abrir</Btn>} />
+    <ActionRow icon={TrendingUp} title="Rendimiento" subtitle="Consulta el desempeño" action={<Btn tone="warning">Ver</Btn>} />
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -23,12 +49,12 @@ directos a cada módulo.
 
 | Módulo | Función |
 | --- | --- |
-| [Registrar Notas](/docs/sistema-gestion-escolar/profesor/modulos/registrar-notas) | Evaluaciones y calificaciones de tus estudiantes |
-| [Registrar Asistencia](/docs/sistema-gestion-escolar/profesor/modulos/registrar-asistencia) | Registro diario de asistencia por clase |
-| [Mirar Horario](/docs/sistema-gestion-escolar/profesor/modulos/horario) | Consulta de tus clases de la semana |
-| [Observador](/docs/sistema-gestion-escolar/profesor/modulos/observador) | Registro de anotaciones a un estudiante |
-| [Director de Grupo](/docs/sistema-gestion-escolar/profesor/modulos/direccion-de-grupo) | Gestión integral del curso que diriges (si aplica) |
-| [Rendimiento](/docs/sistema-gestion-escolar/profesor/modulos/rendimiento) | Consulta del desempeño de tus cursos |
+| [Registrar Notas](/sistema-gestion-escolar/profesor/modulos/registrar-notas) | Evaluaciones y calificaciones de tus estudiantes |
+| [Registrar Asistencia](/sistema-gestion-escolar/profesor/modulos/registrar-asistencia) | Registro diario de asistencia por clase |
+| [Mirar Horario](/sistema-gestion-escolar/profesor/modulos/horario) | Consulta de tus clases de la semana |
+| [Observador](/sistema-gestion-escolar/profesor/modulos/observador) | Registro de anotaciones a un estudiante |
+| [Director de Grupo](/sistema-gestion-escolar/profesor/modulos/direccion-de-grupo) | Gestión integral del curso que diriges (si aplica) |
+| [Rendimiento](/sistema-gestion-escolar/profesor/modulos/rendimiento) | Consulta del desempeño de tus cursos |
 
 - **Pendientes de hoy**: recordatorios de asistencia y notas por registrar,
   tu próxima clase, y accesos rápidos para agregar una observación o revisar

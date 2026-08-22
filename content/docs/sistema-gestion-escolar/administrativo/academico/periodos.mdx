@@ -7,9 +7,39 @@ Este módulo permite gestionar los períodos académicos (bimestres, trimestres,
 etc.) del año lectivo activo, cada uno con su propio porcentaje dentro de la
 nota final.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla de la tabla de períodos académicos.
-</Callout>
+import { Briefcase, Percent } from 'lucide-react';
+import { Frame, Callout2, Table, Tr, Td, Badge, Btn } from '@/components/docs-mockup';
+
+<Frame>
+  <Callout2 icon={Briefcase}>Año lectivo activo: 2027 — los períodos se gestionan dentro de este año.</Callout2>
+  <div className="mb-3 flex items-center justify-end gap-1.5 text-xs">
+    <Percent className="size-3.5 text-fd-success" />
+    <span className="font-medium text-fd-success">Total asignado: 100%</span>
+  </div>
+  <Table columns={['Período', 'Estado', 'Método', 'Porcentaje', 'Acciones']}>
+    <Tr>
+      <Td>Primer Periodo</Td>
+      <Td><Badge tone="success">Activo</Badge></Td>
+      <Td muted>Promedio</Td>
+      <Td muted>30%</Td>
+      <Td><Btn tone="warning">Desactivar</Btn></Td>
+    </Tr>
+    <Tr>
+      <Td>Segundo Periodo</Td>
+      <Td><Badge>Inactivo</Badge></Td>
+      <Td muted>Promedio</Td>
+      <Td muted>30%</Td>
+      <Td><Btn tone="success">Activar</Btn></Td>
+    </Tr>
+    <Tr>
+      <Td>Tercer Periodo</Td>
+      <Td><Badge>Inactivo</Badge></Td>
+      <Td muted>Promedio</Td>
+      <Td muted>40%</Td>
+      <Td><Btn tone="success">Activar</Btn></Td>
+    </Tr>
+  </Table>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -65,5 +95,5 @@ fechas de registro de notas y las fechas de recuperación.
 
 <Callout type="info">
   El período activo aquí es el que se usa por defecto al generar
-  [Boletines](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines).
+  [Boletines](/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines).
 </Callout>

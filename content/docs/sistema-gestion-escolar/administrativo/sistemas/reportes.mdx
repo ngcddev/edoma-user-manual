@@ -6,17 +6,27 @@ description: Guía de uso de "Reportes".
 Este módulo genera el reporte de **edades por grado** (formato DANE), usado
 para identificar estudiantes en posible situación de extraedad.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del reporte generado para una sede y
-  año lectivo.
-</Callout>
+import { Users, AlertTriangle, CalendarX } from 'lucide-react';
+import { Frame, FakeInput, StatGrid, Stat } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex gap-2">
+    <FakeInput grow>Sucursal Principal</FakeInput>
+    <FakeInput grow>2027</FakeInput>
+  </div>
+  <StatGrid>
+    <Stat icon={Users} label="Estudiantes reportados" value={1} />
+    <Stat icon={AlertTriangle} label="En posible extraedad" value={0} />
+    <Stat icon={CalendarX} label="Sin fecha de nacimiento" value={0} />
+  </StatGrid>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
 - Un formulario para **Seleccionar sede y año** (año lectivo).
 - Un acceso directo a **Editar edades esperadas**, que lleva a la tabla de
   edad esperada por grado en
-  [Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
+  [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
 - Al elegir sede y año, el reporte muestra:
   - **Estudiantes reportados**: total de estudiantes con fecha de nacimiento
     registrada.
@@ -31,7 +41,7 @@ para identificar estudiantes en posible situación de extraedad.
 <Callout type="warn">
   Si un estudiante no tiene fecha de nacimiento registrada, no se puede
   calcular su extraedad. Corrige el dato desde
-  [Estudiantes](/docs/sistema-gestion-escolar/administrativo/registro/estudiantes)
+  [Estudiantes](/sistema-gestion-escolar/administrativo/registro/estudiantes)
   (opción **Editar**).
 </Callout>
 
@@ -87,7 +97,7 @@ Haz clic en **Editar edades esperadas**.
 ### Actualiza el valor
 
 Se te llevará a
-[Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
+[Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
 donde puedes ajustar la edad esperada de cada grado con **Gestionar**.
 
 </Step>

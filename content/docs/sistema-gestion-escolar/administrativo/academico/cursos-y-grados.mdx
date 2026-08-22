@@ -8,10 +8,27 @@ sede, y permite asignar jornada, director de grupo y consultar cupos y
 estudiantes de cada uno. También define la edad esperada por grado, usada
 para el reporte DANE de extraedad.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla de la tabla de cursos y de la tabla de
-  grados académicos.
-</Callout>
+import { Frame, Table, Tr, Td, Section, SectionTitle, FakeInput } from '@/components/docs-mockup';
+import { BookOpen, ListTree } from 'lucide-react';
+
+<Frame>
+  <SectionTitle icon={BookOpen}>Cursos del año activo — 2027</SectionTitle>
+  <div className="mb-3"><FakeInput>Sucursal Principal</FakeInput></div>
+  <Table columns={['Curso', 'Jornada', 'Director de grupo', 'Cupos']}>
+    <Tr><Td>Prejardín-1</Td><Td muted>Sin asignar</Td><Td muted>Sin asignar</Td><Td muted>0 / 25</Td></Tr>
+    <Tr><Td>2-1</Td><Td muted>Jornada Mañana</Td><Td muted>Jesus Calambas</Td><Td muted>1 / 30</Td></Tr>
+    <Tr><Td>11-2</Td><Td muted>Jornada Mañana</Td><Td muted>Noemy Galvis</Td><Td muted>0 / 35</Td></Tr>
+  </Table>
+
+  <Section>
+    <SectionTitle icon={ListTree}>Grados académicos — Edad esperada (DANE)</SectionTitle>
+    <Table columns={['Nivel', 'Grado', 'Edad esperada']}>
+      <Tr><Td muted>Preescolar</Td><Td>Transición</Td><Td muted>5 años</Td></Tr>
+      <Tr><Td muted>Básica Primaria</Td><Td>1</Td><Td muted>6 años</Td></Tr>
+      <Tr><Td muted>Secundaria</Td><Td>11</Td><Td muted>16 años</Td></Tr>
+    </Table>
+  </Section>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -34,7 +51,7 @@ para el reporte DANE de extraedad.
 
 <Callout type="warn">
   La edad esperada por grado es la referencia que usa el reporte
-  [Reportes](/docs/sistema-gestion-escolar/administrativo/sistemas/reportes)
+  [Reportes](/sistema-gestion-escolar/administrativo/sistemas/reportes)
   (DANE — Edades por grado) para detectar estudiantes en posible extraedad.
 </Callout>
 
@@ -61,7 +78,7 @@ En la columna **Jornada**, selecciona `Jornada Mañana` o `Jornada Tarde`.
 
 En la columna **Director de grupo**, selecciona un docente de la lista de
 docentes registrados en
-[Docentes](/docs/sistema-gestion-escolar/administrativo/registro/docente).
+[Docentes](/sistema-gestion-escolar/administrativo/registro/docente).
 
 </Step>
 </Steps>

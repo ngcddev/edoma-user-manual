@@ -3,14 +3,93 @@ title: Dashboard
 description: Guía de uso de "Dashboard".
 ---
 
+import { Building2, MapPin, GraduationCap, Presentation, Users, BookOpen, List, ChevronRight } from 'lucide-react';
+
 El **Dashboard** es la pantalla principal del rol Administrativo. Resume el estado
 general de la institución para el año lectivo activo: sedes, matrícula, personal
 y disponibilidad de cupos por curso.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del Dashboard con datos reales de tu
-  institución.
-</Callout>
+<div className="not-prose my-6 rounded-xl border border-fd-border bg-fd-card p-4 sm:p-5 text-sm">
+  <div className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-lg border border-fd-border bg-fd-background p-4">
+    <div className="flex items-center gap-3">
+      <div className="flex size-9 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary">
+        <Building2 className="size-5" />
+      </div>
+      <div>
+        <div className="font-medium">Institución Educativa</div>
+        <div className="flex items-center gap-1 text-xs text-fd-muted-foreground">
+          <MapPin className="size-3" /> Sucursal Principal
+        </div>
+      </div>
+    </div>
+    <div>
+      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">AÑO LECTIVO</div>
+      <div className="flex items-center gap-1.5">
+        <span className="size-1.5 rounded-full bg-fd-success" />
+        2027 · Activo
+      </div>
+    </div>
+    <div>
+      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">PERÍODO ACTIVO</div>
+      <div>Primer Periodo</div>
+    </div>
+    <div>
+      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">SEDES</div>
+      <div>Sucursal Principal <span className="font-medium">1</span> · Sucursal Norte <span className="font-medium">0</span></div>
+    </div>
+  </div>
+
+  <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+    {[
+      { icon: GraduationCap, label: 'Estudiantes', value: 2, sub: '1 activos' },
+      { icon: Presentation, label: 'Docentes', value: 3, sub: '3 activos' },
+      { icon: Users, label: 'Padres de familia', value: 1, sub: '1 registrados' },
+      { icon: BookOpen, label: 'Cursos activos', value: 25, sub: '2 sedes' },
+    ].map(({ icon: Icon, label, value, sub }) => (
+      <div key={label} className="rounded-lg border border-fd-border p-3">
+        <div className="mb-2 flex size-8 items-center justify-center rounded-md bg-fd-primary/10 text-fd-primary">
+          <Icon className="size-4" />
+        </div>
+        <div className="text-xs text-fd-muted-foreground">{label}</div>
+        <div className="text-xl font-semibold">{value}</div>
+        <div className="text-xs text-fd-muted-foreground">{sub}</div>
+      </div>
+    ))}
+  </div>
+
+  <div className="mt-4 rounded-lg border border-fd-border p-4">
+    <div className="mb-1 flex items-center justify-between">
+      <div className="flex items-center gap-1.5 font-medium">
+        <List className="size-4" /> Distribución de estudiantes por curso
+      </div>
+      <div className="flex items-center gap-0.5 text-xs text-fd-primary">
+        Ver todos <ChevronRight className="size-3" />
+      </div>
+    </div>
+    <div className="mb-3 text-xs text-fd-muted-foreground">
+      Mostrando los 5 cursos con menor disponibilidad de 25 en total
+    </div>
+    <div className="space-y-3">
+      {[
+        { name: 'Prejardín-1 — Sede Sucursal Principal', used: 0, total: 25 },
+        { name: 'Jardín-1 — Sede Sucursal Principal', used: 0, total: 25 },
+        { name: 'Transición-1 — Sede Sucursal Principal', used: 0, total: 25 },
+        { name: '2-1 — Sede Sucursal Principal', used: 1, total: 30 },
+        { name: '1-1 — Sede Sucursal Principal', used: 0, total: 30 },
+      ].map((c) => (
+        <div key={c.name}>
+          <div className="mb-1 flex items-center justify-between text-xs">
+            <span>{c.name}</span>
+            <span className="text-fd-muted-foreground">{c.used} / {c.total}</span>
+          </div>
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-fd-muted">
+            <div className="h-full rounded-full bg-fd-success" style={{ width: `${(c.used / c.total) * 100}%` }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 
 ## ¿Qué encontrarás aquí?
 
@@ -29,7 +108,7 @@ Al ingresar al sistema, el Dashboard muestra un panel con:
 - **Distribución de estudiantes por curso**: una lista con los cursos que
   tienen menor disponibilidad de cupos (ejemplo: `Prejardín-1 — 0/25`,
   `2-1 — 1/30`), con acceso a **Ver todos** para el detalle completo en
-  [Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
+  [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
 
 <Steps>
 <Step>
@@ -38,8 +117,8 @@ Al ingresar al sistema, el Dashboard muestra un panel con:
 
 En la parte superior del Dashboard confirma que el año lectivo y el período
 mostrados corresponden al ciclo académico vigente. Si no es así, ve a
-[Año lectivo](/docs/sistema-gestion-escolar/administrativo/academico/ano-lectivo)
-o [Períodos](/docs/sistema-gestion-escolar/administrativo/academico/periodos)
+[Año lectivo](/sistema-gestion-escolar/administrativo/academico/ano-lectivo)
+o [Períodos](/sistema-gestion-escolar/administrativo/academico/periodos)
 para activarlos.
 
 </Step>

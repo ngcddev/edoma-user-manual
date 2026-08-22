@@ -6,10 +6,31 @@ description: Guía de uso de "Observador".
 Este módulo permite registrar anotaciones de comportamiento o convivencia de
 un estudiante, conforme a la **Ley 1620 de Convivencia Escolar**.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del formulario de observación y del
-  historial.
-</Callout>
+import { ShieldAlert, Clock } from 'lucide-react';
+import { Frame, SectionTitle, Field, FieldGrid, Chip, EmptyState } from '@/components/docs-mockup';
+
+<Frame>
+  <SectionTitle icon={ShieldAlert}>Observador del Estudiante</SectionTitle>
+  <FieldGrid>
+    <Field label="Fecha de la observación" type="date" required />
+    <Field label="Grado" type="select" placeholder="2-1" required />
+    <Field label="Estudiante" type="select" required />
+    <Field label="Tipo de situación (Ley 1620)" type="select" placeholder="Tipo I: Retardos" required />
+  </FieldGrid>
+  <div className="mt-3">
+    <div className="mb-1 text-xs text-fd-muted-foreground">Privacidad de la notación</div>
+    <div className="flex gap-2">
+      <Chip active>Pública · Notifica al acudiente</Chip>
+      <Chip>Privada · Solo Director/Coordinación</Chip>
+    </div>
+  </div>
+  <Field label="Descripción de los hechos" type="textarea" placeholder="Relato objetivo de los hechos..." full />
+
+  <div className="mt-4">
+    <SectionTitle icon={Clock}>Historial de observaciones</SectionTitle>
+    <EmptyState icon={Clock} title="No hay observaciones registradas" />
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

@@ -7,10 +7,40 @@ El **Dashboard** es la pantalla principal del rol Padre de familia. Muestra un
 resumen del desempeño de tu hijo o hija y accesos directos a cada módulo de
 seguimiento académico.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del Dashboard con la información de tu
-  estudiante.
-</Callout>
+import { Flame, User, CalendarCheck, TrendingUp, BookOpen, FileText, ShieldAlert, Clock } from 'lucide-react';
+import { Frame, Badge, StatGrid, Stat, ActionRow, Btn } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex items-center justify-between">
+    <Badge tone="danger"><Flame className="mr-1 inline size-3" /> 5 días</Badge>
+    <Badge tone="success">Nivel de padre: Ocasional</Badge>
+  </div>
+
+  <div className="mb-4 flex items-center gap-3 rounded-lg border border-fd-border p-4">
+    <div className="flex size-10 items-center justify-center rounded-full bg-fd-muted text-fd-muted-foreground">
+      <User className="size-5" />
+    </div>
+    <div className="flex-1">
+      <div className="text-sm font-medium">Paja Santiago <span className="font-normal text-fd-muted-foreground">2-1</span></div>
+      <div className="text-xs text-fd-muted-foreground">Último acceso: 2026-08-21</div>
+    </div>
+    <Badge tone="success">Ocasional</Badge>
+  </div>
+
+  <StatGrid>
+    <Stat icon={CalendarCheck} label="Asistencia" value="0%" sub="Este periodo" />
+    <Stat icon={TrendingUp} label="Promedio" value="3.68/5" sub="General" />
+    <Stat icon={BookOpen} label="Clases" value={12} sub="Registradas" />
+  </StatGrid>
+
+  <div className="mt-4 space-y-2">
+    <ActionRow icon={FileText} title="Notas" subtitle="Última actualización: no disponible" action={<Btn>Ver</Btn>} />
+    <ActionRow icon={CalendarCheck} title="Asistencias" subtitle="Última actualización: no disponible" action={<Btn>Ver</Btn>} />
+    <ActionRow icon={Clock} title="Horario" subtitle="No hay clase ahora" action={<Btn>Ver</Btn>} />
+    <ActionRow icon={FileText} title="Boletín" subtitle="Informes de período" action={<Btn tone="primary">Ver</Btn>} />
+    <ActionRow icon={ShieldAlert} title="Observador" subtitle="Anotaciones del docente" action={<Btn>Ver</Btn>} />
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -25,14 +55,14 @@ seguimiento académico.
   - **Asistencia**: porcentaje de asistencia en el período actual.
   - **Promedio**: promedio general de notas (ejemplo: `3.68/5`).
   - **Clases**: número de clases registradas.
-- **Accesos directos** a los módulos: [Notas](/docs/sistema-gestion-escolar/padre/modulos/notas),
-  [Asistencias](/docs/sistema-gestion-escolar/padre/modulos/asistencias) y
-  [Horario](/docs/sistema-gestion-escolar/padre/modulos/horario), cada uno con
+- **Accesos directos** a los módulos: [Notas](/sistema-gestion-escolar/padre/modulos/notas),
+  [Asistencias](/sistema-gestion-escolar/padre/modulos/asistencias) y
+  [Horario](/sistema-gestion-escolar/padre/modulos/horario), cada uno con
   la fecha de su última actualización.
 - **Boletín**: acceso a los informes de período
-  ([Boletín](/docs/sistema-gestion-escolar/padre/modulos/boletin)).
+  ([Boletín](/sistema-gestion-escolar/padre/modulos/boletin)).
 - **Observador**: acceso a las anotaciones del docente
-  ([Observador](/docs/sistema-gestion-escolar/padre/modulos/observador)).
+  ([Observador](/sistema-gestion-escolar/padre/modulos/observador)).
 - **Resumen rápido**: un mensaje que indica qué módulos has revisado
   recientemente.
 - **Actividad reciente**: últimos eventos relevantes, como notas subidas por

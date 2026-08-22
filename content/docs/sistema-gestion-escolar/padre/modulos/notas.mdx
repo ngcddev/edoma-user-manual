@@ -6,10 +6,39 @@ description: Guía de uso de "Notas".
 Este módulo muestra las notas de tu hijo o hija en cada asignatura, con su
 promedio y nivel de desempeño, para el período académico que elijas.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla de la lista de asignaturas con sus
-  notas.
-</Callout>
+import { Chip, Frame, FakeInput, StatGrid, Stat, Badge } from '@/components/docs-mockup';
+import { CalendarCheck, TrendingUp } from 'lucide-react';
+
+<Frame>
+  <div className="mb-3 flex flex-wrap gap-2">
+    <Chip active>Todas</Chip>
+    <Chip>Biología</Chip>
+    <Chip>Física</Chip>
+    <Chip>Filosofía</Chip>
+  </div>
+  <div className="mb-4"><FakeInput>Primer Periodo</FakeInput></div>
+  <StatGrid>
+    <Stat icon={CalendarCheck} label="Asistencia" value="0%" />
+    <Stat icon={TrendingUp} label="Promedio general" value="3.68 / 5" />
+  </StatGrid>
+
+  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-1 flex items-center justify-between text-sm">
+        <span className="font-medium">Biología</span>
+        <Badge tone="info">Alto</Badge>
+      </div>
+      <div className="text-xs text-fd-muted-foreground">Promedio: 4.3 — Última: 4.30 · Rango 4.0 a 4.5 · Muy buen desempeño</div>
+    </div>
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-1 flex items-center justify-between text-sm">
+        <span className="font-medium">Física</span>
+        <Badge tone="warning">Básico</Badge>
+      </div>
+      <div className="text-xs text-fd-muted-foreground">Promedio: 3.1 — Última: 3.10 · Rango 3.0 a 3.9 · Cumple lo mínimo</div>
+    </div>
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

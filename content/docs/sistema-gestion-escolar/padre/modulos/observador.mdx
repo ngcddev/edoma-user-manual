@@ -7,10 +7,13 @@ Este módulo muestra las anotaciones que los docentes registran sobre tu hijo
 o hija: observaciones de comportamiento, seguimiento académico u otras notas
 relevantes.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del Observador con anotaciones
-  registradas.
-</Callout>
+import { ShieldAlert } from 'lucide-react';
+import { Frame, SectionTitle, EmptyState } from '@/components/docs-mockup';
+
+<Frame>
+  <SectionTitle icon={ShieldAlert}>Observador del estudiante — Paja Santiago</SectionTitle>
+  <EmptyState icon={ShieldAlert} title="Sin anotaciones registradas para este estudiante" />
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

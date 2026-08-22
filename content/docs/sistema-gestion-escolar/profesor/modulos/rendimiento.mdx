@@ -7,9 +7,41 @@ Este módulo te ayuda a identificar rápidamente cómo va el desempeño
 académico de todos los cursos y materias que dictas, para priorizar dónde
 enfocar tu atención.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla de "Mi rendimiento" con tus cursos.
-</Callout>
+import { TrendingUp, Users, AlertTriangle, TrendingDown, Star } from 'lucide-react';
+import { Frame, Chip, StatGrid, Stat, SegmentedBar, Badge } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex flex-wrap gap-2">
+    <Chip active>Período 1</Chip>
+    <Chip>Período 2</Chip>
+    <Chip>Período 3</Chip>
+    <Chip>Año completo</Chip>
+  </div>
+  <StatGrid>
+    <Stat icon={TrendingUp} label="Promedio general" value="3.7" sub="Básico" />
+    <Stat icon={Users} label="Estudiantes en tus cursos" value={1} sub="Repartidos en 5 cursos" />
+    <Stat icon={AlertTriangle} label="Estudiantes en riesgo" value={0} sub="2 de tus 5 cursos por debajo de 3.5" />
+    <Stat icon={TrendingDown} label="Necesita más atención" value="2-1" sub="Física · 3.1" />
+    <Stat icon={Star} label="Tu curso más fuerte" value="2-1" sub="Biología · 4.3" />
+  </StatGrid>
+
+  <div className="mt-4 space-y-3">
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-1 flex items-center justify-between text-sm">
+        <span className="font-medium">2-1 — Física</span>
+        <Badge tone="warning">3.1 · Básico</Badge>
+      </div>
+      <SegmentedBar segments={[{ value: 100, className: 'bg-fd-warning' }]} />
+    </div>
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-1 flex items-center justify-between text-sm">
+        <span className="font-medium">2-1 — Biología</span>
+        <Badge tone="info">4.3 · Alto</Badge>
+      </div>
+      <SegmentedBar segments={[{ value: 100, className: 'bg-fd-info' }]} />
+    </div>
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -63,7 +95,7 @@ En **Tus cursos**, revisa el promedio y la distribución de desempeño
 
 <Callout type="info">
   Si un curso aparece marcado con riesgo, considera revisar sus notas en
-  [Registrar notas](/docs/sistema-gestion-escolar/profesor/modulos/registrar-notas)
+  [Registrar notas](/sistema-gestion-escolar/profesor/modulos/registrar-notas)
   y, si es tu grupo a cargo, en
-  [Director de grupo](/docs/sistema-gestion-escolar/profesor/modulos/direccion-de-grupo).
+  [Director de grupo](/sistema-gestion-escolar/profesor/modulos/direccion-de-grupo).
 </Callout>

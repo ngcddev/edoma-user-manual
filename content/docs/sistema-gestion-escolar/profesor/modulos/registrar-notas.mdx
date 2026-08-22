@@ -6,10 +6,29 @@ description: Guía de uso de "Registrar notas".
 Este módulo permite registrar y editar las calificaciones de tus estudiantes
 por curso y materia, dentro del período académico activo.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla del registro de notas y de la vista de
-  edición.
-</Callout>
+import { BookOpen, AlertTriangle } from 'lucide-react';
+import { Frame, FakeInput, Section, SectionTitle, Table, Tr, Td, Badge, Callout2 } from '@/components/docs-mockup';
+
+<Frame>
+  <SectionTitle icon={BookOpen}>Registro de Calificaciones</SectionTitle>
+  <div className="mb-3 flex flex-wrap gap-2">
+    <FakeInput>2-1 — Ciencias Sociales</FakeInput>
+    <FakeInput>2-1 — Biología</FakeInput>
+    <FakeInput>2-1 — Física</FakeInput>
+  </div>
+  <Callout2 icon={AlertTriangle}>
+    No se puede subir notas porque no estás dentro del rango de fecha estipulada por la ADMINISTRACIÓN.
+  </Callout2>
+  <Table columns={['Estudiante', '% Nota', 'Nota', 'Estado de entrega', 'PIAR']}>
+    <Tr>
+      <Td>Paja Santiago</Td>
+      <Td muted>100%</Td>
+      <Td muted>3.20</Td>
+      <Td><Badge tone="success">Entregado</Badge></Td>
+      <Td muted>—</Td>
+    </Tr>
+  </Table>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

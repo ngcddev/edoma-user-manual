@@ -6,10 +6,38 @@ description: Guía de uso de "Boletín".
 Este módulo te permite consultar e imprimir el boletín de calificaciones de
 tu hijo o hija para cada período académico ya publicado por la institución.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla del listado de boletines y de un boletín
-  abierto.
-</Callout>
+import { Lock, CheckCircle2, Printer } from 'lucide-react';
+import { Frame, Badge, Table, Tr, Td } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-1 text-xs text-fd-muted-foreground">1 de 3 boletines disponibles</div>
+  <div className="space-y-2">
+    <div className="flex items-center justify-between rounded-lg border border-fd-border p-3 opacity-60">
+      <div className="flex items-center gap-2 text-sm"><Lock className="size-4" /> Segundo Periodo — Aún no publicado</div>
+      <Badge>Pendiente</Badge>
+    </div>
+    <div className="flex items-center justify-between rounded-lg border border-fd-border p-3 opacity-60">
+      <div className="flex items-center gap-2 text-sm"><Lock className="size-4" /> Tercer Periodo — Aún no publicado</div>
+      <Badge>Pendiente</Badge>
+    </div>
+    <div className="flex items-center justify-between rounded-lg border border-fd-primary/40 bg-fd-primary/5 p-3">
+      <div className="flex items-center gap-2 text-sm"><CheckCircle2 className="size-4 text-fd-success" /> Primer Periodo — Publicado: 20 de ago de 2026</div>
+      <Badge tone="success">Listo</Badge>
+    </div>
+  </div>
+</Frame>
+
+<Frame>
+  <div className="mb-3 flex items-center justify-between">
+    <div className="text-sm font-medium">Boletín de calificaciones — Primer Periodo</div>
+    <span className="flex items-center gap-1 text-xs text-fd-primary"><Printer className="size-3.5" /> Imprimir</span>
+  </div>
+  <div className="mb-3 text-xs text-fd-muted-foreground">Estudiante: Paja Santiago · Curso: 2-1</div>
+  <Table columns={['Asignatura', 'Nota', 'Desempeño', 'Faltas']}>
+    <Tr><Td>Ciencias Sociales</Td><Td muted>3.2</Td><Td muted>Básico</Td><Td muted>0</Td></Tr>
+    <Tr><Td>Biología</Td><Td muted>4.3</Td><Td muted>Alto</Td><Td muted>0</Td></Tr>
+  </Table>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

@@ -6,10 +6,29 @@ description: Guía de uso de "Registrar asistencia".
 Este módulo permite registrar la asistencia diaria de tus estudiantes por
 curso y materia, hora de clase por hora de clase.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla del registro de asistencia y de la
-  marcación masiva.
-</Callout>
+import { CalendarCheck } from 'lucide-react';
+import { Frame, FakeInput, SectionTitle, Field, FieldGrid, Btn, Table, Tr, Td } from '@/components/docs-mockup';
+
+<Frame>
+  <SectionTitle icon={CalendarCheck}>Registro de Asistencia</SectionTitle>
+  <div className="mb-3 flex flex-wrap gap-2">
+    <FakeInput>2-1 — Ciencias Sociales</FakeInput>
+    <FakeInput>2-1 — Biología</FakeInput>
+  </div>
+  <div className="mb-3 rounded-lg border border-fd-border p-3">
+    <div className="mb-2 text-xs font-medium">Marcar asistencia para todos los estudiantes</div>
+    <FieldGrid>
+      <Field label="Estado para la hora activa" type="select" placeholder="Presente" />
+      <Field label="Observación" placeholder="Aplicar a todos" />
+    </FieldGrid>
+  </div>
+  <Table columns={['Estudiante', 'Horas de clase', 'Observación']}>
+    <Tr><Td>Paja Santiago</Td><Td muted>Sin horario configurado para hoy</Td><Td muted>—</Td></Tr>
+  </Table>
+  <div className="mt-3 flex justify-end">
+    <Btn tone="primary">Registrar Asistencia</Btn>
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

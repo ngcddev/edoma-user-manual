@@ -7,9 +7,43 @@ Este módulo permite generar y editar los horarios semanales de cada curso,
 asignando profesores y salones, y correr el horario de una sede completa en
 casos especiales (feriados, actos institucionales, etc.).
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla del horario generado para un curso.
-</Callout>
+import { Wand2, RefreshCw } from 'lucide-react';
+import { Frame, Btn, ScheduleGrid, FakeInput } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex flex-wrap gap-2">
+    <Btn tone="primary" icon={Wand2}>Generar Horarios Automáticos</Btn>
+    <Btn icon={RefreshCw}>Correr Horario por Sede</Btn>
+  </div>
+  <div className="mb-3 flex gap-2">
+    <FakeInput>Sucursal Principal</FakeInput>
+    <FakeInput>6-1</FakeInput>
+  </div>
+  <ScheduleGrid
+    days={[
+      { label: 'Lunes', blocks: [
+        { time: '07:00 - 07:55', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '07:55 - 08:50', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '08:50 - 09:30', subject: 'Ciencias Naturales', tone: 1 },
+        'break',
+        { time: '09:40 - 10:35', subject: 'Biología', tone: 2 },
+      ]},
+      { label: 'Martes', blocks: [
+        { time: '07:00 - 07:55', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '07:55 - 08:50', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '08:50 - 09:30', subject: 'Constitución Política', tone: 3 },
+        'break',
+        { time: '09:40 - 10:35', subject: 'Ciencias Naturales', tone: 1 },
+      ]},
+      { label: 'Miércoles', blocks: [
+        { time: '07:00 - 07:55', subject: 'Ciencias Sociales', tone: 0 },
+        { time: '07:55 - 08:50', subject: 'Ciencias Sociales', tone: 0 },
+        'break',
+        { time: '09:40 - 10:35', subject: 'Estadística', tone: 4 },
+      ]},
+    ]}
+  />
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

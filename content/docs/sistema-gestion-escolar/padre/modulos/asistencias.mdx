@@ -6,10 +6,25 @@ description: Guía de uso de "Asistencias".
 Este módulo muestra el resumen de asistencia de tu hijo o hija para el
 período académico que elijas.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del resumen de asistencia con datos
-  reales.
-</Callout>
+import { Frame, FakeInput, StatGrid, Stat, EmptyState } from '@/components/docs-mockup';
+import { CalendarCheck, Clock3, CalendarX, FileCheck, Inbox } from 'lucide-react';
+
+<Frame>
+  <div className="mb-4"><FakeInput>Primer Periodo</FakeInput></div>
+  <div className="mb-4 rounded-lg border border-fd-border p-4 text-center">
+    <div className="text-xs text-fd-muted-foreground">Asistencia general</div>
+    <div className="text-2xl font-semibold">0%</div>
+  </div>
+  <StatGrid>
+    <Stat icon={CalendarCheck} label="Presente" value={0} />
+    <Stat icon={Clock3} label="Tardanzas" value={0} />
+    <Stat icon={CalendarX} label="Ausencias" value={0} />
+    <Stat icon={FileCheck} label="Justificados" value={0} />
+  </StatGrid>
+  <div className="mt-4">
+    <EmptyState icon={Inbox} title="No hay actividades recientes" />
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

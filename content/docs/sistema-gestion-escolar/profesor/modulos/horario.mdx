@@ -6,9 +6,32 @@ description: Guía de uso de "Horario".
 Este módulo muestra tu horario semanal completo como docente, con todas las
 clases que dictas en todos tus cursos y materias.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla de tu horario semanal.
-</Callout>
+import { Frame, ScheduleGrid } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-3 text-sm font-medium">Horario semanal — Docente 2027</div>
+  <ScheduleGrid
+    days={[
+      { label: 'Lunes', blocks: [
+        { time: '07:00 - 07:55', subject: 'Ciencias Sociales — 2-1', tone: 0 },
+        { time: '08:50 - 09:30', subject: 'Ciencias Naturales — 2-1', tone: 1 },
+        'break',
+        { time: '09:40 - 10:35', subject: 'Biología — 2-1', tone: 2 },
+      ]},
+      { label: 'Martes', blocks: [
+        { time: '07:00 - 07:55', subject: 'Ciencias Sociales — 2-1', tone: 0 },
+        { time: '08:50 - 09:30', subject: 'Constitución Política — 2-1', tone: 3 },
+        'break',
+        { time: '10:35 - 11:30', subject: 'Física — 2-1', tone: 4 },
+      ]},
+      { label: 'Miércoles', blocks: [
+        { time: '07:00 - 07:55', subject: 'Ciencias Sociales — 2-1', tone: 0 },
+        'break',
+        { time: '09:40 - 10:35', subject: 'Estadística — 2-1', tone: 4 },
+      ]},
+    ]}
+  />
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

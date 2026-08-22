@@ -8,10 +8,43 @@ grupo** de un curso, y ofrece una vista consolidada de notas, asistencia,
 observador y boletines de todos los estudiantes del curso, en todas las
 materias.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla del panel de Director de Grupo con datos
-  reales.
-</Callout>
+import { Users, TrendingUp, CalendarCheck, ShieldAlert, Download, FileText } from 'lucide-react';
+import { Frame, StatGrid, Stat, Section, SectionTitle, Table, Tr, Td, Badge, Btn, EmptyState } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-3 text-sm font-medium">Director de Grupo — 2-1</div>
+  <StatGrid>
+    <Stat icon={Users} label="Estudiantes" value={1} sub="Sin alertas activas" />
+    <Stat icon={TrendingUp} label="Promedio general" value="3.7" sub="Período activo" />
+    <Stat icon={CalendarCheck} label="Asistencia del grupo" value="—" sub="Sin alertas de asistencia" />
+    <Stat icon={ShieldAlert} label="Obs. activas" value={0} sub="Sin seguimiento urgente" />
+  </StatGrid>
+
+  <Section>
+    <SectionTitle icon={FileText} action={<span className="flex items-center gap-1"><Download className="size-3" /> Exportar</span>}>
+      Notas de todas las materias — 2-1
+    </SectionTitle>
+    <Table columns={['Estudiante', 'Ciencias Sociales', 'Biología', 'Física', 'Promedio']}>
+      <Tr>
+        <Td>Paja Barrios, Santiago</Td>
+        <Td muted>3.2</Td>
+        <Td muted>4.3</Td>
+        <Td muted>3.1</Td>
+        <Td><Badge tone="warning">3.68 · Básico</Badge></Td>
+      </Tr>
+    </Table>
+  </Section>
+
+  <Section>
+    <SectionTitle icon={CalendarCheck}>Asistencias del grupo — 2-1</SectionTitle>
+    <EmptyState icon={CalendarCheck} title="No hay registros de asistencia para este año lectivo" />
+  </Section>
+
+  <Section>
+    <SectionTitle icon={ShieldAlert} action="+ Nueva anotación">Observador del grupo — 2-1</SectionTitle>
+    <EmptyState icon={ShieldAlert} title="Sin anotaciones registradas para el grupo" />
+  </Section>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -83,6 +116,6 @@ quieras revisar.
 <Callout type="warn">
   Este módulo solo aparece para el docente asignado como **director de
   grupo** del curso. La asignación se hace desde
-  [Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
+  [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
   en el rol Administrativo.
 </Callout>

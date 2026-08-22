@@ -7,10 +7,20 @@ Este módulo configura y genera los boletines de calificaciones de cada sede,
 mediante un asistente de 4 pasos: **Período**, **Estructura**, **Escala** y
 **Publicación**.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla de cada paso del asistente y de un boletín
-  generado.
-</Callout>
+import { FileText } from 'lucide-react';
+import { Frame, Steps as WizardSteps, Btn, FakeInput, Table, Tr, Td, Toggle, Field, FieldGrid } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex items-center justify-between">
+    <FakeInput>Sucursal Principal</FakeInput>
+    <Btn tone="primary" icon={FileText}>Generar boletines</Btn>
+  </div>
+  <WizardSteps steps={['Período', 'Estructura', 'Escala', 'Publicación']} active={0} />
+  <FieldGrid>
+    <Field label="Año lectivo" placeholder="2027" />
+    <Field label="Período actual" placeholder="Segundo Periodo" />
+  </FieldGrid>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -25,7 +35,7 @@ mediante un asistente de 4 pasos: **Período**, **Estructura**, **Escala** y
 <Callout type="warn">
   Las fechas y el tipo de cada período (bimestral, trimestral, etc.) no se
   configuran aquí, sino en
-  [Períodos](/docs/sistema-gestion-escolar/administrativo/academico/periodos).
+  [Períodos](/sistema-gestion-escolar/administrativo/academico/periodos).
 </Callout>
 
 ## Paso 1 — Período
@@ -74,6 +84,24 @@ pueden desactivar:
 | Firma del rector y director de grupo | No | Dos columnas de firma con nombre y cargo |
 | Pie de página institucional | No | Dirección, email y teléfono de la institución |
 
+<Frame>
+  <WizardSteps steps={['Período', 'Estructura', 'Escala', 'Publicación']} active={1} />
+  <div className="space-y-2">
+    {[
+      { label: 'Encabezado institucional', locked: true },
+      { label: 'Datos del estudiante', locked: true },
+      { label: 'Tabla de asignaturas, notas y desempeño', locked: false },
+      { label: 'Puesto y promedio general', locked: false },
+      { label: 'Firma del rector y director de grupo', locked: false },
+    ].map((s) => (
+      <div key={s.label} className="flex items-center justify-between rounded-lg border border-fd-border px-3 py-2 text-xs">
+        <span>{s.label}</span>
+        {s.locked ? <span className="text-fd-muted-foreground">Obligatorio</span> : <Toggle on />}
+      </div>
+    ))}
+  </div>
+</Frame>
+
 <Steps>
 <Step>
 
@@ -111,6 +139,16 @@ Define la **escala de valoración** de la sede: los rangos numéricos
 | Alto | 4 – 4.5 | Desempeño Alto |
 | Superior | 4.6 – 5 | Desempeño Superior |
 
+<Frame>
+  <WizardSteps steps={['Período', 'Estructura', 'Escala', 'Publicación']} active={2} />
+  <Table columns={['Nivel', 'Desde', 'Hasta', 'Etiqueta visible']}>
+    <Tr><Td>Bajo</Td><Td muted>0</Td><Td muted>2.9</Td><Td muted>Desempeño Bajo</Td></Tr>
+    <Tr><Td>Básico</Td><Td muted>3</Td><Td muted>3.9</Td><Td muted>Desempeño Básico</Td></Tr>
+    <Tr><Td>Alto</Td><Td muted>4</Td><Td muted>4.5</Td><Td muted>Desempeño Alto</Td></Tr>
+    <Tr><Td>Superior</Td><Td muted>4.6</Td><Td muted>5</Td><Td muted>Desempeño Superior</Td></Tr>
+  </Table>
+</Frame>
+
 <Steps>
 <Step>
 
@@ -142,6 +180,17 @@ Haz clic en **Siguiente** para pasar a Publicación.
 </Callout>
 
 ## Paso 4 — Publicación
+
+<Frame>
+  <WizardSteps steps={['Período', 'Estructura', 'Escala', 'Publicación']} active={3} />
+  <div className="flex items-center justify-between rounded-lg border border-fd-border px-3 py-3 text-sm">
+    <span>Publicar boletines de esta sede</span>
+    <div className="flex items-center gap-2">
+      <Toggle />
+      <Btn>Publicar ahora</Btn>
+    </div>
+  </div>
+</Frame>
 
 <Steps>
 <Step>
@@ -186,5 +235,5 @@ pantalla).
 <Callout type="warn">
   Antes de generar boletines, verifica que todas las notas del período estén
   completas desde
-  [Sistema de evaluación](/docs/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion).
+  [Sistema de evaluación](/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion).
 </Callout>

@@ -7,10 +7,33 @@ Este módulo gestiona el proceso de re-matrícula de los estudiantes para el
 siguiente año lectivo: solicitudes de padres/acudientes, aprobación y
 matrícula final en un curso.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del proceso de re-matrícula con
-  solicitudes activas.
-</Callout>
+import { UserPlus, Inbox, CheckCircle2, GraduationCap } from 'lucide-react';
+import { Frame, Toggle, FakeInput, Btn, Section, SectionTitle, EmptyState } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+    <Toggle label="Re-matrícula · Inactiva" />
+    <div className="flex gap-2">
+      <FakeInput>Buscar por nombre o documento...</FakeInput>
+      <Btn tone="primary" icon={UserPlus}>Activar estudiante</Btn>
+    </div>
+  </div>
+
+  <Section>
+    <SectionTitle icon={Inbox}>Solicitudes pendientes · 2028</SectionTitle>
+    <EmptyState icon={Inbox} title="No hay solicitudes pendientes" />
+  </Section>
+
+  <Section>
+    <SectionTitle icon={CheckCircle2}>Aprobados para renovar matrícula</SectionTitle>
+    <EmptyState icon={CheckCircle2} title="No hay estudiantes aprobados para re-matricular" />
+  </Section>
+
+  <Section>
+    <SectionTitle icon={GraduationCap}>Estudiantes matriculados · 2028</SectionTitle>
+    <EmptyState icon={GraduationCap} title="Aún no hay estudiantes matriculados para el año actual" />
+  </Section>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 

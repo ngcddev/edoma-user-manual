@@ -5,8 +5,8 @@ description: Guía de uso de "Sistema de evaluación".
 
 Este módulo define las escalas de valoración, los desempeños y las reglas de
 promoción con las que se califica a los estudiantes, y es la base que usan
-[Boletines](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines)
-y [Libro final](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/libro-final).
+[Boletines](/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines)
+y [Libro final](/sistema-gestion-escolar/administrativo/sistemas/documentos/libro-final).
 
 <Callout type="warn">
   En un sistema recién creado (MVP/pruebas) esta sección puede mostrarse vacía,
@@ -15,10 +15,12 @@ y [Libro final](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos
   evaluación para la institución.
 </Callout>
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla una vez tengas un sistema de evaluación
-  configurado.
-</Callout>
+import { FileWarning } from 'lucide-react';
+import { Frame, EmptyState } from '@/components/docs-mockup';
+
+<Frame>
+  <EmptyState icon={FileWarning} title="No hay información disponible" subtitle="No evaluation systems registered." />
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -30,7 +32,7 @@ y [Libro final](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos
   La escala de valoración (rangos numéricos y etiquetas como `Desempeño
   Bajo`, `Básico`, `Alto` y `Superior`) se define actualmente dentro del
   asistente de
-  [Boletines](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines),
+  [Boletines](/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines),
   en el paso **Escala**.
 </Callout>
 
@@ -42,7 +44,7 @@ y [Libro final](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos
 ### Verifica notas faltantes
 
 Antes de cerrar el
-[Libro final](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/libro-final)
+[Libro final](/sistema-gestion-escolar/administrativo/sistemas/documentos/libro-final)
 de un curso, confirma que todas las áreas de todos los estudiantes tengan
 nota definitiva.
 

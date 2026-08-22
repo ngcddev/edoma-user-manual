@@ -6,9 +6,57 @@ description: Guía de uso de "Padres de familia".
 Este módulo permite consultar, registrar y administrar a los padres, madres o
 tutores legales de los estudiantes.
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla de la lista de padres de familia y del
-  formulario de registro.
+import { UserPlus, List as ListIcon, IdCard, Mail, Briefcase } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
+
+<Frame>
+  <Toolbar>
+    <TabBtn active icon={ListIcon}>Lista</TabBtn>
+    <TabBtn icon={UserPlus}>Registrar Padre</TabBtn>
+  </Toolbar>
+  <FilterBar>
+    <FakeInput grow>Buscar por nombre, documento...</FakeInput>
+    <FakeInput>Todas las relaciones</FakeInput>
+    <FakeInput>Todos los estados</FakeInput>
+  </FilterBar>
+  <Table columns={['Padre / acudiente', 'Correo', 'Teléfono', 'Relación', 'Estado']}>
+    <Tr>
+      <Td>Julio Paja</Td>
+      <Td muted>julio.paja@ejemplo.co</Td>
+      <Td muted>3157657766</Td>
+      <Td muted>Tutor Legal</Td>
+      <Td><Badge tone="success">Activo</Badge></Td>
+    </Tr>
+  </Table>
+</Frame>
+
+<Frame>
+  <FieldGroupTitle icon={IdCard}>Documento de identidad</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Tipo de documento" type="select" required />
+    <Field label="Número de documento" required />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={Mail}>Información de contacto</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Correo electrónico" required />
+    <Field label="Número de teléfono" placeholder="Ej: 3157657766" required />
+    <Field label="Dirección" required full />
+  </FieldGrid>
+
+  <FieldGroupTitle icon={Briefcase}>Información laboral y educativa</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Ocupación" required />
+    <Field label="Lugar de trabajo" required />
+    <Field label="Nivel educativo" type="select" required full />
+  </FieldGrid>
+</Frame>
+
+<Callout type="warn">
+  Registra primero al padre/acudiente aquí antes de matricular a un
+  estudiante: en el formulario de
+  [Estudiantes](/sistema-gestion-escolar/administrativo/registro/estudiantes)
+  el tutor legal se busca y se asocia, no se crea desde ahí.
 </Callout>
 
 ## ¿Qué encontrarás aquí?
@@ -18,13 +66,6 @@ tutores legales de los estudiantes.
 - Cada fila muestra: padre/acudiente, documento, correo, teléfono, relación,
   estado y acciones (**Ver detalle**, **Editar**, **Desactivar**).
 - Un formulario de **Registrar Padre**.
-
-<Callout type="warn">
-  Registra primero al padre/acudiente aquí antes de matricular a un
-  estudiante: en el formulario de
-  [Estudiantes](/docs/sistema-gestion-escolar/administrativo/registro/estudiantes)
-  el tutor legal se busca y se asocia, no se crea desde ahí.
-</Callout>
 
 ## Registrar un nuevo padre / acudiente
 

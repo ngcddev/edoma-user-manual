@@ -8,9 +8,23 @@ académicos y la decisión de promoción de cada estudiante al cierre del año
 lectivo, conforme al **Decreto 1290 de 2009**. Es un único documento por sede
 y año lectivo, con folio consecutivo entre todos los cursos.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla del Libro Final consultado para un curso.
-</Callout>
+import { Info, Lightbulb } from 'lucide-react';
+import { Frame, FieldGrid, Field, Callout2 } from '@/components/docs-mockup';
+
+<Frame>
+  <Callout2 icon={Info}>
+    El Libro Final es el registro oficial y definitivo de resultados académicos y promoción, conforme al Decreto 1290 de 2009.
+  </Callout2>
+  <FieldGrid>
+    <Field label="Sede" type="select" placeholder="Selecciona una sede" required />
+    <Field label="Año lectivo" type="select" placeholder="Selecciona la sede primero" required />
+    <Field label="Curso" type="select" placeholder="Selecciona el año lectivo primero" required />
+  </FieldGrid>
+  <div className="mt-4 flex items-start gap-2 rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+    <Lightbulb className="mt-0.5 size-4 shrink-0" />
+    <span>Verifica que todas las áreas de todos los estudiantes tengan nota definitiva antes de cerrar el libro.</span>
+  </div>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -20,7 +34,7 @@ y año lectivo, con folio consecutivo entre todos los cursos.
 - Un aviso (**Tip**) recordando verificar que todas las áreas de todos los
   estudiantes tengan nota definitiva antes de cerrar el libro, con acceso
   directo a
-  [Sistema de evaluación](/docs/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion)
+  [Sistema de evaluación](/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion)
   para completar notas faltantes.
 
 <Callout type="warn">
@@ -57,7 +71,7 @@ Elige el curso específico (ejemplo: `11-2`).
 ### Verifica notas pendientes
 
 Si el aviso indica notas faltantes, ve a
-[Sistema de evaluación](/docs/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion)
+[Sistema de evaluación](/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion)
 para completarlas antes de continuar.
 
 </Step>

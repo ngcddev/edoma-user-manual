@@ -7,10 +7,37 @@ Este módulo centraliza los datos institucionales y las imágenes que aparecen
 en los boletines de calificaciones: logo, firma del rector, sello, datos del
 rector y la información legal de la institución.
 
-<Callout type="info">
-  Agrega aquí una captura de pantalla de esta pantalla con los datos de tu
-  institución configurados.
-</Callout>
+import { ImageIcon, CheckCircle2, User } from 'lucide-react';
+import { Frame, SectionTitle, Section, Btn, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
+
+<Frame>
+  <SectionTitle icon={ImageIcon}>Imágenes institucionales</SectionTitle>
+  <div className="grid gap-3 sm:grid-cols-3">
+    {['Logo del colegio', 'Firma del rector', 'Sello institucional'].map((label, i) => (
+      <div key={label} className="rounded-lg border border-fd-border p-3 text-center">
+        <div className="mx-auto mb-2 flex size-12 items-center justify-center rounded-lg bg-fd-muted text-fd-muted-foreground">
+          <ImageIcon className="size-5" />
+        </div>
+        <div className="mb-2 text-xs font-medium">{label}</div>
+        <Btn>Subir {i === 2 ? 'sello' : i === 1 ? 'firma' : 'logo'}</Btn>
+        {i < 2 && (
+          <div className="mt-2 flex items-center justify-center gap-1 text-[11px] text-fd-success">
+            <CheckCircle2 className="size-3" /> Imagen guardada
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <Section>
+    <FieldGroupTitle icon={User}>Datos del rector</FieldGroupTitle>
+    <FieldGrid>
+      <Field label="Nombre completo del rector" placeholder="JUAN CARLOS CARVAJAL" />
+      <Field label="Cargo" placeholder="Rector" />
+      <Field label="Cédula" full />
+    </FieldGrid>
+  </Section>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -92,5 +119,5 @@ descartar cambios no guardados.
 
 <Callout type="info">
   Esta información se refleja automáticamente en el módulo de
-  [Boletines](/docs/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines).
+  [Boletines](/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines).
 </Callout>

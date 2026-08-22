@@ -7,10 +7,44 @@ Este módulo permite crear y administrar los años lectivos de la institución.
 El año lectivo activo determina qué información se muestra en el resto del
 sistema (matrícula, cursos, períodos, horarios, boletines, etc.).
 
-<Callout type="info">
-  Agrega aquí capturas de pantalla de la lista de años lectivos y del
-  formulario de creación.
-</Callout>
+import { CalendarPlus, List as ListIcon, CheckCircle2 } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, Table, Tr, Td, Badge, Btn, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
+
+<Frame>
+  <div className="mb-4 flex items-center gap-2 rounded-lg bg-fd-success/10 p-3 text-sm text-fd-success">
+    <CheckCircle2 className="size-4 shrink-0" />
+    <span><strong>Año lectivo activo — 2027</strong> · 9/10/2026 — 20/10/2026</span>
+  </div>
+  <Toolbar>
+    <TabBtn active icon={ListIcon}>Años registrados</TabBtn>
+    <TabBtn icon={CalendarPlus}>Crear año lectivo</TabBtn>
+  </Toolbar>
+  <Table columns={['Año lectivo', 'Fecha inicio', 'Fecha fin', 'Estado', 'Acciones']}>
+    <Tr>
+      <Td>2027</Td>
+      <Td muted>9/10/2026</Td>
+      <Td muted>20/10/2026</Td>
+      <Td><Badge tone="success">Activo</Badge></Td>
+      <Td muted>Año activo</Td>
+    </Tr>
+    <Tr>
+      <Td>2028</Td>
+      <Td muted>19/8/2026</Td>
+      <Td muted>9/9/2026</Td>
+      <Td><Badge>Inactivo</Badge></Td>
+      <Td><Btn tone="success">Activar</Btn></Td>
+    </Tr>
+  </Table>
+</Frame>
+
+<Frame>
+  <FieldGroupTitle icon={CalendarPlus}>Nuevo año lectivo</FieldGroupTitle>
+  <FieldGrid>
+    <Field label="Nombre del año lectivo" placeholder="Ej: 2028" required full />
+    <Field label="Fecha de inicio" type="date" required />
+    <Field label="Fecha de finalización" type="date" required />
+  </FieldGrid>
+</Frame>
 
 ## ¿Qué encontrarás aquí?
 
@@ -74,8 +108,8 @@ anterior quedará en `Inactivo`.
 
 <Callout type="info">
   Antes de activar un nuevo año lectivo, revisa
-  [Períodos](/docs/sistema-gestion-escolar/administrativo/academico/periodos)
-  y [Cursos y grados](/docs/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
+  [Períodos](/sistema-gestion-escolar/administrativo/academico/periodos)
+  y [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados)
   para configurarlos dentro del nuevo ciclo.
 </Callout>
 
