@@ -4,29 +4,146 @@ description: Guía de uso de "Sedes".
 ---
 
 Las **sedes** son las distintas ubicaciones físicas de la institución (por
-ejemplo, `Sede Central` y `Sede Norte`). No son un módulo aparte con
-su propia pantalla, sino un dato transversal que se usa como filtro y como
-campo obligatorio en la mayoría de los módulos administrativos.
+ejemplo, `Sede Principal` y `Sede Norte`). Tienen su propia pantalla de
+gestión, con dos pestañas: **Sedes registradas** (listado) y **Nueva sede**
+(formulario de creación).
 
-<Callout type="warn">
-  En la versión actual (MVP) no existe una pantalla dedicada para crear o
-  editar sedes desde la interfaz de Administrativo; las sedes disponibles
-  vienen preconfiguradas para la institución. Actualiza este contenido si tu
-  instalación ya cuenta con una pantalla de gestión de sedes.
-</Callout>
-
-import { MapPin } from 'lucide-react';
-import { Frame } from '@/components/docs-mockup';
+import { MapPin, List as ListIcon, Pencil, Save, X } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, SectionTitle, Badge, Table, Tr, Td, Field, Btn } from '@/components/docs-mockup';
 
 <Frame>
-  <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">SEDES</div>
-  <div className="mt-1 flex flex-wrap items-center gap-4 text-sm">
-    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sede Central <span className="font-medium">1</span></span>
-    <span className="flex items-center gap-1.5"><MapPin className="size-3.5 text-fd-muted-foreground" /> Sede Norte <span className="font-medium">0</span></span>
+  <Toolbar>
+    <TabBtn active icon={ListIcon}>Sedes registradas</TabBtn>
+    <TabBtn icon={MapPin}>Nueva sede</TabBtn>
+  </Toolbar>
+
+  <div className="mb-2 flex items-center justify-between">
+    <SectionTitle icon={MapPin}>Sedes registradas</SectionTitle>
+    <Badge>2 sedes</Badge>
+  </div>
+  <Table columns={['Sede', 'Dirección', 'Teléfono', 'Registrada', 'Acciones']}>
+    <Tr>
+      <Td>Sede Norte<div className="text-fd-muted-foreground">ID #2</div></Td>
+      <Td muted>Avenida Norte #456, Cali</Td>
+      <Td muted>3009876543</Td>
+      <Td muted>22/08/2026</Td>
+      <Td><Pencil className="size-3.5 text-fd-muted-foreground" /></Td>
+    </Tr>
+    <Tr>
+      <Td>Sede Principal<div className="text-fd-muted-foreground">ID #1</div></Td>
+      <Td muted>Calle Principal #123, Cali</Td>
+      <Td muted>3001234567</Td>
+      <Td muted>22/08/2026</Td>
+      <Td><Pencil className="size-3.5 text-fd-muted-foreground" /></Td>
+    </Tr>
+  </Table>
+</Frame>
+
+<Frame>
+  <Toolbar>
+    <TabBtn icon={ListIcon}>Sedes registradas</TabBtn>
+    <TabBtn active icon={MapPin}>Nueva sede</TabBtn>
+  </Toolbar>
+
+  <SectionTitle icon={MapPin}>Nueva sede</SectionTitle>
+  <Field label="Nombre de la sede" placeholder="Ej: Sede Principal, Sede Norte" required full />
+  <div className="mb-3 -mt-2 text-[11px] italic text-fd-muted-foreground">Use un nombre corto que identifique claramente la sede.</div>
+
+  <Field label="Dirección" placeholder="Ej: Calle Principal #123, Cali" required full />
+
+  <div className="mt-3">
+    <Field label="Teléfono" placeholder="Ej: 3001234567" required />
+    <div className="mt-1 text-[11px] italic text-fd-muted-foreground">10 dígitos, sin espacios ni guiones.</div>
+  </div>
+
+  <div className="mt-4 flex items-center justify-end gap-2">
+    <Btn>Cancelar</Btn>
+    <Btn tone="primary" icon={Save}>Guardar sede</Btn>
   </div>
 </Frame>
 
-## Dónde aparecen las sedes en el sistema
+<Frame>
+  <div className="mb-4 flex items-center justify-between">
+    <SectionTitle icon={Pencil}>Editar sede</SectionTitle>
+    <X className="size-4 text-fd-muted-foreground" />
+  </div>
+  <Field label="Nombre de la sede" placeholder="Sede Norte" required full />
+  <div className="mt-3"><Field label="Dirección" placeholder="Avenida Norte #456, Cali" required full /></div>
+  <div className="mt-3"><Field label="Teléfono" placeholder="3009876543" required /></div>
+  <div className="mt-4 flex items-center justify-end gap-2">
+    <Btn>Cancelar</Btn>
+    <Btn tone="primary" icon={Save}>Guardar cambios</Btn>
+  </div>
+</Frame>
+
+## ¿Qué encontrarás aquí?
+
+- **Sedes registradas**: tabla con todas las sedes de la institución —
+  nombre y su **ID**, dirección, teléfono, fecha de registro y una acción
+  de **Editar** (ícono de lápiz).
+- **Nueva sede**: formulario para crear una sede, con **Nombre de la sede**,
+  **Dirección** y **Teléfono** (10 dígitos, sin espacios ni guiones).
+- Al hacer clic en **Editar** en una sede de la lista, se abre el panel
+  **Editar sede** con los mismos tres campos precargados.
+
+## Crear una sede
+
+<Steps>
+<Step>
+
+### Abre el formulario
+
+En la pestaña **Nueva sede**, completa el formulario.
+
+</Step>
+<Step>
+
+### Completa los datos
+
+Ingresa el **Nombre de la sede** (ejemplo: `Sede Norte`), la **Dirección**
+(ejemplo: `Avenida Norte #456, Cali`) y el **Teléfono** (10 dígitos, sin
+espacios ni guiones, ejemplo: `3009876543`).
+
+</Step>
+<Step>
+
+### Guarda la sede
+
+Haz clic en **Guardar sede**. La nueva sede aparecerá en **Sedes
+registradas** y quedará disponible como opción de sede en el resto de
+módulos administrativos.
+
+</Step>
+</Steps>
+
+## Editar una sede existente
+
+<Steps>
+<Step>
+
+### Ubica la sede
+
+En **Sedes registradas**, localiza la sede por su nombre o ID.
+
+</Step>
+<Step>
+
+### Ábrela para editar
+
+Haz clic en el ícono de **Editar** (lápiz) de esa fila.
+
+</Step>
+<Step>
+
+### Actualiza los datos
+
+Ajusta el **Nombre de la sede**, la **Dirección** o el **Teléfono**, y haz
+clic en **Guardar cambios**.
+
+</Step>
+</Steps>
+
+## Dónde aparecen las sedes en el resto del sistema
 
 - **Dashboard**: muestra cada sede con el número de cursos activos que tiene
   (ejemplo: `Sede Central · 1`, `Sede Norte · 0`).

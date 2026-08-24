@@ -7,8 +7,8 @@ El **Dashboard** es la pantalla principal del rol Padre de familia. Muestra un
 resumen del desempeño de tu hijo o hija y accesos directos a cada módulo de
 seguimiento académico.
 
-import { Flame, User, CalendarCheck, TrendingUp, BookOpen, FileText, ShieldAlert, Clock } from 'lucide-react';
-import { Frame, Badge, StatGrid, Stat, ActionRow, Btn } from '@/components/docs-mockup';
+import { Flame, User, CalendarCheck, TrendingUp, BookOpen, FileText, ShieldAlert, Clock, CalendarClock } from 'lucide-react';
+import { Frame, Badge, StatGrid, Stat, ActionRow, Btn, Table, Tr, Td } from '@/components/docs-mockup';
 
 <Frame>
   <div className="mb-4 flex items-center justify-between">
@@ -42,13 +42,49 @@ import { Frame, Badge, StatGrid, Stat, ActionRow, Btn } from '@/components/docs-
   </div>
 </Frame>
 
+## Niveles de racha
+
+La **racha de acceso** cuenta los días seguidos que ingresas a revisar la
+información de tu hijo/a, y avanza por 5 niveles:
+
+<Frame>
+  <Table columns={['Nivel', 'Días de racha']}>
+    <Tr><Td><Badge>Iniciando</Badge></Td><Td muted>Día 0 a día 2</Td></Tr>
+    <Tr><Td><Badge tone="info">Ocasional</Badge></Td><Td muted>Día 3 a día 6</Td></Tr>
+    <Tr><Td><Badge tone="warning">Comprometido</Badge></Td><Td muted>Día 7 a día 14</Td></Tr>
+    <Tr><Td><Badge tone="success">Presente</Badge></Td><Td muted>Día 15 a día 29</Td></Tr>
+    <Tr><Td><Badge tone="danger"><Flame className="mr-1 inline size-3" /> Constante</Badge></Td><Td muted>Día 30 en adelante</Td></Tr>
+  </Table>
+</Frame>
+
+## Cuando no hay un período activo
+
+Si la institución aún no ha activado un período académico para el año
+lectivo, el Dashboard no se habilita — debes esperar a que Administración
+active el período correspondiente.
+
+<Frame>
+  <div className="flex flex-col items-center gap-3 rounded-lg border border-fd-border py-10 text-center">
+    <CalendarClock className="size-6 text-fd-muted-foreground" />
+    <div className="font-medium">Año lectivo en preparación</div>
+    <div className="max-w-sm text-xs text-fd-muted-foreground">
+      En este momento no hay un período académico activo. El sistema estará
+      disponible una vez la institución active el período correspondiente.
+    </div>
+    <div className="max-w-sm text-[11px] text-fd-muted-foreground">
+      Estado confirmado por la institución educativa. Los módulos académicos
+      estarán disponibles automáticamente cuando el período sea activado.
+    </div>
+  </div>
+</Frame>
+
 ## ¿Qué encontrarás aquí?
 
 - **Selector de estudiante**: si tienes más de un hijo/a matriculado, elige
   cuál quieres consultar desde la tarjeta con su nombre en la parte superior.
 - **Racha de acceso** (ejemplo: `5 días`) y **Nivel de padre** (ejemplo:
   `Ocasional`): indicadores que reconocen la frecuencia con la que ingresas a
-  revisar la información de tu hijo/a.
+  revisar la información de tu hijo/a. Ver la tabla de niveles más abajo.
 - **Datos del estudiante**: nombre completo, curso (ejemplo: `3-1`) y fecha
   del último acceso.
 - **Tarjetas de resumen**:
@@ -94,3 +130,10 @@ Haz clic en **Notas**, **Asistencias**, **Horario**, **Boletín** u
 
 </Step>
 </Steps>
+
+<Callout type="warn">
+  Si ves el mensaje **"Año lectivo en preparación"**, significa que
+  Administración todavía no ha activado un período académico para el año
+  lectivo. El Dashboard y los módulos académicos se habilitan
+  automáticamente en cuanto la institución active el período.
+</Callout>

@@ -7,8 +7,38 @@ Este módulo configura y genera los boletines de calificaciones de cada sede,
 mediante un asistente de 4 pasos: **Período**, **Estructura**, **Escala** y
 **Publicación**.
 
-import { FileText } from 'lucide-react';
-import { Frame, Steps as WizardSteps, Btn, FakeInput, Table, Tr, Td, Toggle, Field, FieldGrid } from '@/components/docs-mockup';
+import { AlertTriangle, FileText, Search } from 'lucide-react';
+import { Frame, Steps as WizardSteps, Btn, FakeInput, Table, Tr, Td, Toggle, Field, FieldGrid, SectionTitle, Callout2 } from '@/components/docs-mockup';
+
+## Antes de empezar: completa el perfil institucional
+
+Si el perfil institucional (logo, datos del rector, resolución/NIT, código
+DANE, dirección, correo, teléfono) no está completo en
+[Configuración](/sistema-gestion-escolar/administrativo/sistemas/configuracion),
+el sistema **bloquea** la configuración de boletines hasta que lo completes:
+
+<Frame>
+  <div className="flex flex-col items-center gap-3 rounded-lg border border-fd-warning/30 bg-fd-warning/5 p-6 text-center">
+    <AlertTriangle className="size-6 text-fd-warning" />
+    <div className="font-medium">Completa el perfil institucional</div>
+    <div className="max-w-sm text-xs text-fd-muted-foreground">
+      Antes de configurar los boletines, necesitamos estos datos de tu
+      institución: Resolución / NIT, código DANE, correo electrónico,
+      dirección, teléfono / celular y logo, firma del rector y datos del
+      rector.
+    </div>
+    <Btn tone="primary">Completar perfil institucional</Btn>
+  </div>
+</Frame>
+
+<Callout type="warn">
+  Completar el perfil institucional en
+  [Configuración](/sistema-gestion-escolar/administrativo/sistemas/configuracion)
+  es un **requisito obligatorio** antes de poder configurar y generar
+  boletines.
+</Callout>
+
+## El asistente de configuración
 
 <Frame>
   <div className="mb-4 flex items-center justify-between">
@@ -210,6 +240,25 @@ visibles en el portal de padres de familia.
 </Step>
 </Steps>
 
+## El período activo debe habilitar la publicación
+
+Publicar el boletín de un período depende del **estado del siguiente
+período** en
+[Períodos](/sistema-gestion-escolar/administrativo/academico/periodos):
+
+| Boletín a publicar | Requisito de período |
+| --- | --- |
+| Primer Periodo | El **Segundo Periodo** debe estar `Activo`. |
+| Segundo Periodo | El **Tercer Periodo** debe estar `Activo`. |
+| Tercer Periodo (cierre de año) | **Desactiva** el Tercer Periodo → publica su boletín → **vuelve a activarlo**. |
+
+<Callout type="warn">
+  Si dejas el Tercer Periodo **desactivado** después de publicar su boletín,
+  docentes y padres de familia verán "no hay un período activo" y no podrán
+  usar el sistema. Siempre reactívalo justo después de publicar el boletín
+  de cierre de año.
+</Callout>
+
 ## Generar los boletines
 
 <Steps>
@@ -236,3 +285,25 @@ pantalla).
   completas desde
   [Sistema de evaluación](/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion).
 </Callout>
+
+## La pantalla "Generar boletines"
+
+<Frame>
+  <SectionTitle icon={Search}>Buscar boletines</SectionTitle>
+  <FieldGrid>
+    <Field label="Sede" placeholder="Sede Principal" required />
+    <Field label="Año lectivo" placeholder="2026" required />
+    <Field label="Curso" placeholder="1-1" required />
+    <Field label="Período" placeholder="Segundo Periodo" required />
+  </FieldGrid>
+  <Field label="Estudiante (opcional)" placeholder="Olga Flores" full />
+  <div className="mt-3"><Btn tone="primary">Buscar</Btn></div>
+</Frame>
+
+- Busca por **Sede**, **Año lectivo**, **Curso** y **Período** (todos
+  obligatorios).
+- El campo **Estudiante** es opcional: déjalo vacío para generar el boletín
+  de **todo el curso** en un solo PDF, o elige un estudiante puntual para
+  generar/revisar solo el suyo.
+- Los resultados muestran los boletines ya generados anteriormente para esa
+  búsqueda, listos para descargar de nuevo sin tener que regenerarlos.

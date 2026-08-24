@@ -7,8 +7,8 @@ Este módulo permite gestionar los períodos académicos (bimestres, trimestres,
 etc.) del año lectivo activo, cada uno con su propio porcentaje dentro de la
 nota final.
 
-import { Briefcase, Percent } from 'lucide-react';
-import { Frame, Callout2, Table, Tr, Td, Badge, Btn } from '@/components/docs-mockup';
+import { Briefcase, Percent, UserCog, X, Calculator, CalendarCheck, CalendarClock, CheckCircle2, Info, Plus, Save } from 'lucide-react';
+import { Frame, Callout2, Table, Tr, Td, Badge, Btn, FieldGrid, Field } from '@/components/docs-mockup';
 
 <Frame>
   <Callout2 icon={Briefcase}>Año lectivo activo: 2027 — los períodos se gestionan dentro de este año.</Callout2>
@@ -16,27 +16,30 @@ import { Frame, Callout2, Table, Tr, Td, Badge, Btn } from '@/components/docs-mo
     <Percent className="size-3.5 text-fd-success" />
     <span className="font-medium text-fd-success">Total asignado: 100%</span>
   </div>
-  <Table columns={['Período', 'Estado', 'Método', 'Porcentaje', 'Acciones']}>
+  <Table columns={['Período', 'Estado', 'Notas', 'Recuperación', 'Porcentaje', 'Acciones']}>
     <Tr>
       <Td>Primer Periodo</Td>
       <Td><Badge tone="success">Activo</Badge></Td>
-      <Td muted>Promedio</Td>
+      <Td muted>01 feb – 10 abr</Td>
+      <Td muted>11 abr – 17 abr</Td>
       <Td muted>30%</Td>
-      <Td><Btn tone="warning">Desactivar</Btn></Td>
+      <Td><div className="flex gap-1.5"><Btn tone="warning">Desactivar</Btn><Btn>Gestionar</Btn></div></Td>
     </Tr>
     <Tr>
       <Td>Segundo Periodo</Td>
       <Td><Badge>Inactivo</Badge></Td>
-      <Td muted>Promedio</Td>
+      <Td muted>18 abr – 26 jun</Td>
+      <Td muted>27 jun – 03 jul</Td>
       <Td muted>30%</Td>
-      <Td><Btn tone="success">Activar</Btn></Td>
+      <Td><div className="flex gap-1.5"><Btn tone="success">Activar</Btn><Btn>Gestionar</Btn></div></Td>
     </Tr>
     <Tr>
       <Td>Tercer Periodo</Td>
       <Td><Badge>Inactivo</Badge></Td>
-      <Td muted>Promedio</Td>
+      <Td muted>14 jul – 20 nov</Td>
+      <Td muted>21 nov – 27 nov</Td>
       <Td muted>40%</Td>
-      <Td><Btn tone="success">Activar</Btn></Td>
+      <Td><div className="flex gap-1.5"><Btn tone="success">Activar</Btn><Btn>Gestionar</Btn></div></Td>
     </Tr>
   </Table>
 </Frame>
@@ -66,29 +69,138 @@ períodos del año (ejemplo: `30% + 30% + 40% = 100%`).
 
 ## Gestionar un período
 
+Al hacer clic en **Gestionar** se abre un panel con toda la configuración
+del período — método de cálculo, ponderación, fechas de notas y
+recuperación, y las extensiones individuales por profesor — todo en un solo
+lugar:
+
+<Frame>
+  <div className="mb-4 flex items-start justify-between">
+    <div>
+      <div className="flex items-center gap-1.5 font-medium">
+        <Briefcase className="size-4 text-fd-primary" /> Gestionar Primer Periodo
+      </div>
+      <div className="text-xs text-fd-muted-foreground">2026 · Periodo activo</div>
+    </div>
+    <X className="size-4 text-fd-muted-foreground" />
+  </div>
+
+  <div className="rounded-lg bg-fd-primary/5 p-3">
+    <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-fd-primary">
+      <Calculator className="size-3.5" /> MÉTODO DE CÁLCULO
+    </div>
+    <Field placeholder="Promedio de notas" />
+    <div className="mt-1.5 text-[11px] italic text-fd-muted-foreground">
+      La nota definitiva será el promedio de todas las evaluaciones.
+    </div>
+  </div>
+
+  <div className="mt-3 rounded-lg bg-fd-success/5 p-3">
+    <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-fd-success">
+      <Percent className="size-3.5" /> PONDERACIÓN DEL PERÍODO
+    </div>
+    <div className="mb-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground">PORCENTAJE SOBRE LA NOTA FINAL</div>
+    <Field placeholder="40 %" />
+    <div className="mt-1.5 flex items-center gap-1 text-[11px] text-fd-success">
+      <CheckCircle2 className="size-3.5" /> Junto con los demás periodos suma 100%
+    </div>
+  </div>
+
+  <div className="mt-4 mb-2 flex items-center gap-1.5 text-xs font-semibold text-fd-muted-foreground">
+    <CalendarCheck className="size-3.5" /> FECHAS DE NOTAS
+  </div>
+  <FieldGrid>
+    <Field label="Desde" type="date" placeholder="08/22/2026" />
+    <Field label="Hasta" type="date" placeholder="08/22/2026" />
+  </FieldGrid>
+
+  <div className="mt-4 mb-2 flex items-center gap-1.5 text-xs font-semibold text-fd-muted-foreground">
+    <CalendarClock className="size-3.5" /> FECHAS DE RECUPERACIÓN
+  </div>
+  <FieldGrid>
+    <Field label="Desde" type="date" placeholder="mm/dd/yyyy" />
+    <Field label="Hasta" type="date" placeholder="mm/dd/yyyy" />
+  </FieldGrid>
+
+  <div className="mt-4 mb-2 flex items-center gap-1.5 text-xs font-semibold text-fd-muted-foreground">
+    <UserCog className="size-3.5" /> EXTENSIONES POR PROFESOR
+  </div>
+  <div className="mb-3 flex items-center gap-2 rounded-lg bg-fd-info/10 p-3 text-xs text-fd-info">
+    <Info className="size-4 shrink-0" /> Sin extensiones registradas para este período
+  </div>
+
+  <div className="rounded-lg bg-fd-warning/10 p-3">
+    <div className="mb-3 flex items-center gap-1.5 text-xs font-semibold text-fd-warning">
+      <Plus className="size-3.5" /> Agregar nueva extensión
+    </div>
+    <Field label="Profesor" type="select" placeholder="-- Selecciona un profesor --" />
+    <div className="mt-3"><FieldGrid>
+      <Field label="Nuevo fin de notas" type="date" placeholder="mm/dd/yyyy" />
+      <Field label="Nuevo fin de recuperación" type="date" placeholder="mm/dd/yyyy" />
+    </FieldGrid></div>
+    <div className="mt-3"><Field label="Motivo" placeholder="Ej: incapacidad médica" /></div>
+    <div className="mt-3"><Btn tone="primary" icon={Save}>Registrar extensión</Btn></div>
+  </div>
+
+  <div className="mt-4 flex items-center justify-between gap-2 text-xs">
+    <span className="text-fd-muted-foreground">Los cambios se aplican solo a este período</span>
+    <div className="flex gap-2">
+      <Btn>Cancelar</Btn>
+      <Btn tone="primary">Guardar cambios</Btn>
+    </div>
+  </div>
+</Frame>
+
 <Steps>
 <Step>
 
 ### Ubica el período
 
 En la tabla de **Períodos académicos**, localiza el período que quieres
-configurar (por ejemplo, `Segundo Periodo`).
+configurar (por ejemplo, `Primer Periodo`) y haz clic en **Gestionar**.
 
 </Step>
 <Step>
 
-### Ajusta su estado
+### Ajusta el método de cálculo y la ponderación
 
-Usa **Activar** o **Desactivar** para controlar cuál período está vigente
-para el registro de notas.
+En **Método de cálculo** define cómo se calcula la nota definitiva (ejemplo:
+`Promedio de notas`), y en **Ponderación del período** el porcentaje que
+aporta este período a la nota final del año.
+
+<Callout type="warn">
+  El porcentaje de todos los períodos del año, sumados, debe dar **100%**.
+</Callout>
 
 </Step>
 <Step>
 
-### Configura sus detalles
+### Define las fechas de notas y recuperación
 
-Haz clic en **Gestionar** para editar el método de cálculo, el porcentaje, las
-fechas de registro de notas y las fechas de recuperación.
+En **Fechas de notas**, indica el rango en el que los docentes pueden subir
+calificaciones. En **Fechas de recuperación**, el rango en el que los
+estudiantes que pierden el período pueden presentar actividades de
+recuperación y el docente registrarlas.
+
+</Step>
+<Step>
+
+### Registra una extensión por profesor (si es necesario)
+
+Si a un docente se le acabó el plazo de notas o recuperación y quedó con un
+pendiente, usa **Agregar nueva extensión**: elige el **Profesor**, define su
+**nuevo fin de notas** y/o **nuevo fin de recuperación**, indica el
+**Motivo** (ejemplo: `Incapacidad médica`) y haz clic en **Registrar
+extensión**. Esto no modifica las fechas generales del período para los
+demás docentes — queda listado bajo **Extensiones por profesor** para ese
+período.
+
+</Step>
+<Step>
+
+### Guarda los cambios
+
+Haz clic en **Guardar cambios**, o **Cancelar** para descartarlos.
 
 </Step>
 </Steps>

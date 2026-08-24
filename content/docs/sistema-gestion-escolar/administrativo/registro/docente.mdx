@@ -6,10 +6,13 @@ description: Guía de uso de "Docentes".
 Este módulo permite consultar, registrar y administrar a los docentes de la
 institución.
 
-import { UserPlus, List as ListIcon, IdCard, Mail, GraduationCap, Building2 } from 'lucide-react';
-import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
+import { UserPlus, List as ListIcon, IdCard, Mail, GraduationCap, Building2, Clock } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field, SectionTitle, Btn } from '@/components/docs-mockup';
 
 <Frame>
+  <div className="mb-2 text-[11px] font-medium tracking-wide text-fd-muted-foreground">
+    REGISTRO &gt; DOCENTES
+  </div>
   <Toolbar>
     <TabBtn active icon={ListIcon}>Lista</TabBtn>
     <TabBtn icon={UserPlus}>Registrar docente</TabBtn>
@@ -141,8 +144,62 @@ Desde la lista puedes:
 
 - **Ver detalle**: consulta la información completa del docente.
 - **Editar**: actualiza cualquier dato registrado.
-- **Habilitar registro extemporáneo**: permite que el docente registre
-  información fuera del plazo habitual (por ejemplo, notas de un período ya
-  cerrado).
+- **Habilitar registro extemporáneo**: le da al docente un permiso temporal
+  para registrar **asistencia** cuando ya se le pasó el plazo normal (por
+  ejemplo, olvidó marcarla a la hora de la clase). **No aplica a notas.**
 - **Desactivar**: marca al docente como `Inactivo` cuando ya no hace parte de
-  la institución, sin eliminar su historial académico.
+  la institución, sin eliminar su historial académico. Mientras esté
+  `Inactivo`, el docente no puede iniciar sesión en el sistema; recupera el
+  acceso solo cuando se vuelve a **Activar** desde aquí.
+
+## Registro extemporáneo de asistencia
+
+<Frame>
+  <SectionTitle icon={Clock}>Registro extemporáneo — Andrés Rojas Peña</SectionTitle>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Solo para asistencia del día de hoy: al docente le aparecerán únicamente
+    las materias que dicta hoy, no las de otros días de la semana.
+  </div>
+  <FieldGrid>
+    <Field label="Duración del permiso" type="select" placeholder="2 horas" />
+    <Field label="Plazo personalizado" type="date" placeholder="Fecha y hora límite" />
+  </FieldGrid>
+  <div className="mt-3"><Btn tone="primary" icon={Clock}>Habilitar registro extemporáneo</Btn></div>
+</Frame>
+
+<Steps>
+<Step>
+
+### Ubica al docente
+
+En la lista de docentes, localiza al docente que necesita el permiso (por
+ejemplo, se le pasó la hora para marcar asistencia).
+
+</Step>
+<Step>
+
+### Habilita el permiso
+
+Haz clic en **Habilitar registro extemporáneo** y elige la duración: **2
+horas** desde el momento en que se activa, o un **plazo personalizado**
+(fecha y hora límite).
+
+</Step>
+<Step>
+
+### El docente registra la asistencia pendiente
+
+Mientras el permiso esté activo, el docente ve en
+[Registrar asistencia](/sistema-gestion-escolar/profesor/modulos/registrar-asistencia)
+únicamente las materias que dicta **el día de hoy** — no las de otros días,
+porque la asistencia siempre se maneja el mismo día en que ocurre la clase.
+
+</Step>
+</Steps>
+
+<Callout type="info">
+  Este permiso es distinto al de recuperación de **notas**: la gestión de
+  fechas para notas y recuperaciones se hace desde
+  [Períodos](/sistema-gestion-escolar/administrativo/academico/periodos),
+  incluyendo las **Extensiones por profesor**.
+</Callout>

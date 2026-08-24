@@ -4,7 +4,7 @@ import type { Manual } from '@/lib/manuals';
 
 export function ManualHome({ manual }: { manual: Manual }) {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 py-16">
+    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 py-16 [grid-area:main]">
       <div className="mb-10 flex flex-col gap-2">
         <span className="text-sm font-medium text-fd-primary">
           Centro de ayuda

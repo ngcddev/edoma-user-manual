@@ -10,6 +10,9 @@ import { UserPlus, List as ListIcon, Fingerprint, Home, IdCard } from 'lucide-re
 import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
 
 <Frame>
+  <div className="mb-2 text-[11px] font-medium tracking-wide text-fd-muted-foreground">
+    REGISTRO &gt; ESTUDIANTES
+  </div>
   <Toolbar>
     <TabBtn active icon={ListIcon}>Lista</TabBtn>
     <TabBtn icon={UserPlus}>Registrar estudiante</TabBtn>
@@ -163,4 +166,12 @@ Desde la lista puedes:
   Un estudiante puede figurar como `Inactivo` y sin curso asignado (ejemplo:
   un estudiante retirado que conserva su tutor legal para trámites
   posteriores).
+</Callout>
+
+<Callout type="warn">
+  Desde este módulo **no se puede reactivar** a un estudiante `Inactivo`. La
+  única forma de hacerlo es con el botón **Activar estudiante** en
+  [Renovación de matrícula](/sistema-gestion-escolar/administrativo/academico/renovacion-matricula),
+  que también se usa para matricular estudiantes nuevos en el año lectivo
+  siguiente.
 </Callout>

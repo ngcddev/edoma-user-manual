@@ -6,41 +6,87 @@ description: Guía de uso de "Registrar asistencia".
 Este módulo permite registrar la asistencia diaria de tus estudiantes por
 curso y materia, hora de clase por hora de clase.
 
-import { CalendarCheck } from 'lucide-react';
-import { Frame, FakeInput, SectionTitle, Field, FieldGrid, Btn, Table, Tr, Td } from '@/components/docs-mockup';
+import { CalendarCheck, ArrowLeftRight, Eye, Pencil, BookOpen, CheckCircle2, ChevronDown, ArrowLeft, Sparkles } from 'lucide-react';
+import { Frame, FakeInput, SectionTitle, Field, FieldGrid, Btn, Table, Tr, Td, Badge, Toolbar, TabBtn } from '@/components/docs-mockup';
 
 <Frame>
   <SectionTitle icon={CalendarCheck}>Registro de Asistencia</SectionTitle>
-  <div className="mb-3 flex flex-wrap gap-2">
-    <FakeInput>3-1 — Matemáticas</FakeInput>
-    <FakeInput>3-1 — Lengua Castellana</FakeInput>
+  <div className="mb-3 -mt-2 text-xs text-fd-muted-foreground">Selecciona el curso para continuar</div>
+  <div className="mb-3"><FakeInput grow>Buscar curso o materia...</FakeInput></div>
+  <div className="grid gap-3 sm:grid-cols-3">
+    {[
+      ['2-1', 'Matemáticas'], ['4-1', 'Competencias Ciudadanas'], ['2-1', 'Educación Artística'],
+      ['6-2', 'Inglés'], ['6-2', 'Ética y Valores'], ['10-2', 'Educación Artística'],
+    ].map(([curso, materia]) => (
+      <div key={curso + materia} className="rounded-lg border border-fd-border p-3">
+        <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary"><BookOpen className="size-4" /></div>
+        <div className="text-sm font-medium">{curso}</div>
+        <div className="mb-2 text-xs text-fd-muted-foreground">{materia}</div>
+        <div className="flex items-center gap-1 text-xs font-medium text-fd-success"><CheckCircle2 className="size-3.5" /> Seleccionar</div>
+      </div>
+    ))}
   </div>
-  <div className="mb-3 rounded-lg border border-fd-border p-3">
-    <div className="mb-2 text-xs font-medium">Marcar asistencia para todos los estudiantes</div>
-    <FieldGrid>
-      <Field label="Estado para la hora activa" type="select" placeholder="Presente" />
-      <Field label="Observación" placeholder="Aplicar a todos" />
-    </FieldGrid>
+</Frame>
+
+<Frame>
+  <div className="mb-3 flex items-center justify-between rounded-lg border border-fd-border p-3">
+    <div className="flex items-center gap-2">
+      <span className="flex size-8 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary"><CalendarCheck className="size-4" /></span>
+      <div>
+        <div className="text-sm font-medium">2-1 — Educación Artística</div>
+        <div className="text-xs text-fd-muted-foreground">20 estudiantes</div>
+      </div>
+    </div>
+    <Badge tone="success">Período Activo</Badge>
   </div>
-  <Table columns={['Estudiante', 'Horas de clase', 'Observación']}>
-    <Tr><Td>Sofía Ramírez</Td><Td muted>Sin horario configurado para hoy</Td><Td muted>—</Td></Tr>
+
+  <div className="mb-3 flex items-center justify-between rounded-lg bg-fd-primary/5 px-3 py-2 text-xs font-medium text-fd-primary">
+    <span className="flex items-center gap-1.5"><Sparkles className="size-3.5" /> Marcar asistencia para todos los estudiantes</span>
+    <ChevronDown className="size-3.5" />
+  </div>
+
+  <Table columns={['#', 'Estudiante', 'Documento', 'Teléfono', 'Horas de clase', 'Observación']}>
+    <Tr>
+      <Td muted>1</Td>
+      <Td>Andrés Rosa</Td>
+      <Td muted>5541115570</Td>
+      <Td muted>9264751341</Td>
+      <Td muted><span className="italic">Sin horario configurado para hoy</span><br /><span className="font-medium">Sin horas configuradas</span></Td>
+      <Td muted>Observación...</Td>
+    </Tr>
+    <Tr>
+      <Td muted>2</Td>
+      <Td>Cantú Santiago</Td>
+      <Td muted>9994321666</Td>
+      <Td muted>9264751341</Td>
+      <Td muted><span className="italic">Sin horario configurado para hoy</span><br /><span className="font-medium">Sin horas configuradas</span></Td>
+      <Td muted>Observación...</Td>
+    </Tr>
   </Table>
-  <div className="mt-3 flex justify-end">
-    <Btn tone="primary">Registrar Asistencia</Btn>
+
+  <div className="mt-3 flex flex-wrap gap-2">
+    <Btn icon={ArrowLeft}>Cambiar curso</Btn>
+    <Btn tone="warning" icon={Pencil}>Editar</Btn>
+    <Btn icon={Eye}>Mirar asistencia</Btn>
+    <Btn tone="primary" icon={CheckCircle2}>Registrar Asistencia</Btn>
   </div>
 </Frame>
 
 ## ¿Qué encontrarás aquí?
 
-- Un buscador de **curso o materia** y una tarjeta por cada materia que
-  dictas (ejemplo: `3-1 — Matemáticas`, `3-1 — Lengua Castellana`).
-- Al seleccionar una materia, una tabla de **Registro de Asistencia** con una
-  fila por estudiante:
+- **Registro de Asistencia**: un buscador de curso o materia y una tarjeta
+  por cada curso/materia que dictas (ejemplo: `2-1 — Matemáticas`, `6-2 —
+  Inglés`), cada una con su acceso **Seleccionar**.
+- Al seleccionar una tarjeta, el encabezado muestra el curso, el número de
+  estudiantes y una insignia de **Período Activo**. Debajo, una barra
+  colapsable **"Marcar asistencia para todos los estudiantes"** y la tabla
+  de **Registro de Asistencia**, con una fila por estudiante:
 
 | Columna | Descripción |
 | --- | --- |
+| # | Número de fila |
 | Estudiante / Documento / Teléfono | Datos de contacto básicos |
-| Horas de clase | Las horas de clase del día para ese curso y materia; si no hay clase programada hoy, muestra "Sin horario configurado para hoy" |
+| Horas de clase | Las horas de clase del día para ese curso y materia; si no hay clase programada hoy, muestra "Sin horario configurado para hoy" / "Sin horas configuradas" |
 | Observación | Comentario libre sobre la asistencia del estudiante |
 
 - La opción **Marcar asistencia para todos los estudiantes**, que despliega:
@@ -49,14 +95,25 @@ import { Frame, FakeInput, SectionTitle, Field, FieldGrid, Btn, Table, Tr, Td } 
   - Una **Observación** general.
   - El botón **Aplicar a todos** (o **Limpiar** para descartar la
     marcación).
-- Botones **Editar** y **Mirar asistencia** para pasar entre el modo de
-  edición y la vista de solo lectura, y **Registrar Asistencia** para guardar
-  los cambios.
+- Al pie, cuatro acciones: **Cambiar curso** (vuelve a la lista de
+  curso/materia), **Editar** (habilita el registro), **Mirar asistencia**
+  (vista de solo lectura) y **Registrar Asistencia** (guarda los cambios del
+  día).
 
 <Callout type="warn">
   La marcación masiva **"Aplicar a todos"** solo afecta a las horas activas
   en ese momento (o con registro extemporáneo habilitado); las horas de
   clase que aún no han llegado se marcan cuando llegue su turno.
+</Callout>
+
+<Callout type="warn">
+  Si se te pasó el tiempo de duración de la clase y no marcaste la
+  asistencia a su hora, **la hora se cierra automáticamente** y ya no podrás
+  registrarla directamente. Debes **solicitar permiso a Administración**
+  para que te habilite un **registro extemporáneo** (por 2 horas o un plazo
+  personalizado) — mientras esté activo, solo verás las materias que dictas
+  **ese mismo día**. Este permiso lo otorga Administración desde
+  [Docentes](/sistema-gestion-escolar/administrativo/registro/docente).
 </Callout>
 
 ## Registrar la asistencia de una clase
@@ -66,8 +123,9 @@ import { Frame, FakeInput, SectionTitle, Field, FieldGrid, Btn, Table, Tr, Td } 
 
 ### Selecciona el curso y la materia
 
-En **Asistencias**, busca y selecciona la tarjeta del curso/materia de la
-clase que vas a registrar (ejemplo: `3-1 — Inglés`).
+En **Registro de Asistencia**, busca y haz clic en **Seleccionar** en la
+tarjeta del curso/materia que vas a registrar (ejemplo: `6-2 — Inglés`).
+Luego haz clic en **Editar** para habilitar el registro.
 
 </Step>
 <Step>
@@ -106,6 +164,16 @@ Haz clic en **Registrar Asistencia** para guardar los cambios del día.
 
 ## Consultar asistencia ya registrada
 
+<Frame>
+  <Toolbar>
+    <TabBtn icon={Eye}>Mirar asistencia</TabBtn>
+    <TabBtn active icon={Pencil}>Editar</TabBtn>
+  </Toolbar>
+  <Table columns={['Estudiante', '07:00 - 07:55', '07:55 - 08:50', 'Observación']}>
+    <Tr><Td>Sofía Ramírez</Td><Td><Badge tone="success">Presente</Badge></Td><Td><Badge tone="danger">Ausente</Badge></Td><Td muted>—</Td></Tr>
+  </Table>
+</Frame>
+
 <Steps>
 <Step>
 
@@ -120,7 +188,54 @@ riesgo de modificarla por accidente.
 ### Vuelve a editar si es necesario
 
 Haz clic en **Editar** para corregir un registro (por ejemplo, si marcaste
-por error a un estudiante como ausente).
+por error a un estudiante como ausente) y cambia el estado de la hora
+correspondiente.
+
+</Step>
+</Steps>
+
+## Delegar una clase a otro docente
+
+Si no puedes asistir a la institución, puedes **delegar** una de tus clases
+a otro docente para que la registre en tu lugar.
+
+<Frame>
+  <SectionTitle icon={ArrowLeftRight}>Delegar clase — 3-1 Matemáticas</SectionTitle>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Elige la clase de hoy que quieres delegar y a qué docente se la
+    encargas.
+  </div>
+  <FieldGrid>
+    <Field label="Clase a delegar" type="select" placeholder="07:00 - 07:55 · 3-1 Matemáticas" />
+    <Field label="Docente que la sustituye" type="select" placeholder="Selecciona un docente" />
+  </FieldGrid>
+  <div className="mt-3"><Btn tone="primary" icon={ArrowLeftRight}>Delegar clase</Btn></div>
+</Frame>
+
+<Steps>
+<Step>
+
+### Elige la clase a delegar
+
+En **Registrar asistencia**, selecciona la clase de hoy que no vas a poder
+dictar.
+
+</Step>
+<Step>
+
+### Elige el docente que la sustituye
+
+Selecciona al docente que va a dictar la clase en tu lugar.
+
+</Step>
+<Step>
+
+### Confirma la delegación
+
+Haz clic en **Delegar clase**. Esa clase le aparecerá al otro docente en
+**Pendientes de hoy**, en su
+[Dashboard](/sistema-gestion-escolar/profesor/general/dashboard), con
+acceso directo para registrar la asistencia como si fuera su propia clase.
 
 </Step>
 </Steps>

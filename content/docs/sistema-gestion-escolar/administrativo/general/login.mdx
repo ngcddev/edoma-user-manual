@@ -1,0 +1,87 @@
+---
+title: Login
+description: Guía de uso de "Login".
+---
+
+Esta es la pantalla de acceso al rol Administrativo. Inicias sesión con tu
+**correo electrónico** y tu **contraseña**.
+
+import { LogIn, KeyRound, UserCog } from 'lucide-react';
+import { Frame, SectionTitle, Field, Btn } from '@/components/docs-mockup';
+
+<Frame>
+  <SectionTitle icon={LogIn}>Iniciar sesión — Administrativo</SectionTitle>
+  <Field label="Correo electrónico" placeholder="admin@institucion.edu.co" required full />
+  <div className="mt-3"><Field label="Contraseña" placeholder="••••••••" required full /></div>
+  <div className="mt-2 text-right text-xs text-fd-primary">¿Olvidaste tu contraseña?</div>
+  <div className="mt-3"><Btn tone="primary" icon={LogIn}>Ingresar</Btn></div>
+</Frame>
+
+## ¿Cómo funciona?
+
+- Inicias sesión con tu **correo electrónico** y tu **contraseña**, definidos
+  al crear tu cuenta de administrador.
+- Puedes cambiar tu contraseña de dos formas:
+  - Desde tu **perfil**, ya con la sesión iniciada.
+  - Desde el login, con el enlace **"¿Olvidaste tu contraseña?"**.
+
+<Steps>
+<Step>
+
+### Ingresa tus credenciales
+
+Escribe tu **correo electrónico** y tu **contraseña** en el formulario de
+login.
+
+</Step>
+<Step>
+
+### Ingresa al sistema
+
+Haz clic en **Ingresar**. Entrarás directo al
+[Dashboard](/sistema-gestion-escolar/administrativo/general/dashboard).
+
+</Step>
+</Steps>
+
+## Cambiar tu contraseña
+
+<Frame>
+  <div className="grid gap-3 sm:grid-cols-2">
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold"><UserCog className="size-3.5" /> Desde tu perfil</div>
+      <div className="text-[11px] text-fd-muted-foreground">Con la sesión iniciada, entra a tu perfil y define una nueva contraseña.</div>
+    </div>
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold"><KeyRound className="size-3.5" /> Desde el login</div>
+      <div className="text-[11px] text-fd-muted-foreground">Usa "¿Olvidaste tu contraseña?" si no puedes iniciar sesión con la actual.</div>
+    </div>
+  </div>
+</Frame>
+
+<Steps>
+<Step>
+
+### Elige cómo cambiarla
+
+Usa tu **perfil** si ya tienes acceso al sistema, o **"¿Olvidaste tu
+contraseña?"** en el login si no recuerdas la actual.
+
+</Step>
+<Step>
+
+### Define la nueva contraseña
+
+Sigue las instrucciones en pantalla para establecer tu nueva contraseña.
+Vuelve a iniciar sesión con tu correo y la nueva contraseña.
+
+</Step>
+</Steps>
+
+<Callout type="info">
+  El login de **Docentes** y **Padres de familia** funciona distinto: ellos
+  ingresan con su **número de identificación**, no con correo. Ver
+  [Docentes](/sistema-gestion-escolar/administrativo/registro/docente) y
+  [Padres de familia](/sistema-gestion-escolar/administrativo/registro/padres-de-familia)
+  para la gestión de sus cuentas.
+</Callout>

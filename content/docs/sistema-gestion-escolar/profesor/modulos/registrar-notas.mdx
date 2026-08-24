@@ -6,51 +6,129 @@ description: Guía de uso de "Registrar notas".
 Este módulo permite registrar y editar las calificaciones de tus estudiantes
 por curso y materia, dentro del período académico activo.
 
-import { BookOpen, AlertTriangle } from 'lucide-react';
-import { Frame, FakeInput, Section, SectionTitle, Table, Tr, Td, Badge, Callout2 } from '@/components/docs-mockup';
+import { BookOpen, RefreshCcw, Pencil, Info, CheckCircle2, ChevronDown, Eye, ArrowLeft, Ban } from 'lucide-react';
+import { Frame, FakeInput, SectionTitle, Table, Tr, Td, Badge, Callout2, Field, FieldGrid, Btn } from '@/components/docs-mockup';
 
 <Frame>
   <SectionTitle icon={BookOpen}>Registro de Calificaciones</SectionTitle>
-  <div className="mb-3 flex flex-wrap gap-2">
-    <FakeInput>3-1 — Matemáticas</FakeInput>
-    <FakeInput>3-1 — Lengua Castellana</FakeInput>
-    <FakeInput>3-1 — Inglés</FakeInput>
+  <div className="mb-3 -mt-2 text-xs text-fd-muted-foreground">Selecciona el curso para continuar</div>
+  <div className="mb-3"><FakeInput grow>Buscar curso o materia...</FakeInput></div>
+  <div className="grid gap-3 sm:grid-cols-3">
+    {[
+      ['2-1', 'Matemáticas'], ['4-1', 'Competencias Ciudadanas'], ['2-1', 'Educación Artística'],
+      ['6-2', 'Inglés'], ['6-2', 'Ética y Valores'], ['10-2', 'Educación Artística'],
+    ].map(([curso, materia]) => (
+      <div key={curso + materia} className="rounded-lg border border-fd-border p-3">
+        <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary"><BookOpen className="size-4" /></div>
+        <div className="text-sm font-medium">{curso}</div>
+        <div className="mb-2 text-xs text-fd-muted-foreground">{materia}</div>
+        <div className="flex items-center gap-1 text-xs font-medium text-fd-success"><CheckCircle2 className="size-3.5" /> Seleccionar</div>
+      </div>
+    ))}
   </div>
-  <Callout2 icon={AlertTriangle}>
-    No se puede subir notas porque no estás dentro del rango de fecha estipulada por la ADMINISTRACIÓN.
-  </Callout2>
-  <Table columns={['Estudiante', '% Nota', 'Nota', 'Estado de entrega', 'PIAR']}>
+</Frame>
+
+<Frame>
+  <div className="mb-3 flex items-start gap-3 rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+    <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-fd-warning/20 text-[10px] font-bold"><Ban className="size-3.5" /></span>
+    <div>
+      <div className="font-semibold tracking-wide">NO SUBIR NOTAS</div>
+      <div>No se puede subir notas porque no estás dentro del rango de fecha estipulada por la ADMINISTRACIÓN.</div>
+    </div>
+  </div>
+
+  <div className="mb-3 flex items-center justify-between rounded-lg border border-fd-border p-3">
+    <div className="flex items-center gap-2">
+      <span className="flex size-8 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary"><BookOpen className="size-4" /></span>
+      <div>
+        <div className="text-sm font-medium">2-1 — Matemáticas</div>
+        <div className="text-xs text-fd-muted-foreground">20 estudiantes</div>
+      </div>
+    </div>
+    <Badge tone="success">• Período Activo</Badge>
+  </div>
+
+  <div className="mb-3 flex items-center justify-between rounded-lg bg-fd-primary/5 px-3 py-2 text-xs font-medium text-fd-primary">
+    Marcar campos para todos los estudiantes <ChevronDown className="size-3.5" />
+  </div>
+
+  <Table columns={['#', 'Estudiante', 'Documento', 'Teléfono', 'Motivo', 'Frase sugerida / Comentarios', '% Nota', 'Nota', 'Estado de entrega', 'PIAR']}>
     <Tr>
-      <Td>Sofía Ramírez</Td>
-      <Td muted>100%</Td>
-      <Td muted>3.20</Td>
-      <Td><Badge tone="success">Entregado</Badge></Td>
-      <Td muted>—</Td>
+      <Td muted>1</Td>
+      <Td>Andrés Rosa</Td>
+      <Td muted>5541115570</Td>
+      <Td muted>9264751341</Td>
+      <Td muted>Ej: Taller, examen...</Td>
+      <Td muted>— Frase sugerida —</Td>
+      <Td muted>%</Td>
+      <Td muted>0.0</Td>
+      <Td muted>-Estado-</Td>
+      <Td muted>☐</Td>
+    </Tr>
+    <Tr>
+      <Td muted>2</Td>
+      <Td>Cantú Santiago</Td>
+      <Td muted>9994321666</Td>
+      <Td muted>9264751341</Td>
+      <Td muted>Ej: Taller, examen...</Td>
+      <Td muted>— Frase sugerida —</Td>
+      <Td muted>%</Td>
+      <Td muted>0.0</Td>
+      <Td muted>-Estado-</Td>
+      <Td muted>☐</Td>
     </Tr>
   </Table>
+
+  <div className="mt-3 flex flex-wrap gap-2">
+    <Btn icon={ArrowLeft}>Cambiar curso</Btn>
+    <Btn tone="warning" icon={Pencil}>Editar</Btn>
+    <Btn icon={Eye}>Mirar Notas</Btn>
+    <span className="inline-flex items-center gap-1.5 rounded-lg bg-fd-muted px-3 py-1.5 text-xs font-medium text-fd-muted-foreground">
+      <Ban className="size-3.5" /> No se puede registrar notas
+    </span>
+  </div>
 </Frame>
 
 ## ¿Qué encontrarás aquí?
 
-- Un buscador de **curso o materia** y una tarjeta por cada materia que
-  dictas (ejemplo: `3-1 — Matemáticas`, `3-1 — Lengua Castellana`).
-- Al seleccionar una materia, una tabla de **Registro de Calificaciones** con
-  una fila por estudiante:
+- **Registro de Calificaciones**: un buscador de curso o materia y una
+  tarjeta por cada curso/materia que dictas (ejemplo: `2-1 — Matemáticas`,
+  `6-2 — Inglés`), cada una con su acceso **Seleccionar**.
+- Al seleccionar una tarjeta, el encabezado muestra el curso, el número de
+  estudiantes y una insignia de **Período Activo**. Debajo, una barra
+  colapsable **"Marcar campos para todos los estudiantes"** (el panel
+  global — se explica más abajo) y la tabla de **Registro de
+  Calificaciones**, con una fila por estudiante:
 
 | Columna | Descripción |
 | --- | --- |
+| # | Número de fila |
 | Estudiante / Documento / Teléfono | Datos de contacto básicos |
-| Motivo | Motivo asociado a la nota, si aplica |
+| Motivo | Motivo asociado a la nota, si aplica (ejemplo: `Taller`, `Examen`) |
 | Frase sugerida / Comentarios | Frase predefinida (ejemplo: `Cumple con los criterios evaluados`, `Presenta dificultades que requieren refuerzo`) o comentario libre |
-| % Nota | Peso de la actividad dentro de la nota del período |
+| % Nota | Peso de la actividad dentro de la nota del período. **Es opcional** — ver la sección "Cómo se calcula la nota definitiva" más abajo. |
 | Nota | Calificación numérica |
 | Estado de Entrega | `Entregado`, `No entregó`, `Justificado`, `Pendiente por excusa` |
 | PIAR | Casilla para estudiantes con Plan Individual de Ajustes Razonables |
 
-- La opción **Marcar campos para todos los estudiantes**, para aplicar el
-  mismo valor a todo el curso de una vez.
-- Un botón **Mirar Notas**, con una vista de solo lectura por estudiante que
-  incluye **Nota Definitiva**, **Logro del Periodo / Boletín** (con opción de
+- Al pie, cuatro acciones: **Cambiar curso** (vuelve a la lista de
+  curso/materia), **Editar** (habilita los campos para registrar o corregir
+  notas), **Mirar Notas** (vista de solo lectura) y, si el registro está
+  cerrado para el período, el botón se reemplaza por **"No se puede
+  registrar notas"** (deshabilitado).
+- El **Panel global** ("Marcar campos para todos los estudiantes"): llena el
+  % Nota, el estado de entrega o el comentario para **todo el curso de una
+  sola vez**, para no perder tiempo cuando la información es la misma para
+  todos. Después de aplicarlo, puedes seguir editando la fila de un solo
+  estudiante para ajustar su caso puntual, sin que eso afecte a los demás.
+- La casilla **PIAR**: márcala cuando la actividad fue adaptada bajo el
+  **Plan Individual de Ajustes Razonables** de un estudiante con
+  condiciones especiales (objetivos, metodología o criterios de evaluación
+  distintos a los del resto del curso). Al marcarla, la calificación queda
+  identificada como evaluada bajo PIAR — tanto para ti como para el padre
+  de familia, que verá esa marca en el boletín/notas del estudiante.
+- **Mirar Notas**: una vista de solo lectura por estudiante que incluye
+  **Nota Definitiva**, **Logro del Periodo / Boletín** (con opción de
   **Personalizar**), **Desempeño Nacional** (`Superior`, `Alto`, `Básico`,
   `Bajo`), **Estado** (`Aprobado`/`Reprobado`) y **Alerta Pedagógica**.
 
@@ -68,8 +146,9 @@ import { Frame, FakeInput, Section, SectionTitle, Table, Tr, Td, Badge, Callout2
 
 ### Selecciona el curso y la materia
 
-En **Notas**, busca y selecciona la tarjeta del curso/materia que quieres
-calificar (ejemplo: `3-1 — Inglés`).
+En **Registro de Calificaciones**, busca y haz clic en **Seleccionar** en la
+tarjeta del curso/materia que quieres calificar (ejemplo: `6-2 — Inglés`).
+Luego haz clic en **Editar** para habilitar el registro.
 
 </Step>
 <Step>
@@ -82,10 +161,12 @@ Entrega** y, si aplica, una frase sugerida o comentario.
 </Step>
 <Step>
 
-### Usa la marcación masiva si aplica
+### Usa el panel global si aplica
 
-Si varios estudiantes comparten el mismo estado o comentario, usa **Marcar
-campos para todos los estudiantes** para agilizar el registro.
+Si varios estudiantes comparten el mismo % Nota, estado o comentario, usa el
+**Panel global** ("aplicar a todos los estudiantes") para llenarlo de una
+sola vez. Si un estudiante necesita un valor distinto, edítalo después en su
+propia fila — el panel global no vuelve a sobrescribirlo.
 
 </Step>
 <Step>
@@ -99,7 +180,57 @@ correctamente.
 </Step>
 </Steps>
 
-## Consultar o editar notas ya registradas
+## Cómo se calcula la nota definitiva
+
+El campo **% Nota** de cada actividad es **opcional**, y el sistema calcula
+la nota definitiva del período de una de tres formas, según cómo lo uses:
+
+| Situación | Cómo se calcula |
+| --- | --- |
+| **1. Ningún % Nota diligenciado** | Cálculo normal: se suman todas las notas y se dividen por la cantidad de notas (promedio simple). |
+| **2. Todas las actividades con % Nota** | Cada nota se multiplica por su porcentaje y se suman los resultados. Los porcentajes de todas las actividades deben sumar `100%`. |
+| **3. Solo algunas actividades con % Nota** | Las actividades con porcentaje se calculan como en la situación 2; las que no tienen porcentaje se promedian entre sí y ese promedio se multiplica por el **porcentaje restante** hasta completar el `100%`. |
+
+<Callout type="info">
+  **Ejemplo de la situación 3**: una actividad vale `5` con `10%`, otra vale
+  `4` con `10%`, y hay dos actividades más sin porcentaje: `4` y `4`.
+  - Parte con porcentaje: `5 × 10% + 4 × 10% = 0.9` (cubre el `20%`).
+  - Parte sin porcentaje: promedio `(4 + 4) / 2 = 4`, multiplicado por el
+    `80%` restante → `4 × 80% = 3.2`.
+  - Nota definitiva: `0.9 + 3.2 = 4.1` (el `100%`).
+</Callout>
+
+## Editar o recuperar una nota registrada
+
+Al hacer clic en **Editar** sobre una nota ya registrada tienes dos
+opciones: **actualizar** la nota (por si te equivocaste al digitarla) o
+**recuperar** una nota baja, sustituyéndola por una actividad de
+recuperación.
+
+<Frame>
+  <SectionTitle icon={Pencil}>Editar — Sofía Ramírez · Actividad de superación</SectionTitle>
+  <FieldGrid>
+    <Field label="Nota original" placeholder="1.80 (Reemplazada)" />
+    <Field label="Nota de recuperación" placeholder="4.00 (Recuperación)" />
+  </FieldGrid>
+  <div className="mt-3"><FieldGrid>
+    <Field label="Método" type="select" placeholder="Oral" />
+    <Field label="Comentario" placeholder="Recuperación de actividad" />
+  </FieldGrid></div>
+  <div className="mt-3 flex gap-2">
+    <Btn>Actualizar nota</Btn>
+    <Btn tone="primary" icon={RefreshCcw}>Registrar recuperación</Btn>
+  </div>
+</Frame>
+
+- **Actualizar nota**: corrige el valor de una nota ya registrada (por
+  ejemplo, digitaste `3.2` en vez de `4.2`). La nota anterior se reemplaza
+  sin dejar rastro de que hubo un cambio.
+- **Registrar recuperación**: conserva la nota original marcada como
+  **"(Reemplazada)"** y agrega la nueva nota como **"(Recuperación)"**, con
+  su **Método** (ejemplo: `Oral`, `Escrito`, `Trabajo`) y un comentario. Esta
+  trazabilidad queda visible tanto para ti como para el padre de familia en
+  el detalle de la nota.
 
 <Steps>
 <Step>
@@ -109,6 +240,15 @@ correctamente.
 Haz clic en **Editar** para ver el detalle de notas ya calificadas: nota
 definitiva, logro del período, desempeño nacional, estado y alerta
 pedagógica.
+
+</Step>
+<Step>
+
+### Elige actualizar o recuperar
+
+Usa **Actualizar nota** para corregir un error de digitación, o **Registrar
+recuperación** para sustituir una nota baja por una actividad de
+recuperación (queda registrado el método y el comentario).
 
 </Step>
 <Step>
@@ -126,6 +266,42 @@ boletín del estudiante.
 
 Usa **Ver ficha del estudiante** para revisar su información completa antes
 de ajustar una nota.
+
+</Step>
+</Steps>
+
+## Modo recuperación
+
+Cuando llega la **fecha de recuperación** que Administración configuró para
+el período (en [Períodos](/sistema-gestion-escolar/administrativo/academico/periodos)),
+el módulo cambia a modo recuperación: **solo aparecen disponibles los
+estudiantes que perdieron el curso**. Los estudiantes que pasaron con
+normalidad no necesitan recuperación y no aparecen para registrarles nada.
+
+<Frame>
+  <SectionTitle icon={RefreshCcw}>Recuperación — 3-1 Matemáticas</SectionTitle>
+  <Callout2 icon={Info}>Del 11 al 17 de abril solo puedes registrar recuperación a los estudiantes que perdieron este período.</Callout2>
+  <Table columns={['Estudiante', 'Nota del período', 'Nota de recuperación', 'Estado']}>
+    <Tr><Td>Andrés Gómez</Td><Td muted>2.80</Td><Td muted>—</Td><Td><Badge tone="warning">Pendiente</Badge></Td></Tr>
+    <Tr><Td>Sofía Ramírez</Td><Td muted>4.20</Td><Td muted><span className="italic">No necesita recuperación</span></Td><Td><Badge tone="success">Aprobado</Badge></Td></Tr>
+  </Table>
+</Frame>
+
+<Steps>
+<Step>
+
+### Espera a que se abra la fecha de recuperación
+
+El modo recuperación solo está disponible dentro del rango de fechas que
+Administración definió para **Recuperación** en ese período.
+
+</Step>
+<Step>
+
+### Registra solo a los estudiantes listados
+
+Verás únicamente a los estudiantes con nota reprobatoria en el período; los
+demás muestran **"No necesita recuperación"** y no se pueden editar.
 
 </Step>
 </Steps>

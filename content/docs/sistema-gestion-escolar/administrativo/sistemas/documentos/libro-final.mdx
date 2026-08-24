@@ -8,21 +8,90 @@ académicos y la decisión de promoción de cada estudiante al cierre del año
 lectivo, conforme al **Decreto 1290 de 2009**. Es un único documento por sede
 y año lectivo, con folio consecutivo entre todos los cursos.
 
-import { Info, Lightbulb } from 'lucide-react';
-import { Frame, FieldGrid, Field, Callout2 } from '@/components/docs-mockup';
+import { Info, Lightbulb, BookOpenCheck, Download, Search, ClipboardList, GraduationCap } from 'lucide-react';
+import { Frame, FieldGrid, Field, Table, Tr, Td, Btn, SectionTitle, Section, Badge } from '@/components/docs-mockup';
 
 <Frame>
-  <Callout2 icon={Info}>
-    El Libro Final es el registro oficial y definitivo de resultados académicos y promoción, conforme al Decreto 1290 de 2009.
-  </Callout2>
-  <FieldGrid>
-    <Field label="Sede" type="select" placeholder="Selecciona una sede" required />
-    <Field label="Año lectivo" type="select" placeholder="Selecciona la sede primero" required />
-    <Field label="Curso" type="select" placeholder="Selecciona el año lectivo primero" required />
-  </FieldGrid>
-  <div className="mt-4 flex items-start gap-2 rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
-    <Lightbulb className="mt-0.5 size-4 shrink-0" />
-    <span>Verifica que todas las áreas de todos los estudiantes tengan nota definitiva antes de cerrar el libro.</span>
+  <div className="grid gap-4 lg:grid-cols-3">
+    <div className="lg:col-span-2">
+      <SectionTitle icon={Search}>Seleccionar curso</SectionTitle>
+      <FieldGrid>
+        <Field label="Sede" placeholder="Sede Principal" required />
+        <Field label="Año lectivo" placeholder="2026" required />
+      </FieldGrid>
+      <div className="mt-3"><Field label="Curso" placeholder="Once - 11-2" required /></div>
+
+      <Section>
+        <SectionTitle icon={BookOpenCheck}>Libro Final — Sede completa</SectionTitle>
+        <div className="mb-3 flex items-start gap-2 rounded-lg bg-fd-info/10 p-3 text-xs text-fd-info">
+          <Info className="mt-0.5 size-4 shrink-0" />
+          <span>El Libro Final se habilita cuando se publique el boletín del período de cierre del año (2026) para esta sede.</span>
+        </div>
+        <Table columns={['Curso', 'Folios', 'Estudiantes', 'Estado', 'Acción']}>
+          <Tr><Td>Primero - 1-1</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Segundo - 2-1</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Cuarto - 4-1</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Quinto - 5-1</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Sexto - 6-2</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Décimo - 10-1</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Décimo - 10-2</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Once - 11-1</Td><Td muted>—</Td><Td muted>0</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+          <Tr><Td>Once - 11-2</Td><Td muted>1-1</Td><Td muted>1</Td><Td><Badge tone="warning">Abierto</Badge></Td><Td muted>Ver</Td></Tr>
+        </Table>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-xs text-fd-muted-foreground">11 curso(s) en esta sede/año</span>
+          <Btn tone="success" icon={BookOpenCheck}>Generar Libro Final completo (PDF + Índice)</Btn>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionTitle icon={BookOpenCheck}>Libro Final del curso</SectionTitle>
+        <div className="mb-3 flex items-center justify-between rounded-lg border border-fd-border p-3 text-xs">
+          <span>Consolidado de resultados y promoción de este curso.</span>
+          <Btn icon={Download}>Descargar folios de este curso (PDF)</Btn>
+        </div>
+        <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold">
+          <ClipboardList className="size-3.5" /> Consolidado del curso <span className="text-fd-muted-foreground">— Once - 11-2</span>
+        </div>
+        <Table columns={['Lista', 'Estudiante', 'Áreas evaluadas', 'Promedio', 'Puesto', 'Estado', 'Acciones']}>
+          <Tr><Td muted>Mostrando 0 de 0 estudiantes</Td><Td muted>—</Td><Td muted>—</Td><Td muted>—</Td><Td muted>—</Td><Td muted>—</Td><Td muted>—</Td></Tr>
+        </Table>
+      </Section>
+    </div>
+
+    <div className="space-y-4">
+      <div className="rounded-lg border border-fd-border p-3">
+        <SectionTitle>Resumen</SectionTitle>
+        <div className="space-y-1.5 text-xs">
+          <div className="flex items-center justify-between"><span className="text-fd-muted-foreground">Sede</span><span className="font-medium">Sede Principal</span></div>
+          <div className="flex items-center justify-between"><span className="text-fd-muted-foreground">Año lectivo</span><span className="font-medium">2026</span></div>
+          <div className="flex items-center justify-between"><span className="text-fd-muted-foreground">Curso</span><span className="font-medium">Once - 11-2</span></div>
+        </div>
+      </div>
+
+      <div className="rounded-lg border border-fd-border p-3">
+        <SectionTitle>Consolidación</SectionTitle>
+        <div className="space-y-1.5 text-xs">
+          <div className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-fd-success" /> Promovidos <span className="ml-auto font-medium">0</span></div>
+          <div className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-fd-error" /> No promovidos <span className="ml-auto font-medium">0</span></div>
+          <div className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-fd-warning" /> Notas pendientes <span className="ml-auto font-medium">0</span></div>
+          <div className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-fd-muted-foreground" /> Retirados/Trasladados <span className="ml-auto font-medium">0</span></div>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-2 rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+        <Lightbulb className="mt-0.5 size-4 shrink-0" />
+        <span>Verifica que todas las áreas de todos los estudiantes tengan nota definitiva antes de cerrar el libro. Puedes completar notas faltantes desde <b>Sistema de evaluación</b>.</span>
+      </div>
+
+      <div className="flex items-center gap-2 rounded-lg border border-fd-border p-3 text-xs">
+        <GraduationCap className="size-4 text-fd-primary" />
+        <div>
+          <div className="font-medium">Sistema de evaluación</div>
+          <div className="text-fd-muted-foreground">Escala, desempeños y reglas de promoción</div>
+        </div>
+      </div>
+    </div>
   </div>
 </Frame>
 
@@ -30,19 +99,43 @@ import { Frame, FieldGrid, Field, Callout2 } from '@/components/docs-mockup';
 
 - Un formulario de **Seleccionar curso**: elige **Sede**, **Año lectivo** y
   **Curso**, en ese orden (cada campo depende del anterior).
-- Un panel de **Resumen** con la sede, año lectivo y curso seleccionados.
-- Un aviso (**Tip**) recordando verificar que todas las áreas de todos los
-  estudiantes tengan nota definitiva antes de cerrar el libro, con acceso
-  directo a
-  [Sistema de evaluación](/sistema-gestion-escolar/administrativo/academico/sistema-evaluacion)
-  para completar notas faltantes.
+- **Libro Final — Sede completa**: tabla con todos los cursos de la sede,
+  sus folios asignados, cantidad de estudiantes y estado (`Abierto` /
+  `Cerrado`), con el contador de cursos y el botón **Generar Libro Final
+  completo (PDF + Índice)** para producir el documento consolidado de toda
+  la sede.
+- **Libro Final del curso**: al entrar a un curso puntual, puedes
+  **Descargar folios de este curso (PDF)** y ver el **Consolidado del
+  curso** (lista, estudiante, áreas evaluadas, promedio, puesto y estado:
+  promovido, no promovido, retirado/trasladado).
+- A la derecha, un panel de **Resumen** (sede, año lectivo y curso
+  seleccionados), un panel de **Consolidación** (promovidos, no promovidos,
+  notas pendientes y retirados/trasladados), un aviso (**Tip**) recordando
+  verificar que todas las áreas tengan nota definitiva, y un acceso directo
+  a **Sistema de evaluación** (escala, desempeños y reglas de promoción).
+
+<Callout type="warn">
+  El Libro Final **se habilita cuando se publica el boletín del período de
+  cierre del año** para esa sede — ver la sección "El período activo debe
+  habilitar la publicación" en
+  [Boletines](/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines).
+  Hasta que eso ocurra, los cursos aparecen en estado `Abierto` sin folios
+  asignados.
+</Callout>
+
+<Callout type="info">
+  Tener el **Sistema de evaluación (SIEE)** configurado **no es un requisito
+  al 100%** para generar el Libro Final: solo aplica si tu institución
+  califica con ese esquema. Hay instituciones que no lo usan y generan el
+  Libro Final con su método de calificación habitual.
+</Callout>
 
 <Callout type="warn">
   El Libro Final es un documento **oficial y definitivo**: antes de generarlo,
   confirma que no falten notas ni estudiantes por matricular en el curso.
 </Callout>
 
-## Consultar el Libro Final de un curso
+## Generar el Libro Final de un curso
 
 <Steps>
 <Step>
@@ -77,11 +170,21 @@ para completarlas antes de continuar.
 </Step>
 <Step>
 
-### Revisa el Libro Final del curso
+### Revisa el consolidado del curso
 
 Consulta el listado de estudiantes del curso con sus resultados académicos y
 la decisión de promoción (folio consecutivo dentro de la sede y año
 lectivo).
+
+</Step>
+<Step>
+
+### Genera el documento
+
+Para un solo curso, usa **Descargar folios de este curso (PDF)**. Para
+cerrar toda la sede de una vez, vuelve a la vista de **Libro Final — Sede
+completa** y usa **Generar Libro Final completo (PDF + Índice)**, que
+produce el documento consolidado con todos los cursos y su índice.
 
 </Step>
 </Steps>

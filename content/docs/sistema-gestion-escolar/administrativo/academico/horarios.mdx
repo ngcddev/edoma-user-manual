@@ -7,8 +7,8 @@ Este módulo permite generar y editar los horarios semanales de cada curso,
 asignando profesores y salones, y correr el horario de una sede completa en
 casos especiales (feriados, actos institucionales, etc.).
 
-import { Wand2, RefreshCw } from 'lucide-react';
-import { Frame, Btn, ScheduleGrid, FakeInput } from '@/components/docs-mockup';
+import { Wand2, RefreshCw, AlertTriangle, Info, Clock3, Sparkles } from 'lucide-react';
+import { Frame, Btn, ScheduleGrid, FakeInput, Field, FieldGrid, Chip, Section, SectionTitle } from '@/components/docs-mockup';
 
 <Frame>
   <div className="mb-4 flex flex-wrap gap-2">
@@ -61,6 +61,110 @@ import { Frame, Btn, ScheduleGrid, FakeInput } from '@/components/docs-mockup';
 
 ## Generar horarios automáticamente
 
+Al hacer clic en **Generar Horarios Automáticos** se abre el panel
+**Configurar generación automática**, donde defines la estructura del día
+antes de que el sistema arme los horarios:
+
+<Frame>
+  <SectionTitle icon={Sparkles}>Configurar generación automática</SectionTitle>
+
+  <div className="mb-3 text-xs font-semibold text-fd-muted-foreground">Alcance</div>
+  <label className="mb-4 flex items-center gap-2 text-xs">
+    <input type="checkbox" checked readOnly className="size-3.5" />
+    Generar para todos los cursos de todas las sedes
+  </label>
+
+  <FieldGrid>
+    <Field label="Inicio de jornada" type="text" placeholder="07:00 AM" />
+    <Field label="Fin de jornada" type="text" placeholder="12:15 PM" />
+    <Field label="Duración de cada clase (min)" placeholder="50" />
+    <Field label="Duración de cada descanso (min)" placeholder="15" />
+  </FieldGrid>
+
+  <div className="mb-2 mt-4 text-xs font-semibold text-fd-muted-foreground">
+    ¿Cuántos descansos tiene la jornada?
+  </div>
+  <div className="mb-4 flex gap-2">
+    <Chip active>1 descanso</Chip>
+    <Chip>2 descansos</Chip>
+  </div>
+
+  <FieldGrid>
+    <Field label="Hora del descanso" placeholder="09:30 AM" />
+  </FieldGrid>
+
+  <Section>
+    <SectionTitle icon={Clock3}>Vista previa de bloques por tramo</SectionTitle>
+    <div className="space-y-3">
+      <div>
+        <div className="mb-1.5 text-xs font-semibold">Antes del descanso (07:00 – 09:30)</div>
+        <div className="rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+          <div className="mb-2 flex items-start gap-2">
+            <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+            <span>
+              Tiene 3 periodo(s) de 50 min — número impar, así que una clase
+              de este tramo saldrá suelta en vez de bloque doble.
+            </span>
+          </div>
+          <Btn>Ajustar automáticamente (ampliar a 10:20)</Btn>
+        </div>
+      </div>
+      <div>
+        <div className="mb-1.5 text-xs font-semibold">Después del descanso (09:45 – 12:15)</div>
+        <div className="rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+          <div className="mb-2 flex items-start gap-2">
+            <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+            <span>
+              Tiene 3 periodo(s) de 50 min — número impar, así que una clase
+              de este tramo saldrá suelta en vez de bloque doble.
+            </span>
+          </div>
+          <Btn>Ajustar automáticamente (extender jornada a 13:05)</Btn>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <SectionTitle icon={AlertTriangle}>Carga de profesores compartidos entre cursos</SectionTitle>
+    <div className="mb-3 text-xs text-fd-muted-foreground">
+      Como no pueden estar en dos clases a la vez, revisa estos casos antes
+      de generar — corrígelo en "Profesores por materia" si quieres eliminar
+      el riesgo.
+    </div>
+    <div className="space-y-2">
+      <div className="rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-start gap-2">
+            <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+            <span>
+              <b>Biel Calvillo</b> necesita exactamente 30h entre Transición,
+              1-2, 2-2, 3-1, 3-2, 5-2, 7-1, 7-2, 9-2 — la semana tiene 30
+              casillas, así que calza justo <b>sin ningún margen de error</b>.
+              Cualquier choque puntual le puede dejar huecos sin cubrir.
+            </span>
+          </div>
+          <Btn>Ir a corregir</Btn>
+        </div>
+      </div>
+      <div className="rounded-lg bg-fd-info/10 p-3 text-xs text-fd-info">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-start gap-2">
+            <Info className="mt-0.5 size-4 shrink-0" />
+            <span>
+              <b>ALICIA NAYARA SOLIZ</b> ya tiene 29h asignadas entre 2-1,
+              5-1, 8-2, 10-1, 11-1, 11-2 — le quedan 1h margen sobre las 30
+              casillas de la semana. Todavía hay espacio, pero vale la pena
+              vigilarlo.
+            </span>
+          </div>
+          <Btn>Revisar</Btn>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Frame>
+
 <Steps>
 <Step>
 
@@ -71,14 +175,54 @@ Haz clic en **Generar Horarios Automáticos**.
 </Step>
 <Step>
 
-### Selecciona los cursos
+### Define el alcance y la estructura de la jornada
 
-Elige los cursos para los que quieres generar horario. El sistema asigna
-docentes y salones según su disponibilidad, evitando choques de horario y
-huecos en la jornada.
+Elige si generas para **todos los cursos de todas las sedes** o solo para
+algunos, y configura el **inicio y fin de jornada**, la **duración de cada
+clase** y de cada **descanso**, y cuántos descansos tiene el día (1 o 2).
+
+</Step>
+<Step>
+
+### Revisa la vista previa de bloques por tramo
+
+El sistema muestra, para cada tramo entre descansos, cuántos periodos caben
+y si sobra una clase suelta (número impar de periodos). Si aparece la
+advertencia, puedes aceptar la sugerencia con **Ajustar automáticamente**
+(amplía el tramo o extiende la jornada) o dejarlo así.
+
+</Step>
+<Step>
+
+### Revisa la carga de profesores compartidos
+
+En **Carga de profesores compartidos entre cursos**, revisa los docentes
+que dictan en varios cursos: en rojo, los que quedan **sin ningún margen de
+error** (su carga semanal calza exacto con las horas disponibles); en azul,
+los que aún tienen margen pero vale la pena vigilar. Usa **Ir a corregir** /
+**Revisar** para ajustarlo antes de generar, o **"Profesores por materia"**
+si quieres eliminar el riesgo de raíz.
+
+</Step>
+<Step>
+
+### Genera y revisa el resultado
+
+Al terminar, el sistema muestra un resumen con lo que pudo asignar
+automáticamente y, si algo quedó sin resolver (por ejemplo, un docente sin
+disponibilidad suficiente, o un curso sin salón libre en cierta franja), te
+lo señala para que lo ajustes manualmente en el horario del curso afectado.
 
 </Step>
 </Steps>
+
+<Callout type="warn">
+  La generación automática solo puede asignar franjas usando la
+  disponibilidad y las materias ya configuradas en
+  [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
+  Si un curso no tiene materias asignadas, no aparecerá con contenido en el
+  horario generado.
+</Callout>
 
 ## Crear o editar el horario de un curso manualmente
 
@@ -119,6 +263,66 @@ Haz clic en **Guardar Horario**.
 
 ## Correr el horario de una sede
 
+Al hacer clic en **Correr Horario por Sede** se abre un panel con el
+resumen de impacto de la acción, para que confirmes con la información
+completa antes de reemplazar horarios:
+
+<Frame>
+  <SectionTitle icon={RefreshCw}>Correr horario por sede</SectionTitle>
+
+  <div className="mb-4 flex items-start gap-2 rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+    <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+    <span>
+      Esta acción reemplaza el horario de un día por el de otro, en todos los
+      cursos que selecciones. Revisa el resumen de impacto antes de
+      confirmar.
+    </span>
+  </div>
+
+  <FieldGrid>
+    <Field label="Sede" placeholder="Sede Principal" full />
+  </FieldGrid>
+
+  <div className="mb-3 mt-4 text-xs font-semibold text-fd-muted-foreground">Alcance</div>
+  <label className="mb-4 flex items-center gap-2 text-xs">
+    <input type="checkbox" checked readOnly className="size-3.5" />
+    Todos los cursos de esta sede
+  </label>
+
+  <FieldGrid>
+    <Field label="¿Qué día quieres modificar?" placeholder="Lunes" />
+    <Field label="¿Qué horario deben seguir?" placeholder="Martes" />
+  </FieldGrid>
+
+  <div className="mt-4 flex items-start gap-2 rounded-lg bg-fd-info/10 p-3 text-xs text-fd-info">
+    <Info className="mt-0.5 size-4 shrink-0" />
+    <span>
+      <b>Lunes</b> pasará a tener el horario de <b>Martes</b> en 11 curso(s):
+      62 clase(s) en total, 11 descanso(s), 11 docente(s) involucrados.
+    </span>
+  </div>
+
+  <div className="mt-3 flex items-start gap-2 rounded-lg bg-fd-warning/10 p-3 text-xs text-fd-warning">
+    <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+    <span>
+      11 curso(s) ya tienen contenido en Lunes y será reemplazado por
+      completo: 1-1, 2-1, 4-1, 5-1, 6-2, 8-1, 8-2, 10-1, 10-2, 11-1, 11-2.
+    </span>
+  </div>
+
+  <div className="mb-2 mt-4 text-xs font-semibold">Detalle por curso:</div>
+  <div className="max-h-32 space-y-1.5 overflow-y-auto">
+    {['1-1: 5 clase(s), 1 descanso(s)', '2-1: 5 clase(s), 1 descanso(s)', '4-1: 5 clase(s), 1 descanso(s)', '5-1: 5 clase(s), 1 descanso(s)'].map((row) => (
+      <div key={row} className="rounded-lg bg-fd-success/10 px-3 py-1.5 text-xs text-fd-success">{row}</div>
+    ))}
+  </div>
+
+  <div className="mt-4 flex items-center justify-end gap-2">
+    <Btn>Cancelar</Btn>
+    <Btn tone="primary">Aplicar a los cursos seleccionados</Btn>
+  </div>
+</Frame>
+
 <Steps>
 <Step>
 
@@ -129,11 +333,65 @@ Haz clic en **Correr Horario por Sede**.
 </Step>
 <Step>
 
-### Define el reemplazo
+### Selecciona la sede y el alcance
 
-Indica que, para un día específico, todos los cursos de la sede seguirán el
-horario de otro día (por ejemplo, un lunes festivo sigue el horario de un
-viernes).
+Elige la **Sede** y confirma si aplica a **todos los cursos de esta sede** o
+solo a algunos.
+
+</Step>
+<Step>
+
+### Define el día a modificar y el horario a seguir
+
+En **¿Qué día quieres modificar?** elige el día que quieres reemplazar
+(ejemplo: `Lunes`), y en **¿Qué horario deben seguir?** elige el día cuyo
+horario se copiará (ejemplo: `Martes`).
+
+</Step>
+<Step>
+
+### Revisa el resumen de impacto
+
+Antes de confirmar, revisa cuántos cursos, clases, descansos y docentes se
+ven afectados, y la lista de cursos cuyo contenido actual en ese día será
+**reemplazado por completo**. Usa el **Detalle por curso** para ver clase
+por clase.
+
+</Step>
+<Step>
+
+### Aplica el cambio
+
+Haz clic en **Aplicar a los cursos seleccionados** para confirmar, o
+**Cancelar** si algo no cuadra en el resumen.
+
+</Step>
+</Steps>
+
+<Callout type="info">
+  **Correr Horario por Sede** afecta a **todos los cursos de la sede** a la
+  vez. Es distinto del botón **Correr Horario** dentro del horario de un solo
+  curso (siguiente sección), que solo cambia ese curso.
+</Callout>
+
+## Correr el horario de un curso específico
+
+<Steps>
+<Step>
+
+### Selecciona sede y curso
+
+En **Selección de curso**, elige la **Sede** y el **Curso** cuyo horario
+quieres correr (ejemplo: `Sede Central` → `3-1`).
+
+</Step>
+<Step>
+
+### Usa Correr Horario
+
+Dentro del horario del curso, haz clic en **Correr Horario** y define que,
+para un día específico, ese curso seguirá el horario de otro día — sin
+afectar a los demás cursos de la sede.
 
 </Step>
 </Steps>

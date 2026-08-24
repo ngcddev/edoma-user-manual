@@ -6,48 +6,131 @@ description: Guía de uso de "Horario".
 Este módulo muestra el horario semanal de clases de tu hijo o hija para el
 año lectivo activo.
 
-import { Frame, ScheduleGrid } from '@/components/docs-mockup';
+import { Frame, ScheduleGrid, ScheduleLegend } from '@/components/docs-mockup';
+import { Info, Layers, ChevronDown } from 'lucide-react';
 
 <Frame>
-  <div className="mb-3 text-sm font-medium">Curso: 3-1 · Año lectivo: 2027</div>
+  <div className="mb-4 flex items-center justify-between rounded-lg border border-fd-border p-3">
+    <div className="flex items-center gap-2">
+      <span className="flex size-8 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary"><Layers className="size-4" /></span>
+      <div>
+        <div className="text-sm font-medium">Lebrón Laboy Sofía Adriana</div>
+        <div className="text-xs text-fd-muted-foreground">Curso: 1-1</div>
+      </div>
+    </div>
+    <div className="flex items-center gap-1 rounded-lg border border-fd-border px-3 py-1.5 text-xs">
+      Lebrón Sofía <ChevronDown className="size-3.5" />
+    </div>
+  </div>
+
+  <div className="mb-3 text-sm font-semibold">Horario semanal — Año lectivo: 2026</div>
+
   <ScheduleGrid
     days={[
       { label: 'Lunes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Matemáticas — Sin salón', tone: 0 },
-        { time: '08:50 - 09:30', subject: 'Ciencias Naturales — Sin salón', tone: 1 },
+        { time: '07:00 a. m. - 08:00 a. m.', subject: 'Lengua Castellana', teacher: 'FRANCISCA BAUTISTA', tone: 0 },
+        { time: '08:00 a. m. - 09:00 a. m.', subject: 'Lengua Castellana', teacher: 'FRANCISCA BAUTISTA', tone: 0 },
+        { time: '09:00 a. m. - 09:30 a. m.', subject: 'Ciencias Sociales', teacher: 'SARA PILAR VELÁSQUEZ', tone: 2 },
         'break',
-        { time: '09:40 - 10:35', subject: 'Lengua Castellana — Sin salón', tone: 2 },
+        { time: '10:00 a. m. - 11:00 a. m.', subject: 'Ciencias Sociales', teacher: 'SARA PILAR VELÁSQUEZ', tone: 2 },
+        { time: '11:00 a. m. - 12:00 p. m.', subject: 'Ciencias Naturales', teacher: 'ALICIA NAYARA SOLIZ', tone: 4 },
       ]},
       { label: 'Martes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Matemáticas — Sin salón', tone: 0 },
-        { time: '08:50 - 09:30', subject: 'Educación Física — Sin salón', tone: 3 },
+        { time: '07:00 a. m. - 08:00 a. m.', subject: 'Inglés', teacher: 'SARA PILAR VELÁSQUEZ', tone: 1 },
+        { time: '08:00 a. m. - 09:00 a. m.', subject: 'Inglés', teacher: 'SARA PILAR VELÁSQUEZ', tone: 1 },
+        { time: '09:00 a. m. - 09:30 a. m.', subject: 'Ciencias Sociales', teacher: 'SARA PILAR VELÁSQUEZ', tone: 2 },
         'break',
-        { time: '10:35 - 11:30', subject: 'Inglés — Sin salón', tone: 4 },
+        { time: '10:00 a. m. - 11:00 a. m.', subject: 'Ciencias Naturales', teacher: 'ALICIA NAYARA SOLIZ', tone: 4 },
+        { time: '11:00 a. m. - 12:00 p. m.', subject: 'Lengua Castellana', teacher: 'FRANCISCA BAUTISTA', tone: 0 },
       ]},
       { label: 'Miércoles', blocks: [
-        { time: '07:00 - 07:55', subject: 'Matemáticas — Sin salón', tone: 0 },
+        { time: '07:00 a. m. - 08:00 a. m.', subject: 'Lengua Castellana', teacher: 'FRANCISCA BAUTISTA', tone: 0 },
+        { time: '08:00 a. m. - 09:00 a. m.', subject: 'Ciencias Sociales', teacher: 'SARA PILAR VELÁSQUEZ', tone: 2 },
+        { time: '09:00 a. m. - 09:30 a. m.', subject: 'Educación Religiosa', teacher: 'SARA PILAR VELÁSQUEZ', tone: 9 },
         'break',
-        { time: '09:40 - 10:35', subject: 'Matemáticas — Sin salón', tone: 0 },
+        { time: '10:00 a. m. - 11:00 a. m.', subject: 'Educación Física', teacher: 'GONZALO CARBAJAL', tone: 6 },
+        { time: '11:00 a. m. - 12:00 p. m.', subject: 'Educación Física', teacher: 'GONZALO CARBAJAL', tone: 6 },
       ]},
+      { label: 'Jueves', blocks: [
+        { time: '07:00 a. m. - 08:00 a. m.', subject: 'Ética y Valores', teacher: 'DANIEL ANTÓN ORDOÑEZ', tone: 8 },
+        { time: '08:00 a. m. - 09:00 a. m.', subject: 'Competencias Ciudadanas', teacher: 'MANUEL ANTONIA SEGURA', tone: 5 },
+        { time: '09:00 a. m. - 09:30 a. m.', subject: 'Matemáticas', teacher: 'GUILLEM AMPARO SANDOVAL FRANCO', tone: 3 },
+        'break',
+        { time: '10:00 a. m. - 11:00 a. m.', subject: 'Tecnología e Informática', teacher: 'SAÚL CORTEZ MONTES', tone: 10 },
+        { time: '11:00 a. m. - 12:00 p. m.', subject: 'Tecnología e Informática', teacher: 'SAÚL CORTEZ MONTES', tone: 10 },
+      ]},
+      { label: 'Viernes', blocks: [
+        { time: '07:00 a. m. - 08:00 a. m.', subject: 'Matemáticas', teacher: 'GUILLEM AMPARO SANDOVAL FRANCO', tone: 3 },
+        { time: '08:00 a. m. - 09:00 a. m.', subject: 'Matemáticas', teacher: 'GUILLEM AMPARO SANDOVAL FRANCO', tone: 3 },
+        { time: '09:00 a. m. - 09:30 a. m.', subject: 'Educación Artística', teacher: 'PILAR ONA HUERTA SARABIA', tone: 7 },
+        'break',
+        { time: '10:00 a. m. - 11:00 a. m.', subject: 'Educación Artística', teacher: 'PILAR ONA HUERTA SARABIA', tone: 7 },
+        { time: '11:00 a. m. - 12:00 p. m.', subject: 'Matemáticas', teacher: 'GUILLEM AMPARO SANDOVAL FRANCO', tone: 3 },
+      ]},
+    ]}
+  />
+
+  <ScheduleLegend
+    items={[
+      { label: 'Lengua Castellana', tone: 0 },
+      { label: 'Inglés', tone: 1 },
+      { label: 'Ética y Valores', tone: 8 },
+      { label: 'Matemáticas', tone: 3 },
+      { label: 'Ciencias Sociales', tone: 2 },
+      { label: 'Competencias Ciudadanas', tone: 5 },
+      { label: 'Educación Religiosa', tone: 9 },
+      { label: 'Educación Artística', tone: 7 },
     ]}
   />
 </Frame>
 
+## Horario "corrido"
+
+El horario tiene dos modalidades:
+
+- **Horario normal**: se muestra tal como se creó (Lunes a Viernes, cada
+  materia en su día original).
+- **Horario corrido**: cuando Administración usa **Correr Horario** o
+  **Correr Horario por Sede** (por ejemplo, para un feriado o acto
+  institucional), un día sigue el contenido de otro. Verás las clases de
+  hoy, pero correspondientes al día que Administración indicó — por
+  ejemplo, si un miércoles corre con el horario de un lunes, ese día verás
+  las materias que normalmente son de lunes.
+
+<Frame>
+  <div className="flex items-start gap-2 rounded-lg bg-fd-info/10 p-3 text-xs text-fd-info">
+    <Info className="mt-0.5 size-4 shrink-0" />
+    <span>Hoy (miércoles) sigue el horario de <b>lunes</b>, por indicación de la institución.</span>
+  </div>
+</Frame>
+
 ## ¿Qué encontrarás aquí?
 
-- El curso del estudiante y el año lectivo (ejemplo: `Curso: 3-1 · Año
-  lectivo: 2027`).
-- Un **Horario semanal** organizado por día (Lunes a Viernes), con cada
-  bloque mostrando:
+- El nombre del estudiante y su curso (ejemplo: `Curso: 1-1`), con un
+  selector arriba a la derecha para cambiar entre tus hijos/as matriculados
+  si tienes más de uno.
+- Un **Horario semanal** (ejemplo: `Año lectivo: 2026`) organizado por día
+  (Lunes a Viernes), con cada bloque mostrando:
   - Nombre de la asignatura (ejemplo: `Lengua Castellana`, `Matemáticas`).
-  - Rango de hora (ejemplo: `07:00 a. m. - 07:55 a. m.`).
+  - Rango de hora (ejemplo: `07:00 a. m. - 08:00 a. m.`).
   - Salón asignado (o `Sin salón` si aún no se ha definido).
   - Nombre del docente a cargo.
   - Los bloques de **Descanso** aparecen resaltados entre clases.
-- Una leyenda de colores por asignatura, para identificar rápidamente cada
-  materia en el horario.
+- Una leyenda de colores por asignatura debajo del horario, para
+  identificar rápidamente cada materia.
+- Dos modalidades de vista: **Horario normal** (tal como se creó) y
+  **Horario corrido** (cuando un día sigue el contenido de otro por una
+  decisión de Administración) — ver la sección siguiente.
 
 <Steps>
+<Step>
+
+### Elige al estudiante (si aplica)
+
+Si tienes más de un hijo/a matriculado, usa el selector en la parte superior
+derecha para elegir de cuál quieres consultar el horario.
+
+</Step>
 <Step>
 
 ### Consulta el día que necesitas
@@ -70,6 +153,15 @@ En cada bloque de clase revisa el nombre del docente y el salón asignado
 
 Si tienes dudas sobre qué asignatura corresponde a un color, revisa la
 leyenda ubicada debajo del horario.
+
+</Step>
+<Step>
+
+### Revisa si el horario está "corrido"
+
+Si ves un aviso indicando que el día sigue el horario de otro (por ejemplo,
+"Hoy sigue el horario de lunes"), las clases mostradas corresponden a ese
+otro día, no al horario normal de hoy.
 
 </Step>
 </Steps>

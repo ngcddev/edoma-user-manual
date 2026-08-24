@@ -10,6 +10,9 @@ import { UserPlus, List as ListIcon, IdCard, Mail, Briefcase } from 'lucide-reac
 import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field } from '@/components/docs-mockup';
 
 <Frame>
+  <div className="mb-2 text-[11px] font-medium tracking-wide text-fd-muted-foreground">
+    REGISTRO &gt; PADRES DE FAMILIA
+  </div>
   <Toolbar>
     <TabBtn active icon={ListIcon}>Lista</TabBtn>
     <TabBtn icon={UserPlus}>Registrar Padre</TabBtn>
@@ -133,4 +136,6 @@ Desde la lista puedes:
 - **Ver detalle**: consulta la información completa del registro.
 - **Editar**: actualiza cualquier dato.
 - **Desactivar**: marca al padre/acudiente como `Inactivo` cuando ya no debe
-  tener acceso o vínculo activo con la institución.
+  tener acceso o vínculo activo con la institución. Mientras esté `Inactivo`,
+  no puede iniciar sesión en el sistema; recupera el acceso solo cuando se
+  vuelve a **Activar** desde aquí.

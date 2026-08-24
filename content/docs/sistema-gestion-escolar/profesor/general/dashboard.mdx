@@ -7,42 +7,119 @@ El **Dashboard** es la pantalla principal del rol Profesor. Resume tus cursos
 asignados, el período activo y tus tareas pendientes del día, con accesos
 directos a cada módulo.
 
-import { GraduationCap, Users, CalendarDays, ClipboardList, CalendarCheck, Calendar, ShieldAlert, UserCog, TrendingUp } from 'lucide-react';
-import { Frame, StatGrid, Stat, ActionRow, Btn } from '@/components/docs-mockup';
+import { GraduationCap, CalendarDays, Calendar, ShieldAlert, TrendingUp, Clock, User, BookOpen, CheckCircle2, FileText, UserCircle2 } from 'lucide-react';
+import { Frame, StatGrid, Stat, Badge } from '@/components/docs-mockup';
 
 <Frame>
-  <div className="mb-4 flex flex-wrap items-center gap-x-8 gap-y-2 rounded-lg border border-fd-border bg-fd-background p-4 text-sm">
-    <div>
-      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">PERÍODO ACTIVO</div>
-      <div>Primer Periodo</div>
+  <div className="mb-4 grid gap-3 lg:grid-cols-3">
+    <div className="rounded-lg border border-fd-border p-4 text-sm lg:col-span-2">
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+        <div className="flex items-center gap-2 font-medium">
+          <User className="size-4 text-fd-primary" /> Información del Docente
+        </div>
+        <div>
+          <div className="flex items-center gap-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground"><Clock className="size-3" /> ÚLTIMO CURSO</div>
+          <div className="font-medium">2-1</div>
+        </div>
+        <div>
+          <div className="flex items-center gap-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground"><Calendar className="size-3" /> PERÍODO ACTIVO</div>
+          <div className="font-medium">Primer Periodo</div>
+        </div>
+        <div>
+          <div className="mb-1.5 text-[10px] font-medium tracking-wide text-fd-muted-foreground">CURSOS ASIGNADOS</div>
+          <div className="flex flex-wrap gap-2">
+            {['2-1', '4-1', '6-2', '10-2'].map((c) => (
+              <div key={c} className="text-center">
+                <span className="inline-flex items-center justify-center rounded-lg bg-fd-primary px-2.5 py-1 text-xs font-medium text-fd-primary-foreground">{c}</span>
+                <div className="text-[10px] text-fd-muted-foreground">Curso</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <div className="text-[10px] font-medium tracking-wide text-fd-muted-foreground">CURSOS ASIGNADOS</div>
-      <div>3-1</div>
+    <div className="rounded-lg border border-fd-border p-4 text-sm">
+      <div className="font-medium">Período activo: Primer Periodo 2026</div>
+      <div className="text-xs text-fd-muted-foreground">El sistema está listo para registrar asistencias y notas.</div>
     </div>
   </div>
 
   <StatGrid>
-    <Stat icon={GraduationCap} label="Cursos" value={1} />
-    <Stat icon={Users} label="Estudiantes" value={1} />
+    <Stat icon={BookOpen} label="Cursos" value={4} />
+    <Stat icon={GraduationCap} label="Estudiantes" value={80} />
     <Stat icon={CalendarDays} label="Clases hoy" value={0} />
   </StatGrid>
 
-  <div className="mt-4 space-y-2">
-    <ActionRow icon={ClipboardList} title="Registrar Notas" subtitle="Evaluaciones" action={<Btn>Entrar</Btn>} />
-    <ActionRow icon={CalendarCheck} title="Registrar Asistencia" subtitle="Registro diario" action={<Btn tone="success">Ir</Btn>} />
-    <ActionRow icon={Calendar} title="Mirar Horario" subtitle="Consulta tus clases" action={<Btn tone="primary">Ver</Btn>} />
-    <ActionRow icon={ShieldAlert} title="Observador" subtitle="Notación al estudiante" action={<Btn>Anotar</Btn>} />
-    <ActionRow icon={UserCog} title="Director de Grupo" subtitle="Gestión del curso" action={<Btn tone="success">Abrir</Btn>} />
-    <ActionRow icon={TrendingUp} title="Rendimiento" subtitle="Consulta el desempeño" action={<Btn tone="warning">Ver</Btn>} />
+  <div className="mt-4 grid gap-3 lg:grid-cols-3">
+    <div className="lg:col-span-2">
+      <div className="grid gap-3 sm:grid-cols-3">
+        <ActionCard icon={FileText} tone="primary" title="Registrar Notas" subtitle="Evaluaciones" action="Entrar" />
+        <ActionCard icon={CheckCircle2} tone="success" title="Registrar Asistencia" subtitle="Registro diario" action="Ir" />
+        <ActionCard icon={Calendar} tone="info" title="Mirar Horario" subtitle="Consulta tus clases" action="Ver" />
+        <ActionCard icon={ShieldAlert} tone="info" title="Observador" subtitle="Notación al estudiante" action="Anotar" />
+        <ActionCard icon={UserCircle2} tone="success" title="Director de Grupo" subtitle="Gestión del curso" action="Abrir" />
+        <ActionCard icon={TrendingUp} tone="warning" title="Rendimiento" subtitle="Consulta el desempeño" action="Ver" />
+      </div>
+    </div>
+
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="mb-2 text-sm font-semibold">Pendientes de hoy</div>
+      <div className="space-y-3 text-xs">
+        <div className="flex items-start gap-2">
+          <CheckCircle2 className="mt-0.5 size-4 text-fd-success" />
+          <div><div className="font-medium">Asistencia</div><div className="text-fd-muted-foreground">Fin de semana</div></div>
+        </div>
+        <div className="flex items-start gap-2">
+          <FileText className="mt-0.5 size-4 text-fd-primary" />
+          <div><div className="font-medium">Notas</div><div className="text-fd-muted-foreground">Fin de semana</div></div>
+        </div>
+        <div className="flex items-start gap-2">
+          <Clock className="mt-0.5 size-4 text-fd-warning" />
+          <div><div className="font-medium">Próxima clase</div><div className="text-fd-muted-foreground">Fin de semana</div></div>
+        </div>
+        <div className="flex items-start gap-2">
+          <ShieldAlert className="mt-0.5 size-4 text-fd-primary" />
+          <div><div className="font-medium">Agregar observación</div><div className="text-fd-muted-foreground">Notación a un estudiante</div></div>
+        </div>
+        <div className="flex items-start gap-2">
+          <UserCircle2 className="mt-0.5 size-4 text-fd-success" />
+          <div><div className="font-medium">Director de grupo</div><div className="text-fd-muted-foreground">Gestión del curso asignado</div></div>
+        </div>
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-start gap-2">
+            <TrendingUp className="mt-0.5 size-4 text-fd-warning" />
+            <div><div className="font-medium">Ver rendimiento</div><div className="text-fd-muted-foreground">2 cursos por debajo del promedio</div></div>
+          </div>
+          <Badge tone="danger">2</Badge>
+        </div>
+      </div>
+      <div className="mt-3 text-xs font-medium text-fd-success">Buen ritmo hoy</div>
+    </div>
   </div>
 </Frame>
 
+export function ActionCard({ icon: Icon, tone, title, subtitle, action }) {
+  const toneClass = { primary: 'bg-fd-primary/10 text-fd-primary', success: 'bg-fd-success/10 text-fd-success', info: 'bg-fd-info/10 text-fd-info', warning: 'bg-fd-warning/10 text-fd-warning' }[tone];
+  const btnClass = { primary: 'border border-fd-border', success: 'bg-fd-success/15 text-fd-success', info: 'bg-fd-primary text-fd-primary-foreground', warning: 'bg-fd-warning/15 text-fd-warning' }[tone];
+  return (
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className={`mb-2 flex size-8 items-center justify-center rounded-lg ${toneClass}`}><Icon className="size-4" /></div>
+      <div className="text-sm font-medium">{title}</div>
+      <div className="mb-2 text-xs text-fd-muted-foreground">{subtitle}</div>
+      <span className={`inline-flex rounded-lg px-3 py-1 text-xs font-medium ${btnClass}`}>{action}</span>
+    </div>
+  );
+}
+
 ## ¿Qué encontrarás aquí?
 
-- **Información del Docente**: tu último curso consultado, el período
-  académico activo (ejemplo: `Primer Periodo`) y los cursos que tienes
-  asignados (ejemplo: `3-1`).
+- **Información del Docente**: tu último curso consultado (ejemplo: `2-1`),
+  el período académico activo (ejemplo: `Primer Periodo`) y los cursos que
+  tienes asignados, cada uno como una tarjeta (ejemplo: `2-1`, `4-1`, `6-2`,
+  `10-2`).
+- Un panel a la derecha con el **período activo del año** (ejemplo:
+  `Primer Periodo 2026`) y la confirmación de que el sistema está listo
+  para registrar asistencias y notas.
 - **Tarjetas de resumen**: número de **Cursos**, **Estudiantes** a tu cargo y
   **Clases hoy**.
 - **Accesos directos** a cada módulo:
@@ -56,9 +133,22 @@ import { Frame, StatGrid, Stat, ActionRow, Btn } from '@/components/docs-mockup'
 | [Director de Grupo](/sistema-gestion-escolar/profesor/modulos/direccion-de-grupo) | Gestión integral del curso que diriges (si aplica) |
 | [Rendimiento](/sistema-gestion-escolar/profesor/modulos/rendimiento) | Consulta del desempeño de tus cursos |
 
-- **Pendientes de hoy**: recordatorios de asistencia y notas por registrar,
-  tu próxima clase, y accesos rápidos para agregar una observación o revisar
-  el rendimiento de tus cursos.
+- **Pendientes de hoy**, a la derecha: **Asistencia** y **Notas** por
+  registrar hoy, tu **Próxima clase**, un acceso directo para **Agregar
+  observación**, otro para **Director de grupo** (si tienes un curso a
+  cargo), y **Ver rendimiento** (con un contador en rojo si hay cursos por
+  debajo del promedio, ejemplo: `2 cursos por debajo del promedio`). Si no
+  hay clases programadas (fin de semana o día sin horario), cada ítem
+  muestra **"Fin de semana"** en su lugar, y al final aparece un mensaje de
+  ánimo como **"Buen ritmo hoy"**.
+
+<Callout type="info">
+  Cuando **otro docente te delega una clase** o **Administración te otorga
+  un registro extemporáneo de asistencia**, ese aviso aparece dentro de
+  **Pendientes de hoy**, en el ítem de **Asistencia** de esa clase — con
+  acceso directo para entrar a registrarla. Ver el detalle de ambos casos en
+  [Registrar asistencia](/sistema-gestion-escolar/profesor/modulos/registrar-asistencia).
+</Callout>
 
 <Steps>
 <Step>
@@ -74,15 +164,15 @@ período académico vigente antes de registrar notas o asistencia.
 ### Revisa tus pendientes de hoy
 
 En **Pendientes de hoy**, verifica si tienes asistencia o notas por
-registrar, y cuál es tu próxima clase.
+registrar y cuál es tu próxima clase.
 
 </Step>
 <Step>
 
 ### Entra al módulo que necesites
 
-Haz clic en la tarjeta correspondiente (**Entrar**, **Ir**, **Ver**,
-**Anotar** o **Abrir**) para ir directo al módulo.
+Haz clic en la tarjeta o el ítem correspondiente (**Entrar**, **Ir**,
+**Ver**, **Anotar** o **Abrir**) para ir directo al módulo.
 
 </Step>
 </Steps>

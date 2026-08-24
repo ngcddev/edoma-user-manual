@@ -253,36 +253,59 @@ export function EmptyState({ icon: Icon, title, subtitle }: { icon: LucideIcon; 
 }
 
 const blockClasses = [
-  'bg-fd-info/15 text-fd-info',
-  'bg-fd-success/15 text-fd-success',
-  'bg-fd-primary/15 text-fd-primary',
-  'bg-fd-warning/15 text-fd-warning',
-  'bg-fd-error/15 text-fd-error',
+  'bg-red-500',
+  'bg-emerald-500',
+  'bg-sky-500',
+  'bg-amber-500',
+  'bg-orange-500',
+  'bg-pink-500',
+  'bg-teal-500',
+  'bg-indigo-600',
+  'bg-violet-500',
+  'bg-lime-500',
+  'bg-fuchsia-500',
 ];
 
-export type ScheduleBlock = { time: string; subject: string; tone?: number } | 'break';
+export const scheduleToneClasses = blockClasses;
+
+export type ScheduleBlock = { time: string; subject: string; teacher?: string; room?: string; tone?: number } | 'break';
 
 export function ScheduleGrid({ days }: { days: { label: string; blocks: ScheduleBlock[] }[] }) {
   return (
-    <div className="grid gap-3 overflow-x-auto sm:grid-cols-3" style={{ gridAutoFlow: 'column', gridAutoColumns: 'minmax(140px, 1fr)' }}>
+    <div className="grid gap-3 overflow-x-auto sm:grid-cols-3" style={{ gridAutoFlow: 'column', gridAutoColumns: 'minmax(150px, 1fr)' }}>
       {days.map((d) => (
         <div key={d.label}>
           <div className="mb-2 text-xs font-semibold">{d.label}</div>
           <div className="space-y-1.5">
             {d.blocks.map((b, i) =>
               b === 'break' ? (
-                <div key={i} className="rounded-md border border-dashed border-fd-border px-2 py-1.5 text-center text-[11px] italic text-fd-muted-foreground">
-                  Descanso
+                <div key={i} className="rounded-md border border-fd-warning/30 bg-fd-warning/10 px-2 py-1.5 text-center text-[11px] text-fd-warning">
+                  <div className="font-medium">Descanso</div>
                 </div>
               ) : (
-                <div key={i} className={`rounded-md px-2 py-1.5 text-[11px] ${blockClasses[b.tone ?? 0]}`}>
-                  <div className="font-medium">{b.time}</div>
-                  <div>{b.subject}</div>
+                <div key={i} className={`rounded-md px-2 py-1.5 text-[11px] text-white ${blockClasses[(b.tone ?? 0) % blockClasses.length]}`}>
+                  <div className="font-semibold">{b.subject}</div>
+                  <div className="text-white/90">{b.time}</div>
+                  <div className="mt-1 inline-block rounded bg-white/20 px-1.5 py-0.5 text-[10px]">{b.room ?? 'Sin salón'}</div>
+                  {b.teacher && <div className="mt-1 text-[10px] font-medium text-white/95">{b.teacher}</div>}
                 </div>
               ),
             )}
           </div>
         </div>
+      ))}
+    </div>
+  );
+}
+
+export function ScheduleLegend({ items }: { items: { label: string; tone: number }[] }) {
+  return (
+    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-fd-border pt-3 text-xs">
+      {items.map((it) => (
+        <span key={it.label} className="flex items-center gap-1.5">
+          <span className={`size-2.5 rounded-full ${blockClasses[it.tone % blockClasses.length]}`} />
+          {it.label}
+        </span>
       ))}
     </div>
   );

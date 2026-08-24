@@ -6,37 +6,161 @@ description: Guía de uso de "Reportes".
 Este módulo genera el reporte de **edades por grado** (formato DANE), usado
 para identificar estudiantes en posible situación de extraedad.
 
-import { Users, AlertTriangle, CalendarX } from 'lucide-react';
-import { Frame, FakeInput, StatGrid, Stat } from '@/components/docs-mockup';
+import { Users, AlertTriangle, CalendarX, Search, Pencil, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Frame, FieldGrid, Field, Btn, Section, SectionTitle, Toggle } from '@/components/docs-mockup';
 
 <Frame>
-  <div className="mb-4 flex gap-2">
-    <FakeInput grow>Sede Central</FakeInput>
-    <FakeInput grow>2027</FakeInput>
+  <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
+    <SectionTitle icon={Search}>Seleccionar sede y año</SectionTitle>
+    <Btn icon={Pencil}>Editar edades esperadas</Btn>
   </div>
-  <StatGrid>
-    <Stat icon={Users} label="Estudiantes reportados" value={1} />
-    <Stat icon={AlertTriangle} label="En posible extraedad" value={0} />
-    <Stat icon={CalendarX} label="Sin fecha de nacimiento" value={0} />
-  </StatGrid>
+  <FieldGrid>
+    <Field label="Sede" placeholder="Sede Norte" required />
+    <Field label="Año lectivo" placeholder="2026" required />
+  </FieldGrid>
+
+  <div className="mt-4 grid gap-3 sm:grid-cols-3">
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="flex size-8 items-center justify-center rounded-md bg-fd-primary/10 text-fd-primary"><Users className="size-4" /></div>
+      <div className="mt-2 text-xl font-semibold">240</div>
+      <div className="text-xs text-fd-muted-foreground">Estudiantes reportados</div>
+    </div>
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="flex size-8 items-center justify-center rounded-md bg-fd-error/10 text-fd-error"><AlertTriangle className="size-4" /></div>
+      <div className="mt-2 text-xl font-semibold">0</div>
+      <div className="text-xs text-fd-error">En posible extraedad — ver detalle</div>
+    </div>
+    <div className="rounded-lg border border-fd-border p-3">
+      <div className="flex size-8 items-center justify-center rounded-md bg-fd-warning/10 text-fd-warning"><CalendarX className="size-4" /></div>
+      <div className="mt-2 text-xl font-semibold">0</div>
+      <div className="text-xs text-fd-muted-foreground">Sin fecha de nacimiento registrada</div>
+    </div>
+  </div>
+
+  <Section>
+    <SectionTitle icon={ShieldAlert}>Estudiantes en posible extraedad</SectionTitle>
+    <div className="mb-3 text-xs text-fd-muted-foreground">
+      Estudiantes con 2 o más años por encima de la edad esperada para su
+      grado — criterio estándar de extraedad.
+    </div>
+    <div className="flex items-center justify-center gap-2 rounded-lg border border-dashed border-fd-border py-6 text-sm text-fd-success">
+      <CheckCircle2 className="size-4" /> No hay estudiantes en extraedad en esta sede y año.
+    </div>
+  </Section>
+
+  <Section>
+    <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
+      <SectionTitle icon={Users}>Distribución de edades por grado</SectionTitle>
+      <div className="flex items-center gap-2 text-xs text-fd-muted-foreground"><span>Ver desglose por sexo (H/M)</span><Toggle /></div>
+    </div>
+    <div className="mb-3 text-xs text-fd-muted-foreground">
+      Todos los niveles de la sede en una sola tabla — desplázate
+      horizontalmente para ver todos los grados.
+    </div>
+    <div className="overflow-x-auto rounded-lg border border-fd-border">
+      <table className="w-full min-w-[760px] border-collapse text-center text-xs">
+        <thead>
+          <tr>
+            <th rowSpan={2} className="border-b border-fd-border bg-fd-muted/50 px-2 py-2 text-left align-bottom font-medium text-fd-muted-foreground">Edad</th>
+            <th className="border-b border-fd-border bg-fd-warning px-2 py-1 font-semibold text-white">TRANSICIÓN</th>
+            <th colSpan={5} className="border-b border-fd-border bg-fd-primary px-2 py-1 font-semibold text-white">BÁSICA PRIMARIA</th>
+            <th colSpan={4} className="border-b border-fd-border bg-fd-success px-2 py-1 font-semibold text-white">BÁSICA SECUNDARIA</th>
+            <th colSpan={2} className="border-b border-fd-border bg-purple-500 px-2 py-1 font-semibold text-white">MEDIA</th>
+            <th rowSpan={2} className="border-b border-fd-border bg-fd-muted/50 px-2 py-2 align-bottom font-medium text-fd-muted-foreground">Total</th>
+          </tr>
+          <tr className="border-b border-fd-border bg-fd-muted/50 text-fd-muted-foreground">
+            <th className="px-2 py-1.5 font-medium">Transición</th>
+            <th className="px-2 py-1.5 font-medium">Primero</th>
+            <th className="px-2 py-1.5 font-medium">Segundo</th>
+            <th className="px-2 py-1.5 font-medium">Tercero</th>
+            <th className="px-2 py-1.5 font-medium">Cuarto</th>
+            <th className="px-2 py-1.5 font-medium">Quinto</th>
+            <th className="px-2 py-1.5 font-medium">Sexto</th>
+            <th className="px-2 py-1.5 font-medium">Séptimo</th>
+            <th className="px-2 py-1.5 font-medium">Octavo</th>
+            <th className="px-2 py-1.5 font-medium">Noveno</th>
+            <th className="px-2 py-1.5 font-medium">Décimo</th>
+            <th className="px-2 py-1.5 font-medium">Once</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ['4 años', ['10', '', '', '', '', '', '', '', '', '', '', ''], '10'],
+            ['5 años', ['10', '13', '', '', '', '', '', '', '', '', '', ''], '23'],
+            ['6 años', ['', '7', '11', '', '', '', '', '', '', '', '', ''], '18'],
+            ['7 años', ['', '', '9', '24', '', '', '', '', '', '', '', ''], '33'],
+            ['8 años', ['', '', '', '16', '11', '', '', '', '', '', '', ''], '27'],
+            ['9 años', ['', '', '', '', '9', '10', '', '', '', '', '', ''], '19'],
+            ['10 años', ['', '', '', '', '', '10', '11', '', '', '', '', ''], '21'],
+            ['11 años', ['', '', '', '', '', '', '9', '20', '', '', '', ''], '29'],
+            ['12 años', ['', '', '', '', '', '', '', '20', '', '', '', ''], '20'],
+            ['13 años', ['', '', '', '', '', '', '', '', '', '23', '', ''], '23'],
+            ['14 años', ['', '', '', '', '', '', '', '', '', '17', '', ''], '17'],
+          ].map(([age, cells, total]) => (
+            <tr key={age} className="border-b border-fd-border last:border-0">
+              <td className="px-2 py-1.5 text-left font-medium">{age}</td>
+              {cells.map((c, i) => (
+                <td key={i} className="px-2 py-1.5 text-fd-muted-foreground">{c || '·'}</td>
+              ))}
+              <td className="px-2 py-1.5 font-semibold">{total}</td>
+            </tr>
+          ))}
+          <tr className="bg-fd-muted/40 font-semibold">
+            <td className="px-2 py-1.5 text-left">Totales</td>
+            <td className="px-2 py-1.5">20</td>
+            <td className="px-2 py-1.5">20</td>
+            <td className="px-2 py-1.5">20</td>
+            <td className="px-2 py-1.5">40</td>
+            <td className="px-2 py-1.5">20</td>
+            <td className="px-2 py-1.5">20</td>
+            <td className="px-2 py-1.5">20</td>
+            <td className="px-2 py-1.5">40</td>
+            <td className="px-2 py-1.5">0</td>
+            <td className="px-2 py-1.5">40</td>
+            <td className="px-2 py-1.5">0</td>
+            <td className="px-2 py-1.5">0</td>
+            <td className="px-2 py-1.5">240</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div className="mt-3 flex flex-wrap gap-4 text-[11px] text-fd-muted-foreground">
+      <span className="flex items-center gap-1.5">
+        <span className="size-2.5 rounded-full bg-fd-error/60" /> Posible extraedad (≥2 años sobre lo esperado)
+      </span>
+      <span className="flex items-center gap-1.5">
+        <span className="size-2.5 rounded-full bg-fd-primary/40" /> Dentro del rango esperado
+      </span>
+    </div>
+  </Section>
 </Frame>
 
 ## ¿Qué encontrarás aquí?
 
-- Un formulario para **Seleccionar sede y año** (año lectivo).
-- Un acceso directo a **Editar edades esperadas**, que lleva a la tabla de
-  edad esperada por grado en
-  [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados).
+- Un formulario para **Seleccionar sede y año** (año lectivo), con el acceso
+  directo **Editar edades esperadas** en la parte superior derecha.
 - Al elegir sede y año, el reporte muestra:
-  - **Estudiantes reportados**: total de estudiantes con fecha de nacimiento
-    registrada.
-  - **En posible extraedad**: estudiantes con 2 o más años por encima de la
-    edad esperada para su grado (criterio estándar de extraedad).
-  - **Sin fecha de nacimiento registrada**: estudiantes que no pueden
-    evaluarse por falta de este dato.
-  - Una tabla de **Distribución de edades por grado**, con los niveles
-    Preescolar, Básica Primaria y Secundaria, y un desglose opcional por sexo
-    (H/M).
+  - Tres indicadores: **Estudiantes reportados** (total con fecha de
+    nacimiento registrada), **En posible extraedad** (con acceso a **ver
+    detalle**) y **Sin fecha de nacimiento registrada**.
+  - **Estudiantes en posible extraedad**: lista a los estudiantes con 2 o
+    más años por encima de la edad esperada para su grado, o un estado
+    vacío ("No hay estudiantes en extraedad en esta sede y año") cuando no
+    hay ninguno.
+  - **Distribución de edades por grado**: una sola tabla con todos los
+    niveles (`Transición`, `Básica Primaria`, `Básica Secundaria`, `Media`)
+    agrupados por color en el encabezado, fila de **Totales** al final, y un
+    desglose opcional **por sexo (H/M)**.
+
+<Callout type="warn">
+  Las celdas en **rojo** son estudiantes que **sobrepasan la edad esperada**
+  configurada para su grado (posible extraedad, según la leyenda al pie de
+  la tabla). Para corregir el umbral, usa **Editar edades esperadas**: te
+  lleva a [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
+  donde se gestiona la edad esperada de cada grado con el botón
+  **Gestionar** (ver la sección "Editar la edad esperada de un grado" en esa
+  misma página).
+</Callout>
 
 <Callout type="warn">
   Si un estudiante no tiene fecha de nacimiento registrada, no se puede
@@ -76,29 +200,37 @@ extraedad y los que no tienen fecha de nacimiento registrada.
 ### Consulta el detalle por grado
 
 Desplázate horizontalmente por la tabla **Distribución de edades por grado**
-para ver cuántos estudiantes hay por edad en cada grado, y activa **Ver
-desglose por sexo (H/M)** si lo necesitas.
+para ver cuántos estudiantes hay por edad en cada grado, revisa la fila de
+**Totales** al final, y activa **Ver desglose por sexo (H/M)** si lo
+necesitas. Usa la leyenda al pie de la tabla para identificar qué celdas
+están en posible extraedad.
 
 </Step>
 </Steps>
 
 ## Ajustar la edad esperada por grado
 
+**Editar edades esperadas** no se configura en este módulo: es un acceso
+directo que te lleva a **Cursos y grados**, que es donde realmente se
+gestiona la edad esperada de cada grado.
+
 <Steps>
 <Step>
 
 ### Abre la edición
 
-Haz clic en **Editar edades esperadas**.
+Haz clic en **Editar edades esperadas**, en la parte superior derecha de
+**Seleccionar sede y año**.
 
 </Step>
 <Step>
 
-### Actualiza el valor
+### Ajusta el valor en Cursos y grados
 
-Se te llevará a
+Esto te lleva a
 [Cursos y grados](/sistema-gestion-escolar/administrativo/academico/cursos-y-grados),
-donde puedes ajustar la edad esperada de cada grado con **Gestionar**.
+a la tabla **Grados académicos — Edad esperada (DANE)**. Ahí, dentro de
+cada grado, usa **Gestionar** para actualizar la edad esperada (en años).
 
 </Step>
 </Steps>

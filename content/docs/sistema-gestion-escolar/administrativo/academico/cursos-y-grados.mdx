@@ -8,16 +8,52 @@ sede, y permite asignar jornada, director de grupo y consultar cupos y
 estudiantes de cada uno. También define la edad esperada por grado, usada
 para el reporte DANE de extraedad.
 
-import { Frame, Table, Tr, Td, Section, SectionTitle, FakeInput } from '@/components/docs-mockup';
-import { BookOpen, ListTree } from 'lucide-react';
+import { Frame, Table, Tr, Td, Section, SectionTitle, FakeInput, Chip, Badge, Btn, Field, FieldGrid, Callout2 } from '@/components/docs-mockup';
+import { BookOpen, ListTree, BookMarked, Award, List, Users, GraduationCap, Copy, CheckSquare, Square, User } from 'lucide-react';
 
 <Frame>
-  <SectionTitle icon={BookOpen}>Cursos del año activo — 2027</SectionTitle>
-  <div className="mb-3"><FakeInput>Sede Central</FakeInput></div>
-  <Table columns={['Curso', 'Jornada', 'Director de grupo', 'Cupos']}>
-    <Tr><Td>Prejardín-1</Td><Td muted>Sin asignar</Td><Td muted>Sin asignar</Td><Td muted>0 / 25</Td></Tr>
-    <Tr><Td>3-1</Td><Td muted>Jornada Mañana</Td><Td muted>Andrés Rojas</Td><Td muted>1 / 30</Td></Tr>
-    <Tr><Td>11-2</Td><Td muted>Jornada Mañana</Td><Td muted>Camila Torres</Td><Td muted>0 / 35</Td></Tr>
+  <div className="mb-3 flex items-center justify-between">
+    <SectionTitle icon={List}>Cursos del año activo — 2026</SectionTitle>
+    <span className="text-xs text-fd-muted-foreground">Mostrando <b>23</b> de 23 cursos</span>
+  </div>
+  <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+    <div className="flex gap-2">
+      <Chip active>Todas · 23</Chip>
+      <Chip>Sede Principal · 11</Chip>
+      <Chip>Sede Norte · 12</Chip>
+    </div>
+    <FakeInput>Buscar curso (ej: 6° A)...</FakeInput>
+  </div>
+  <div className="mb-2 flex items-center gap-1.5 text-xs font-medium text-fd-muted-foreground">
+    SEDE PRINCIPAL — 11 cursos
+  </div>
+  <Table columns={['Curso', 'Jornada', 'Director de grupo', 'Cupos', 'Estudiantes']}>
+    <Tr>
+      <Td>1-1<div className="text-fd-muted-foreground">Sede Principal</div></Td>
+      <Td muted>Mañana</Td>
+      <Td muted>MONROY VÍCTOR</Td>
+      <Td><Badge tone="success">20 / 31</Badge></Td>
+      <Td>
+        <div className="flex flex-wrap gap-1.5">
+          <span className="rounded-full bg-fd-primary/10 px-2 py-1 text-[11px] font-medium text-fd-primary">Ver estudiantes · 20</span>
+          <span className="rounded-full bg-fd-primary/10 px-2 py-1 text-[11px] font-medium text-fd-primary">Materias</span>
+          <span className="rounded-full bg-fd-warning/10 px-2 py-1 text-[11px] font-medium text-fd-warning">Logros</span>
+        </div>
+      </Td>
+    </Tr>
+    <Tr>
+      <Td>2-1<div className="text-fd-muted-foreground">Sede Principal</div></Td>
+      <Td muted>Mañana</Td>
+      <Td muted>RIERA PAULA</Td>
+      <Td><Badge tone="success">20 / 27</Badge></Td>
+      <Td>
+        <div className="flex flex-wrap gap-1.5">
+          <span className="rounded-full bg-fd-primary/10 px-2 py-1 text-[11px] font-medium text-fd-primary">Ver estudiantes · 20</span>
+          <span className="rounded-full bg-fd-primary/10 px-2 py-1 text-[11px] font-medium text-fd-primary">Materias</span>
+          <span className="rounded-full bg-fd-warning/10 px-2 py-1 text-[11px] font-medium text-fd-warning">Logros</span>
+        </div>
+      </Td>
+    </Tr>
   </Table>
 
   <Section>
@@ -32,19 +68,20 @@ import { BookOpen, ListTree } from 'lucide-react';
 
 ## ¿Qué encontrarás aquí?
 
-- Un contador de **Cursos del año activo** (ejemplo: `25 de 25 cursos`) con
-  filtro por sede (`Todas`, `Sede Central`, `Sede Norte`).
-- Una tabla de cursos agrupados por sede, con columnas:
+- Un contador de **Cursos del año activo** (ejemplo: `23 de 23 cursos`) con
+  filtro por chips (`Todas`, `Sede Principal`, `Sede Norte`) y buscador de
+  curso.
+- Una tabla de cursos **agrupada por sede** (encabezado `SEDE PRINCIPAL — 11
+  cursos`), con columnas:
 
 | Columna | Descripción |
 | --- | --- |
-| Curso | Nombre del curso (ejemplo: `Prejardín-1`, `3-1`, `11-2`) |
-| Jornada | `Jornada Mañana`, `Jornada Tarde` o `Sin asignar` |
+| Curso | Nombre del curso y sede (ejemplo: `1-1 — Sede Principal`) |
+| Jornada | `Mañana`, `Tarde` o `Sin asignar` |
 | Director de grupo | Docente asignado como director del curso, o `Sin asignar` |
-| Cupos | Estudiantes matriculados sobre el total de cupos (ejemplo: `1 / 30`) |
-| Estudiantes | Acceso a **Ver estudiantes** del curso, o "Sin estudiantes registrados" |
+| Cupos | Estudiantes matriculados sobre el total de cupos (ejemplo: `20 / 31`) |
+| Estudiantes | Tres accesos rápidos por curso: **Ver estudiantes** (con el conteo), **Materias** y **Logros** |
 
-- Accesos rápidos a **Materias** y **Logros** de cada curso.
 - Una tabla de **Grados académicos — Edad esperada (DANE)**, con el nivel
   (Preescolar, Básica Primaria, Secundaria), el grado y la edad esperada para
   ese grado (ejemplo: `Transición → 5 años`, `1 → 6 años`, `11 → 16 años`).
@@ -103,6 +140,204 @@ para ver el detalle.
 
 </Step>
 </Steps>
+
+## Asignar materias a un curso — Malla curricular
+
+Desde el botón **Materias** de un curso entras a la **Malla curricular por
+curso**: aquí eliges qué asignaturas se dictan en ese curso marcando o
+desmarcando casillas, y puedes copiar la misma malla a otros cursos para no
+repetir el trabajo.
+
+<Frame>
+  <SectionTitle icon={BookMarked}>Malla curricular por curso</SectionTitle>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Selecciona el curso para ver o editar las materias asignadas.
+  </div>
+  <div className="mb-4 flex flex-wrap items-end gap-2">
+    <div className="flex-1"><Field label="Curso" type="select" placeholder="1-1 — Sede Principal" /></div>
+    <Btn icon={Copy}>Copiar estas materias a otros cursos</Btn>
+  </div>
+
+  <Section>
+    <SectionTitle icon={List} action="1-1 — Sede Principal">Materias del curso</SectionTitle>
+    <Callout2 icon={BookMarked}>Editando malla guardada el 22 de ago de 2026 · 07:07 p. m.</Callout2>
+    <div className="mb-2"><FakeInput grow>Buscar materia (ej: Matemáticas)...</FakeInput></div>
+    <div className="mb-3 flex items-center justify-between text-xs">
+      <span className="font-medium text-fd-primary">11 materias asignadas</span>
+      <span className="text-fd-muted-foreground">Marcar todas · Desmarcar todas</span>
+    </div>
+    <div className="space-y-1.5">
+      {[
+        ['Ciencias Naturales', true],
+        ['Ciencias Sociales', true],
+        ['Competencias Ciudadanas', true],
+        ['Educación Artística', true],
+        ['Educación Física', true],
+        ['Educación Religiosa', true],
+        ['Emprendimiento', false],
+        ['Ética y Valores', true],
+      ].map(([label, checked]) => (
+        <div key={label} className="flex items-center gap-2 rounded-lg border border-fd-border px-3 py-2 text-xs">
+          {checked ? <CheckSquare className="size-4 text-fd-primary" /> : <Square className="size-4 text-fd-muted-foreground" />}
+          <BookOpen className="size-3.5 text-fd-muted-foreground" />
+          <span className={checked ? 'font-medium' : 'text-fd-muted-foreground'}>{label}</span>
+        </div>
+      ))}
+    </div>
+  </Section>
+</Frame>
+
+<Steps>
+<Step>
+
+### Ubica el curso
+
+En la tabla de cursos, localiza la sede y el curso, y haz clic en
+**Materias**.
+
+</Step>
+<Step>
+
+### Marca las materias del curso
+
+En **Materias del curso**, busca cada asignatura y marca su casilla para
+incluirla (o desmárcala para quitarla). Usa **Marcar todas** / **Desmarcar
+todas** para ir más rápido.
+
+</Step>
+<Step>
+
+### Reutiliza la malla en otros cursos (opcional)
+
+Si varios cursos comparten las mismas materias, usa **Copiar estas materias
+a otros cursos** en vez de repetir la selección manualmente.
+
+</Step>
+</Steps>
+
+<Callout type="info">
+  Las materias asignadas aquí son las que quedan disponibles para construir
+  el [Horario](/sistema-gestion-escolar/administrativo/academico/horarios)
+  del curso — un docente solo puede programarse en una franja de horario si
+  su materia ya está asignada al curso.
+</Callout>
+
+## Asignar logros a un curso — Banco de Logros
+
+Desde el botón **Logros** de un curso entras al **Banco de Logros**: aquí
+defines, por asignatura, los logros que el sistema asignará automáticamente
+a cada estudiante según su nota, usando la escala de desempeño (`Bajo`,
+`Básico`, `Alto`, `Superior`).
+
+<Frame>
+  <div className="mb-4 flex items-center gap-3 rounded-lg border border-fd-border p-3">
+    <div className="flex size-10 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary">
+      <BookOpen className="size-5" />
+    </div>
+    <div className="flex-1">
+      <div className="flex items-center gap-2 text-sm font-medium">
+        1-1 — Sede Principal <Badge tone="success">Activo</Badge>
+      </div>
+      <div className="flex items-center gap-1 text-xs text-fd-muted-foreground">
+        <User className="size-3" /> Docente titular: VÍCTOR MONROY
+        <Users className="ml-2 size-3" /> 20 estudiantes
+        <GraduationCap className="ml-2 size-3" /> 2026
+      </div>
+    </div>
+  </div>
+
+  <SectionTitle icon={Award}>Banco de Logros</SectionTitle>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Define los logros que el sistema asigna a cada estudiante según su nota.
+  </div>
+  <FieldGrid>
+    <Field label="Asignatura" type="select" placeholder="Lengua Castellana" />
+    <Field label="Modalidad de logros" placeholder="Para esta asignatura y año lectivo — Todo el año" />
+  </FieldGrid>
+
+  <Section>
+    <SectionTitle icon={ListTree}>Matriz de redacción por escala</SectionTitle>
+    <Callout2 icon={Award}>Editando logros guardados el 22 de ago de 2026 · 09:01 p. m.</Callout2>
+    <div className="grid gap-3 sm:grid-cols-2">
+      {[
+        { label: 'Desempeño Superior', range: '4.6 – 5.0', tone: 'success', text: 'Lee y comprende textos acordes a su grado con fluidez, escribe con coherencia y ortografía adecuada, y expresa sus ideas con claridad.' },
+        { label: 'Desempeño Alto', range: '4.0 – 4.5', tone: 'info', text: 'Lee y comprende textos del grado, escribe con coherencia y aplica reglas ortográficas básicas.' },
+        { label: 'Desempeño Básico', range: '3.0 – 3.9', tone: 'warning', text: 'Lee y comprende textos sencillos con apoyo del docente y presenta dificultades ortográficas frecuentes.' },
+        { label: 'Desempeño Bajo', range: '1.0 – 2.9', tone: 'danger', text: 'Presenta dificultades significativas en la lectura, comprensión y escritura de textos sencillos.' },
+      ].map((d) => (
+        <div key={d.label} className="rounded-lg border border-fd-border p-3">
+          <div className="mb-2 flex items-center justify-between text-xs">
+            <Badge tone={d.tone}>{d.label}</Badge>
+            <span className="text-fd-muted-foreground">{d.range}</span>
+          </div>
+          <div className="rounded-md border border-fd-border bg-fd-background p-2 text-[11px] text-fd-muted-foreground">
+            {d.text}
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs">
+    <span className="text-fd-muted-foreground">
+      Los cambios aplican solo a <b>1-1</b> en el período: <b>Todo el año</b>
+    </span>
+    <div className="flex items-center gap-2">
+      <Badge tone="success">Todo guardado</Badge>
+      <Btn>Deshacer cambios</Btn>
+      <Btn tone="primary">Guardar cambios</Btn>
+    </div>
+  </div>
+</Frame>
+
+<Steps>
+<Step>
+
+### Ubica el curso
+
+En la tabla de cursos, localiza la sede y el curso, y haz clic en **Logros**.
+
+</Step>
+<Step>
+
+### Elige la asignatura y la modalidad
+
+Selecciona la **Asignatura** y define la **Modalidad de logros**: `Todo el
+año` (el mismo logro aplica en los 3 períodos) o por período específico —
+usa **Cambiar** para alternar entre ellas.
+
+<Callout type="warn">
+  Un solo banco de logros aplica a los 3 períodos del año cuando la
+  modalidad es `Todo el año`. Si necesitas un logro distinto por período,
+  cambia la modalidad antes de redactarlos.
+</Callout>
+
+</Step>
+<Step>
+
+### Redacta la matriz de desempeño
+
+Completa el texto del logro para cada nivel de la escala: `Desempeño
+Superior`, `Alto`, `Básico` y `Bajo`. El sistema asignará automáticamente el
+logro correspondiente a cada estudiante según su nota definitiva.
+
+</Step>
+<Step>
+
+### Guarda los cambios
+
+Haz clic en **Guardar cambios**. Los cambios aplican solo al curso y período
+que tienes seleccionados; usa **Deshacer cambios** si te equivocas antes de
+guardar.
+
+</Step>
+</Steps>
+
+<Callout type="info">
+  Los logros definidos aquí son los que aparecen en el
+  [Boletín](/sistema-gestion-escolar/administrativo/sistemas/documentos/boletines)
+  de cada estudiante.
+</Callout>
 
 ## Editar la edad esperada de un grado
 

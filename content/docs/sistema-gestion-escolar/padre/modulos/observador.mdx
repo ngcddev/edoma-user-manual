@@ -7,20 +7,48 @@ Este módulo muestra las anotaciones que los docentes registran sobre tu hijo
 o hija: observaciones de comportamiento, seguimiento académico u otras notas
 relevantes.
 
-import { ShieldAlert } from 'lucide-react';
-import { Frame, SectionTitle, EmptyState } from '@/components/docs-mockup';
+import { Lock, Globe, FileX2, X, Layers } from 'lucide-react';
+import { Frame, EmptyState, Table, Tr, Td, Badge, Btn } from '@/components/docs-mockup';
 
 <Frame>
-  <SectionTitle icon={ShieldAlert}>Observador del estudiante — Sofía Ramírez</SectionTitle>
-  <EmptyState icon={ShieldAlert} title="Sin anotaciones registradas para este estudiante" />
+  <div className="mb-1 flex items-center justify-between">
+    <div className="flex items-center gap-1.5 font-medium">
+      <Layers className="size-4 text-fd-primary" /> Observador del estudiante
+    </div>
+    <X className="size-4 text-fd-muted-foreground" />
+  </div>
+  <div className="mb-4 text-xs text-fd-muted-foreground">Sofía Lebrón –</div>
+  <div className="border-t border-fd-border pt-6">
+    <EmptyState icon={FileX2} title="Sin anotaciones registradas para este estudiante." />
+  </div>
+  <div className="mt-4 flex justify-end border-t border-fd-border pt-3">
+    <Btn>Cerrar</Btn>
+  </div>
+</Frame>
+
+## Anotaciones públicas y privadas
+
+Los docentes registran anotaciones como **públicas** o **privadas**. Como
+padre de familia, **solo puedes ver las anotaciones públicas**: las
+privadas se mantienen exclusivamente entre el **director de grupo** del
+curso y el **docente que las publicó**, y no aparecen en tu Observador.
+
+<Frame>
+  <Table columns={['Anotación', 'Docente', 'Fecha', 'Visibilidad']}>
+    <Tr><Td>Participación destacada en clase</Td><Td muted>Camila Torres</Td><Td muted>20/08/2026</Td><Td><Badge tone="success"><Globe className="mr-1 inline size-3" />Pública</Badge></Td></Tr>
+  </Table>
+  <div className="mt-2 flex items-center gap-1.5 text-[11px] text-fd-muted-foreground">
+    <Lock className="size-3" /> Las anotaciones privadas no se muestran aquí — solo las ve el director de grupo y quien las publicó.
+  </div>
 </Frame>
 
 ## ¿Qué encontrarás aquí?
 
 - El nombre del estudiante consultado.
-- El listado de anotaciones registradas por los docentes, cuando existen.
+- El listado de anotaciones **públicas** registradas por los docentes,
+  cuando existen.
 - Un estado vacío ("Sin anotaciones registradas para este estudiante") cuando
-  el docente aún no ha registrado ninguna observación.
+  el docente aún no ha registrado ninguna observación pública.
 
 <Steps>
 <Step>

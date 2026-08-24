@@ -1,5 +1,6 @@
 {
   "pages": [
+    "login",
     "dashboard"
   ]
 }
