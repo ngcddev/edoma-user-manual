@@ -28,6 +28,10 @@ body {
   font-family: var(--font-sans);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes splash-logo-in {
   from {
     opacity: 0;
