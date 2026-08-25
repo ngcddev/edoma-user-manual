@@ -7,52 +7,56 @@ El **Dashboard** es la pantalla principal del rol Profesor. Resume tus cursos
 asignados, el período activo y tus tareas pendientes del día, con accesos
 directos a cada módulo.
 
-import { GraduationCap, CalendarDays, Calendar, ShieldAlert, TrendingUp, Clock, User, BookOpen, CheckCircle2, FileText, UserCircle2, ArrowLeftRight } from 'lucide-react';
-import { Frame, StatGrid, Stat, Badge } from '@/components/docs-mockup';
+import { GraduationCap, CalendarDays, Calendar, ShieldAlert, TrendingUp, Clock, User, BookOpen, CheckCircle2, FileText, UserCircle2 } from 'lucide-react';
+import { Frame, Badge } from '@/components/docs-mockup';
 
 <Frame>
-  <div className="mb-4 grid gap-3 lg:grid-cols-3">
-    <div className="rounded-lg border border-fd-border p-4 text-sm lg:col-span-2">
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-        <div className="flex items-center gap-2 font-medium">
-          <User className="size-4 text-fd-primary" /> Información del Docente
+  <div className="flex flex-col gap-3 sm:flex-row">
+    <div className="min-w-0 flex-1 space-y-3">
+      <div className="grid items-start gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-fd-border p-3 text-sm">
+          <div className="flex items-center gap-2 font-medium">
+            <User className="size-4 shrink-0 text-fd-primary" /> Información del Docente
+          </div>
         </div>
-        <div>
-          <div className="flex items-center gap-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground"><Clock className="size-3" /> ÚLTIMO CURSO</div>
-          <div className="font-medium">2-1</div>
+        <div className="rounded-lg border border-fd-border p-3">
+          <div className="mb-3">
+            <div className="flex items-center gap-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground"><Clock className="size-3" /> ÚLTIMO CURSO</div>
+            <div className="text-sm font-semibold">2-1</div>
+          </div>
+          <div>
+            <div className="flex items-center gap-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground"><Calendar className="size-3" /> PERÍODO ACTIVO</div>
+            <div className="text-sm font-semibold">Primer Periodo</div>
+          </div>
         </div>
-        <div>
-          <div className="flex items-center gap-1 text-[10px] font-medium tracking-wide text-fd-muted-foreground"><Calendar className="size-3" /> PERÍODO ACTIVO</div>
-          <div className="font-medium">Primer Periodo</div>
-        </div>
-        <div>
-          <div className="mb-1.5 text-[10px] font-medium tracking-wide text-fd-muted-foreground">CURSOS ASIGNADOS</div>
-          <div className="flex flex-wrap gap-2">
+        <div className="rounded-lg border border-fd-border p-3">
+          <div className="mb-2 text-[10px] font-medium tracking-wide text-fd-muted-foreground">CURSOS ASIGNADOS</div>
+          <div className="flex flex-wrap gap-1.5">
             {['2-1', '4-1', '6-2', '10-2'].map((c) => (
               <div key={c} className="text-center">
-                <span className="inline-flex items-center justify-center rounded-lg bg-fd-primary px-2.5 py-1 text-xs font-medium text-fd-primary-foreground">{c}</span>
+                <span className="inline-flex items-center justify-center rounded-lg bg-fd-primary px-2 py-1 text-xs font-medium text-fd-primary-foreground">{c}</span>
                 <div className="text-[10px] text-fd-muted-foreground">Curso</div>
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
-    <div className="rounded-lg border border-fd-border p-4 text-sm">
-      <div className="font-medium">Período activo: Primer Periodo 2026</div>
-      <div className="text-xs text-fd-muted-foreground">El sistema está listo para registrar asistencias y notas.</div>
-    </div>
-  </div>
 
-  <StatGrid>
-    <Stat icon={BookOpen} label="Cursos" value={4} />
-    <Stat icon={GraduationCap} label="Estudiantes" value={80} />
-    <Stat icon={CalendarDays} label="Clases hoy" value={0} />
-  </StatGrid>
+      <div className="grid items-start gap-3 sm:grid-cols-3">
+        {[
+          { icon: BookOpen, tone: 'text-violet-600 bg-violet-500/10', label: 'Cursos', value: 4 },
+          { icon: GraduationCap, tone: 'text-fd-success bg-fd-success/10', label: 'Estudiantes', value: 80 },
+          { icon: CalendarDays, tone: 'text-fd-warning bg-fd-warning/10', label: 'Clases hoy', value: 0 },
+        ].map(({ icon: Icon, tone, label, value }) => (
+          <div key={label} className="flex items-center gap-2 rounded-lg border border-fd-border p-3">
+            <span className={`flex size-8 shrink-0 items-center justify-center rounded-lg ${tone}`}><Icon className="size-4" /></span>
+            <span className="min-w-0 flex-1 whitespace-nowrap text-xs text-fd-muted-foreground">{label}</span>
+            <span className="text-xl font-semibold">{value}</span>
+          </div>
+        ))}
+      </div>
 
-  <div className="mt-4 grid gap-3 lg:grid-cols-3">
-    <div className="lg:col-span-2">
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid items-start gap-3 sm:grid-cols-3">
         <ActionCard icon={FileText} tone="primary" title="Registrar Notas" subtitle="Evaluaciones" action="Entrar" />
         <ActionCard icon={CheckCircle2} tone="success" title="Registrar Asistencia" subtitle="Registro diario" action="Ir" />
         <ActionCard icon={Calendar} tone="info" title="Mirar Horario" subtitle="Consulta tus clases" action="Ver" />
@@ -62,42 +66,48 @@ import { Frame, StatGrid, Stat, Badge } from '@/components/docs-mockup';
       </div>
     </div>
 
-    <div className="rounded-lg border border-fd-border p-3">
-      <div className="mb-2 text-sm font-semibold">Pendientes de hoy</div>
-      <div className="space-y-3 text-xs">
-        <div className="flex items-start gap-2">
-          <ArrowLeftRight className="mt-0.5 size-4 text-fd-info" />
-          <div><div className="font-medium">Asistencia — 3-1 Matemáticas</div><div className="text-fd-muted-foreground">Clase delegada por Ana Ruiz</div></div>
-        </div>
-        <div className="flex items-start gap-2">
-          <Clock className="mt-0.5 size-4 text-fd-warning" />
-          <div><div className="font-medium">Asistencia — 2-1 Ciencias Naturales</div><div className="text-fd-muted-foreground">Registro extemporáneo habilitado por Administración</div></div>
-        </div>
-        <div className="flex items-start gap-2">
-          <FileText className="mt-0.5 size-4 text-fd-primary" />
-          <div><div className="font-medium">Notas</div><div className="text-fd-muted-foreground">Fin de semana</div></div>
-        </div>
-        <div className="flex items-start gap-2">
-          <Clock className="mt-0.5 size-4 text-fd-warning" />
-          <div><div className="font-medium">Próxima clase</div><div className="text-fd-muted-foreground">Fin de semana</div></div>
-        </div>
-        <div className="flex items-start gap-2">
-          <ShieldAlert className="mt-0.5 size-4 text-fd-primary" />
-          <div><div className="font-medium">Agregar observación</div><div className="text-fd-muted-foreground">Notación a un estudiante</div></div>
-        </div>
-        <div className="flex items-start gap-2">
-          <UserCircle2 className="mt-0.5 size-4 text-fd-success" />
-          <div><div className="font-medium">Director de grupo</div><div className="text-fd-muted-foreground">Gestión del curso asignado</div></div>
-        </div>
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-start gap-2">
-            <TrendingUp className="mt-0.5 size-4 text-fd-warning" />
-            <div><div className="font-medium">Ver rendimiento</div><div className="text-fd-muted-foreground">2 cursos por debajo del promedio</div></div>
-          </div>
-          <Badge tone="danger">2</Badge>
-        </div>
+    <div className="space-y-3 sm:w-56 sm:shrink-0">
+      <div className="rounded-lg border border-fd-border p-3 text-sm">
+        <div className="font-medium">Período activo: Primer Periodo 2026</div>
+        <div className="text-xs text-fd-primary">El sistema está listo para registrar asistencias y notas.</div>
       </div>
-      <div className="mt-3 text-xs font-medium text-fd-success">Buen ritmo hoy</div>
+
+      <div className="rounded-lg border border-fd-border p-3">
+        <div className="mb-3 text-sm font-semibold">Pendientes de hoy</div>
+        <div className="space-y-3 text-xs">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start gap-2">
+              <CheckCircle2 className="mt-0.5 size-4 text-fd-success" />
+              <div><div className="font-medium">Asistencia</div><div className="text-fd-muted-foreground">Todo al día</div></div>
+            </div>
+            <Badge tone="success">OK</Badge>
+          </div>
+          <div className="flex items-start gap-2">
+            <FileText className="mt-0.5 size-4 text-fd-primary" />
+            <div><div className="font-medium">Notas por publicar</div><div className="text-fd-muted-foreground">No hay notas pendientes</div></div>
+          </div>
+          <div className="flex items-start gap-2">
+            <Clock className="mt-0.5 size-4 text-fd-warning" />
+            <div><div className="font-medium">Próxima clase</div><div className="text-fd-muted-foreground">No hay clases próximas</div></div>
+          </div>
+          <div className="flex items-start gap-2">
+            <ShieldAlert className="mt-0.5 size-4 text-fd-primary" />
+            <div><div className="font-medium">Agregar observación</div><div className="text-fd-muted-foreground">Notación a un estudiante</div></div>
+          </div>
+          <div className="flex items-start gap-2">
+            <UserCircle2 className="mt-0.5 size-4 text-fd-success" />
+            <div><div className="font-medium">Director de grupo</div><div className="text-fd-muted-foreground">Gestión del curso asignado</div></div>
+          </div>
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start gap-2">
+              <TrendingUp className="mt-0.5 size-4 text-fd-warning" />
+              <div><div className="font-medium">Ver rendimiento</div><div className="text-fd-muted-foreground">2 cursos por debajo del promedio</div></div>
+            </div>
+            <Badge tone="danger">2</Badge>
+          </div>
+        </div>
+        <div className="mt-3 text-xs font-medium text-fd-success">Buen ritmo hoy</div>
+      </div>
     </div>
   </div>
 </Frame>
@@ -137,14 +147,15 @@ export function ActionCard({ icon: Icon, tone, title, subtitle, action }) {
 | [Director de Grupo](/sistema-gestion-escolar/profesor/modulos/direccion-de-grupo) | Gestión integral del curso que diriges (si aplica) |
 | [Rendimiento](/sistema-gestion-escolar/profesor/modulos/rendimiento) | Consulta del desempeño de tus cursos |
 
-- **Pendientes de hoy**, a la derecha: **Asistencia** y **Notas** por
-  registrar hoy, tu **Próxima clase**, un acceso directo para **Agregar
-  observación**, otro para **Director de grupo** (si tienes un curso a
-  cargo), y **Ver rendimiento** (con un contador en rojo si hay cursos por
-  debajo del promedio, ejemplo: `2 cursos por debajo del promedio`). Si no
-  hay clases programadas (fin de semana o día sin horario), cada ítem
-  muestra **"Fin de semana"** en su lugar, y al final aparece un mensaje de
-  ánimo como **"Buen ritmo hoy"**.
+- **Pendientes de hoy**, a la derecha: **Asistencia** (con una insignia
+  **OK** cuando está todo al día) y **Notas por publicar**, tu **Próxima
+  clase**, un acceso directo para **Agregar observación**, otro para
+  **Director de grupo** (si tienes un curso a cargo), y **Ver rendimiento**
+  (con un contador en rojo si hay cursos por debajo del promedio, ejemplo:
+  `2 cursos por debajo del promedio`). Si no hay nada pendiente en un ítem
+  (por ejemplo, fin de semana o día sin horario), muestra un mensaje como
+  **"No hay notas pendientes"** o **"No hay clases próximas"** en su lugar, y
+  al final aparece un mensaje de ánimo como **"Buen ritmo hoy"**.
 
 <Callout type="info">
   Cuando **otro docente te delega una clase** (ejemplo: `Asistencia — 3-1
