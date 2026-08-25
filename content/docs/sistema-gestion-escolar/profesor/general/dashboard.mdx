@@ -7,7 +7,7 @@ El **Dashboard** es la pantalla principal del rol Profesor. Resume tus cursos
 asignados, el período activo y tus tareas pendientes del día, con accesos
 directos a cada módulo.
 
-import { GraduationCap, CalendarDays, Calendar, ShieldAlert, TrendingUp, Clock, User, BookOpen, CheckCircle2, FileText, UserCircle2 } from 'lucide-react';
+import { GraduationCap, CalendarDays, Calendar, ShieldAlert, TrendingUp, Clock, User, BookOpen, CheckCircle2, FileText, UserCircle2, ArrowLeftRight } from 'lucide-react';
 import { Frame, StatGrid, Stat, Badge } from '@/components/docs-mockup';
 
 <Frame>
@@ -66,8 +66,12 @@ import { Frame, StatGrid, Stat, Badge } from '@/components/docs-mockup';
       <div className="mb-2 text-sm font-semibold">Pendientes de hoy</div>
       <div className="space-y-3 text-xs">
         <div className="flex items-start gap-2">
-          <CheckCircle2 className="mt-0.5 size-4 text-fd-success" />
-          <div><div className="font-medium">Asistencia</div><div className="text-fd-muted-foreground">Fin de semana</div></div>
+          <ArrowLeftRight className="mt-0.5 size-4 text-fd-info" />
+          <div><div className="font-medium">Asistencia — 3-1 Matemáticas</div><div className="text-fd-muted-foreground">Clase delegada por Ana Ruiz</div></div>
+        </div>
+        <div className="flex items-start gap-2">
+          <Clock className="mt-0.5 size-4 text-fd-warning" />
+          <div><div className="font-medium">Asistencia — 2-1 Ciencias Naturales</div><div className="text-fd-muted-foreground">Registro extemporáneo habilitado por Administración</div></div>
         </div>
         <div className="flex items-start gap-2">
           <FileText className="mt-0.5 size-4 text-fd-primary" />
@@ -143,11 +147,16 @@ export function ActionCard({ icon: Icon, tone, title, subtitle, action }) {
   ánimo como **"Buen ritmo hoy"**.
 
 <Callout type="info">
-  Cuando **otro docente te delega una clase** o **Administración te otorga
-  un registro extemporáneo de asistencia**, ese aviso aparece dentro de
-  **Pendientes de hoy**, en el ítem de **Asistencia** de esa clase — con
-  acceso directo para entrar a registrarla. Ver el detalle de ambos casos en
-  [Registrar asistencia](/sistema-gestion-escolar/profesor/modulos/registrar-asistencia).
+  Cuando **otro docente te delega una clase** (ejemplo: `Asistencia — 3-1
+  Matemáticas · Clase delegada por Ana Ruiz` — ver el detalle en
+  [Horario](/sistema-gestion-escolar/profesor/modulos/horario#delegar-una-clase-a-otro-docente))
+  o **Administración te otorga un registro extemporáneo de asistencia**
+  (ejemplo: `Asistencia — 2-1 Ciencias Naturales · Registro extemporáneo
+  habilitado por Administración` — ver el detalle en
+  [Registrar asistencia](/sistema-gestion-escolar/profesor/modulos/registrar-asistencia)),
+  ese aviso aparece dentro de **Pendientes de hoy**, en el ítem de
+  **Asistencia** de esa clase — con acceso directo para entrar a
+  registrarla.
 </Callout>
 
 <Steps>

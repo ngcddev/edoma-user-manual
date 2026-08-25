@@ -12,8 +12,8 @@ Evaluación de los Estudiantes (SIEE)**, con categorías como `Saber`, `Saber
 Hacer` y `Ser`; si tu institución no usa este esquema, puedes omitir este
 módulo.
 
-import { FileWarning, ListChecks, ClipboardPlus, LayoutGrid, RefreshCcw, CheckCircle2 } from 'lucide-react';
-import { Frame, EmptyState, Toolbar, TabBtn, FakeInput, Table, Tr, Td, Badge, SectionTitle, FieldGrid, Field, Section, Btn } from '@/components/docs-mockup';
+import { ListChecks, ClipboardPlus, LayoutGrid, RefreshCcw, CheckCircle2 } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, FakeInput, Table, Tr, Td, Badge, SectionTitle, FieldGrid, Field, Section, Btn } from '@/components/docs-mockup';
 
 <Frame>
   <Toolbar>
@@ -97,18 +97,6 @@ import { Frame, EmptyState, Toolbar, TabBtn, FakeInput, Table, Tr, Td, Badge, Se
     <Btn tone="primary" icon={ClipboardPlus}>Asignar SIE al curso</Btn>
   </div>
 </Frame>
-
-<Callout type="warn">
-  En un sistema recién creado (MVP/pruebas) la pestaña **SIEE asignados**
-  puede mostrarse vacía, así:
-</Callout>
-
-<Frame>
-  <EmptyState icon={FileWarning} title="No hay información disponible" subtitle="No evaluation systems registered." />
-</Frame>
-
-Esto es normal hasta que se asigne el primer sistema de evaluación a un
-curso.
 
 ## ¿Qué encontrarás aquí?
 

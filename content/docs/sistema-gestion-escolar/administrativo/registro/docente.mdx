@@ -6,8 +6,8 @@ description: Guía de uso de "Docentes".
 Este módulo permite consultar, registrar y administrar a los docentes de la
 institución.
 
-import { UserPlus, List as ListIcon, IdCard, Mail, GraduationCap, Building2, Clock } from 'lucide-react';
-import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field, SectionTitle, Btn } from '@/components/docs-mockup';
+import { UserPlus, List as ListIcon, IdCard, Mail, GraduationCap, Building2, Clock, X, Lock } from 'lucide-react';
+import { Frame, Toolbar, TabBtn, FilterBar, FakeInput, Table, Tr, Td, Badge, FieldGroupTitle, FieldGrid, Field, Btn } from '@/components/docs-mockup';
 
 <Frame>
   <div className="mb-2 text-[11px] font-medium tracking-wide text-fd-muted-foreground">
@@ -155,17 +155,50 @@ Desde la lista puedes:
 ## Registro extemporáneo de asistencia
 
 <Frame>
-  <SectionTitle icon={Clock}>Registro extemporáneo — Andrés Rojas Peña</SectionTitle>
-  <div className="mb-3 text-xs text-fd-muted-foreground">
-    Solo para asistencia del día de hoy: al docente le aparecerán únicamente
-    las materias que dicta hoy, no las de otros días de la semana.
+  <div className="mb-4 flex items-start justify-between">
+    <div className="flex items-center gap-2">
+      <span className="flex size-8 items-center justify-center rounded-lg bg-fd-primary/10 text-fd-primary"><Clock className="size-4" /></span>
+      <div className="text-sm font-semibold">Registro extemporáneo</div>
+    </div>
+    <X className="size-4 text-fd-muted-foreground" />
   </div>
-  <FieldGrid>
-    <Field label="Duración del permiso" type="select" placeholder="2 horas" />
-    <Field label="Plazo personalizado" type="date" placeholder="Fecha y hora límite" />
-  </FieldGrid>
-  <div className="mt-3"><Btn tone="primary" icon={Clock}>Habilitar registro extemporáneo</Btn></div>
+
+  <div className="mb-4 flex items-start gap-3 rounded-lg border border-fd-border p-3">
+    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-fd-primary/10 text-xs font-semibold text-fd-primary">AR</span>
+    <div>
+      <div className="text-sm font-semibold">Andrés Rojas Peña</div>
+      <div className="text-xs text-fd-muted-foreground">
+        Esto no marca asistencia por el docente: abre una ventana para que
+        él mismo la registre.
+      </div>
+    </div>
+  </div>
+
+  <div className="mb-2 text-[11px] font-semibold tracking-wide text-fd-muted-foreground">HABILITAR NUEVA VENTANA — CLASES DE HOY</div>
+  <div className="space-y-3">
+    <Field label="Clase" type="select" placeholder="Selecciona la clase..." required full />
+    <Field label="Habilitar hasta" type="select" placeholder="Próximas 2 horas" full />
+    <Field label="Motivo" placeholder="Olvido de marcación" required full />
+  </div>
+  <label className="mt-3 flex items-center gap-2 text-xs">
+    <input type="checkbox" checked readOnly className="size-3.5" />
+    Notificar al docente
+  </label>
+
+  <div className="mt-4 flex items-center justify-end gap-2">
+    <Btn>Cerrar</Btn>
+    <Btn tone="primary" icon={Lock}>Habilitar ventana</Btn>
+  </div>
 </Frame>
+
+- **Clase**: la ventana solo aplica a una clase específica de **hoy** — el
+  docente no ve las materias de otros días.
+- **Habilitar hasta**: cuánto dura la ventana (por ejemplo, `Próximas 2
+  horas`), o un plazo personalizado.
+- **Motivo**: justificación del permiso (por ejemplo, `Olvido de
+  marcación`).
+- **Notificar al docente**: si está marcada, el docente recibe un aviso de
+  que tiene una ventana de registro extemporáneo habilitada.
 
 <Steps>
 <Step>
@@ -173,23 +206,32 @@ Desde la lista puedes:
 ### Ubica al docente
 
 En la lista de docentes, localiza al docente que necesita el permiso (por
-ejemplo, se le pasó la hora para marcar asistencia).
+ejemplo, se le pasó la hora para marcar asistencia) y haz clic en
+**Habilitar registro extemporáneo**.
 
 </Step>
 <Step>
 
-### Habilita el permiso
+### Elige la clase y la duración
 
-Haz clic en **Habilitar registro extemporáneo** y elige la duración: **2
-horas** desde el momento en que se activa, o un **plazo personalizado**
-(fecha y hora límite).
+En **Habilitar nueva ventana — Clases de hoy**, selecciona la **Clase** de
+hoy que necesita el permiso y define **Habilitar hasta** (por ejemplo,
+`Próximas 2 horas`) o un plazo personalizado.
+
+</Step>
+<Step>
+
+### Indica el motivo y confirma
+
+Escribe el **Motivo** del permiso, decide si quieres **Notificar al
+docente**, y haz clic en **Habilitar ventana**.
 
 </Step>
 <Step>
 
 ### El docente registra la asistencia pendiente
 
-Mientras el permiso esté activo, el docente ve en
+Mientras la ventana esté activa, el docente ve en
 [Registrar asistencia](/sistema-gestion-escolar/profesor/modulos/registrar-asistencia)
 únicamente las materias que dicta **el día de hoy** — no las de otros días,
 porque la asistencia siempre se maneja el mismo día en que ocurre la clase.

@@ -7,47 +7,181 @@ Este módulo permite generar y editar los horarios semanales de cada curso,
 asignando profesores y salones, y correr el horario de una sede completa en
 casos especiales (feriados, actos institucionales, etc.).
 
-import { Wand2, RefreshCw, AlertTriangle, Info, Clock3, Sparkles } from 'lucide-react';
-import { Frame, Btn, ScheduleGrid, FakeInput, Field, FieldGrid, Chip, Section, SectionTitle } from '@/components/docs-mockup';
+import { Wand2, RefreshCw, AlertTriangle, Info, Clock3, Sparkles, CheckCircle2, Building2, SlidersHorizontal, User, Copy, Pencil, X, Plus, Coffee, Eye, ClipboardList } from 'lucide-react';
+import { Frame, Btn, Field, FieldGrid, Chip, Section, SectionTitle } from '@/components/docs-mockup';
+
+<div className="not-prose mb-4 flex items-center gap-2 rounded-xl bg-fd-primary/10 px-4 py-3 text-sm font-medium text-fd-primary">
+  <CheckCircle2 className="size-4" /> Año lectivo activo: 2026
+</div>
 
 <Frame>
-  <div className="mb-4 flex flex-wrap gap-2">
-    <Btn tone="primary" icon={Wand2}>Generar Horarios Automáticos</Btn>
-    <Btn icon={RefreshCw}>Correr Horario por Sede</Btn>
+  <SectionTitle icon={Wand2}>Generación automática de horarios</SectionTitle>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Genera el horario de los cursos que elijas, asignando profesores y
+    salones automáticamente según su disponibilidad, sin choques de horario
+    ni huecos en la jornada.
   </div>
-  <div className="mb-3 flex gap-2">
-    <FakeInput>Sede Central</FakeInput>
-    <FakeInput>3-1</FakeInput>
+  <Btn tone="primary" icon={Wand2}>Generar Horarios Automáticos</Btn>
+</Frame>
+
+<Frame>
+  <SectionTitle icon={Building2}>Correr horario por sede</SectionTitle>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Para feriados, actos institucionales u otros casos donde toda una sede
+    debe seguir el horario de otro día. Aplica el cambio a varios cursos a
+    la vez.
   </div>
-  <ScheduleGrid
-    days={[
-      { label: 'Lunes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Matemáticas', tone: 0 },
-        { time: '07:55 - 08:50', subject: 'Matemáticas', tone: 0 },
-        { time: '08:50 - 09:30', subject: 'Ciencias Naturales', tone: 1 },
-        'break',
-        { time: '09:40 - 10:35', subject: 'Lengua Castellana', tone: 2 },
-      ]},
-      { label: 'Martes', blocks: [
-        { time: '07:00 - 07:55', subject: 'Matemáticas', tone: 0 },
-        { time: '07:55 - 08:50', subject: 'Matemáticas', tone: 0 },
-        { time: '08:50 - 09:30', subject: 'Educación Física', tone: 3 },
-        'break',
-        { time: '09:40 - 10:35', subject: 'Ciencias Naturales', tone: 1 },
-      ]},
-      { label: 'Miércoles', blocks: [
-        { time: '07:00 - 07:55', subject: 'Matemáticas', tone: 0 },
-        { time: '07:55 - 08:50', subject: 'Matemáticas', tone: 0 },
-        'break',
-        { time: '09:40 - 10:35', subject: 'Matemáticas', tone: 0 },
-      ]},
-    ]}
-  />
+  <span className="inline-flex items-center gap-1.5 rounded-lg bg-fd-warning px-3 py-1.5 text-xs font-medium text-white">
+    <RefreshCw className="size-3.5" /> Correr Horario por Sede
+  </span>
+</Frame>
+
+<Frame>
+  <SectionTitle icon={SlidersHorizontal}>Selección de curso</SectionTitle>
+  <FieldGrid>
+    <Field label="Sede" placeholder="Sede Principal" />
+    <Field label="Curso" placeholder="2-1" />
+  </FieldGrid>
+</Frame>
+
+<Frame>
+  <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
+    <SectionTitle icon={User}>Profesores por materia</SectionTitle>
+    <div className="flex flex-wrap items-center gap-3 text-xs">
+      <span className="flex items-center gap-1"><CheckCircle2 className="size-3.5 text-fd-success" /> Todas las materias tienen profesor</span>
+      <span className="inline-flex items-center gap-1.5 rounded-lg bg-fd-primary/10 px-3 py-1.5 font-medium text-fd-primary"><Copy className="size-3.5" /> Copiar a otro curso</span>
+    </div>
+  </div>
+  <div className="mb-3 text-xs text-fd-muted-foreground">
+    Define qué profesor dicta cada materia de este curso, cuántas horas
+    semanales y si necesita un salón especial. Esta asignación es la que usa
+    la generación automática de horarios.
+  </div>
+  <div className="space-y-2">
+    {[
+      ['Matemáticas', 'JORGE RAMÍREZ', 4],
+      ['Lengua Castellana', 'MARÍA FERNANDA LÓPEZ', 4],
+      ['Inglés', 'SANDRA PATRICIA RUIZ', 2],
+      ['Ciencias Naturales', 'ANDRÉS FELIPE CASTRO', 2],
+      ['Ciencias Sociales', 'DIANA CAROLINA PEÑA', 4],
+      ['Educación Física', 'JUAN PABLO HERRERA', 2],
+      ['Educación Artística', 'JORGE RAMÍREZ', 2],
+    ].map(([materia, docente, horas]) => (
+      <div key={materia} className="flex flex-wrap items-center gap-3 rounded-lg border border-fd-border p-3 text-xs">
+        <CheckCircle2 className="size-4 shrink-0 text-fd-success" />
+        <div className="min-w-[130px]">
+          <div className="font-medium">{materia}</div>
+          <div className="text-[10px] text-fd-muted-foreground">Materia del curso</div>
+        </div>
+        <div className="min-w-[160px] flex-1 rounded-lg border border-fd-border bg-fd-background px-3 py-1.5 text-fd-muted-foreground">{docente}</div>
+        <div className="w-12 rounded-lg border border-fd-border bg-fd-background px-2 py-1.5 text-center">{horas}</div>
+        <div className="min-w-[110px] rounded-lg border border-fd-border bg-fd-background px-3 py-1.5 text-fd-muted-foreground">Sin salón</div>
+      </div>
+    ))}
+  </div>
+</Frame>
+
+<Frame>
+  <SectionTitle icon={Clock3}>Horario semanal</SectionTitle>
+  <div className="mb-3 flex items-start gap-2 rounded-lg bg-fd-primary/10 p-3 text-xs text-fd-primary">
+    <Info className="mt-0.5 size-4 shrink-0" />
+    <span>Este curso ya tiene un horario creado. Puedes editar o eliminar cada franja directamente.</span>
+  </div>
+  <div className="overflow-x-auto rounded-lg border border-fd-border">
+    <table className="w-full min-w-[820px] border-collapse text-center text-xs">
+      <thead>
+        <tr className="border-b border-fd-border bg-fd-muted/50 text-fd-muted-foreground">
+          <th className="px-2 py-2 text-left font-medium">Hora</th>
+          <th className="px-2 py-2 font-medium">Lunes</th>
+          <th className="px-2 py-2 font-medium">Martes</th>
+          <th className="px-2 py-2 font-medium">Miércoles</th>
+          <th className="px-2 py-2 font-medium">Jueves</th>
+          <th className="px-2 py-2 font-medium">Viernes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          { time: '07:00 - 08:00', cells: [
+            ['Inglés', 'SANDRA PATRICIA RUIZ'],
+            ['Tecnología e Informática', 'JUAN PABLO HERRERA'],
+            ['Matemáticas', 'JORGE RAMÍREZ'],
+            ['Matemáticas', 'JORGE RAMÍREZ'],
+            ['Lengua Castellana', 'MARÍA FERNANDA LÓPEZ'],
+          ]},
+          { time: '08:00 - 09:00', cells: [
+            ['Inglés', 'SANDRA PATRICIA RUIZ'],
+            ['Tecnología e Informática', 'JUAN PABLO HERRERA'],
+            ['Matemáticas', 'JORGE RAMÍREZ'],
+            ['Lengua Castellana', 'MARÍA FERNANDA LÓPEZ'],
+            ['Educación Religiosa', 'MARTHA LUCÍA GÓMEZ'],
+          ]},
+          { time: '09:00 - 09:30', cells: [
+            ['Educación Física', 'JUAN PABLO HERRERA'],
+            ['Ciencias Naturales', 'ANDRÉS FELIPE CASTRO'],
+            ['Lengua Castellana', 'MARÍA FERNANDA LÓPEZ'],
+            ['Lengua Castellana', 'MARÍA FERNANDA LÓPEZ'],
+            ['Ciencias Sociales', 'DIANA CAROLINA PEÑA'],
+          ]},
+          { time: '09:30 - 10:00', break: true },
+          { time: '10:00 - 11:00', cells: [
+            ['Ética y Valores', 'ROSA ELENA DÍAZ'],
+            ['Educación Física', 'JUAN PABLO HERRERA'],
+            ['Educación Artística', 'JORGE RAMÍREZ'],
+            ['Ciencias Sociales', 'DIANA CAROLINA PEÑA'],
+            ['Ciencias Sociales', 'DIANA CAROLINA PEÑA'],
+          ]},
+          { time: '11:00 - 12:00', cells: [
+            ['Ciencias Naturales', 'ANDRÉS FELIPE CASTRO'],
+            ['Matemáticas', 'JORGE RAMÍREZ'],
+            ['Educación Artística', 'JORGE RAMÍREZ'],
+            ['Ciencias Sociales', 'DIANA CAROLINA PEÑA'],
+            ['Competencias Ciudadanas', 'DIANA CAROLINA PEÑA'],
+          ]},
+        ].map((row) => (
+          <tr key={row.time} className="border-b border-fd-border last:border-0">
+            <td className="px-2 py-1.5 text-left align-top font-medium text-fd-muted-foreground">{row.time}</td>
+            {row.break
+              ? [0, 1, 2, 3, 4].map((i) => (
+                <td key={i} className="p-1 align-top">
+                  <div className="rounded-md border border-fd-warning/30 bg-fd-warning/10 px-2 py-1.5 text-fd-warning">
+                    <div className="italic">Descanso</div>
+                    <div className="mt-1 flex justify-center"><X className="size-3" /></div>
+                  </div>
+                </td>
+              ))
+              : row.cells.map(([subject, teacher], i) => (
+                <td key={i} className="p-1 align-top">
+                  <div className="rounded-md border border-fd-border bg-fd-primary/5 px-2 py-1.5">
+                    <div className="font-semibold">{subject}</div>
+                    <div className="text-[10px] text-fd-muted-foreground">{teacher}</div>
+                    <div className="mt-1 flex items-center justify-center gap-2 text-fd-muted-foreground">
+                      <Pencil className="size-3" />
+                      <X className="size-3 text-fd-error" />
+                    </div>
+                  </div>
+                </td>
+              ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+    <div className="flex flex-wrap gap-2">
+      <Btn icon={Plus}>Agregar Hora</Btn>
+      <Btn icon={Coffee}>Agregar Descanso</Btn>
+      <Btn icon={RefreshCw}>Correr Horario</Btn>
+    </div>
+    <div className="flex flex-wrap gap-3 text-xs text-fd-primary">
+      <span className="flex items-center gap-1"><Eye className="size-3.5" /> Ver Horario</span>
+      <span className="flex items-center gap-1"><ClipboardList className="size-3.5" /> Ver Horario Profesor</span>
+    </div>
+  </div>
 </Frame>
 
 ## ¿Qué encontrarás aquí?
 
-- Un indicador del **año lectivo activo** (ejemplo: `2027`).
+- Un indicador del **año lectivo activo** (ejemplo: `2026`).
 - **Generación automática de horarios**: genera el horario de los cursos que
   elijas, asignando profesores y salones automáticamente según su
   disponibilidad, sin choques de horario ni huecos en la jornada.
@@ -55,9 +189,17 @@ import { Frame, Btn, ScheduleGrid, FakeInput, Field, FieldGrid, Chip, Section, S
   cursos de una sede a la vez (útil para feriados o actos institucionales).
 - **Selección de curso**: elige **Sede** y **Curso** para ver y editar su
   horario semanal (Lunes a Viernes).
-- Acciones sobre el horario semanal: **Agregar Hora**, **Agregar Descanso**,
-  **Correr Horario**, **Ver Horario**, **Ver Horario Profesor** y **Guardar
-  Horario**.
+- **Profesores por materia**: para el curso seleccionado, define qué
+  profesor dicta cada materia, sus horas semanales y si necesita un salón
+  especial — esta asignación es la que usa la generación automática de
+  horarios. Un indicador confirma cuando **todas las materias tienen
+  profesor**, y **Copiar a otro curso** reutiliza la misma asignación en
+  otro curso.
+- **Horario semanal**: la tabla del curso (Hora × día), donde cada clase
+  muestra la materia y el profesor, con accesos para **editar** (lápiz) o
+  **eliminar** (✕) esa franja directamente. Acciones disponibles: **Agregar
+  Hora**, **Agregar Descanso**, **Correr Horario**, **Ver Horario** y **Ver
+  Horario Profesor**.
 
 ## Generar horarios automáticamente
 
@@ -152,7 +294,7 @@ antes de que el sistema arme los horarios:
           <div className="flex items-start gap-2">
             <Info className="mt-0.5 size-4 shrink-0" />
             <span>
-              <b>ALICIA NAYARA SOLIZ</b> ya tiene 29h asignadas entre 2-1,
+              <b>SANDRA PATRICIA RUIZ</b> ya tiene 29h asignadas entre 2-1,
               5-1, 8-2, 10-1, 11-1, 11-2 — le quedan 1h margen sobre las 30
               casillas de la semana. Todavía hay espacio, pero vale la pena
               vigilarlo.
@@ -232,7 +374,17 @@ lo señala para que lo ajustes manualmente en el horario del curso afectado.
 ### Selecciona sede y curso
 
 En **Selección de curso**, elige primero la **Sede** y luego el **Curso**
-(ejemplo: `Sede Central` → `3-1`).
+(ejemplo: `Sede Principal` → `2-1`).
+
+</Step>
+<Step>
+
+### Verifica Profesores por materia
+
+Antes de armar el horario, confirma en **Profesores por materia** que cada
+materia del curso tenga un profesor asignado (indicador **"Todas las
+materias tienen profesor"**) — el horario solo puede usar profesores ya
+asignados aquí.
 
 </Step>
 <Step>
@@ -245,6 +397,15 @@ semana; usa **Agregar Descanso** para reservar un espacio de descanso.
 </Step>
 <Step>
 
+### Edita o elimina una franja existente
+
+Si el curso ya tiene un horario creado, usa los íconos de **lápiz** (editar)
+o **✕** (eliminar) directamente sobre cada franja de la tabla — los cambios
+se guardan al instante, sin un botón de guardado aparte.
+
+</Step>
+<Step>
+
 ### Revisa el horario
 
 Usa **Ver Horario** para ver el horario del curso completo, o **Ver Horario
@@ -252,14 +413,13 @@ Profesor** para revisar el horario consolidado de un docente en todos sus
 cursos.
 
 </Step>
-<Step>
-
-### Guarda los cambios
-
-Haz clic en **Guardar Horario**.
-
-</Step>
 </Steps>
+
+<Callout type="info">
+  Si varios cursos comparten los mismos profesores por materia (por ejemplo,
+  paralelos del mismo grado), usa **Copiar a otro curso** en **Profesores
+  por materia** en vez de repetir la asignación manualmente en cada uno.
+</Callout>
 
 ## Correr el horario de una sede
 

@@ -6,7 +6,8 @@ description: Guía de uso de "Horario".
 Este módulo muestra tu horario semanal completo como docente, con todas las
 clases que dictas en todos tus cursos y materias.
 
-import { Frame, ScheduleGrid } from '@/components/docs-mockup';
+import { MoreVertical, ArrowLeftRight, UserPlus, BookOpen, Users, Layers, Clock, User, Info, CheckCircle2 } from 'lucide-react';
+import { Frame, ScheduleGrid, Field, Btn, Callout2 } from '@/components/docs-mockup';
 
 <Frame>
   <div className="mb-3 text-sm font-medium">Horario semanal — Docente 2027</div>
@@ -77,3 +78,139 @@ materia por su color.
   Administrativo: el horario se genera y edita desde el módulo de Horarios
   del rol Administrativo.
 </Callout>
+
+## Delegar una clase a otro docente
+
+Cada bloque de clase tiene, en su esquina superior derecha, un botón de
+**tres puntos** que abre un menú con la opción **Delegar clase**. Úsala si
+no puedes asistir a la institución, o si el titular no se presentó a un
+bloque de clase: le **asignas un reemplazo** a otro docente para que la
+registre en tu lugar, sin salir del horario.
+
+<Frame>
+  <div className="mb-3 text-sm font-medium">Menú de un bloque de clase</div>
+  <div className="relative w-fit rounded-md bg-sky-500 px-3 py-2 pr-7 text-[11px] text-white">
+    <span className="absolute right-1 top-1 flex size-5 items-center justify-center rounded hover:bg-white/20">
+      <MoreVertical className="size-3.5" />
+    </span>
+    <div className="font-semibold">Matemáticas — 3-1</div>
+    <div className="text-white/90">07:00 - 07:55</div>
+  </div>
+  <div className="mt-2 w-fit rounded-lg border border-fd-border bg-fd-background p-1 text-xs shadow-sm">
+    <div className="flex items-center gap-1.5 rounded-md px-2 py-1.5 font-medium text-fd-primary">
+      <ArrowLeftRight className="size-3.5" /> Delegar clase
+    </div>
+  </div>
+</Frame>
+
+Al hacer clic en **Delegar clase** se abre el formulario **Asignar
+reemplazo**:
+
+<Frame>
+  <div className="mb-4 flex items-start gap-3">
+    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-fd-warning/10 text-fd-warning"><UserPlus className="size-4" /></span>
+    <div>
+      <div className="text-sm font-semibold">Asignar reemplazo</div>
+      <div className="text-xs text-fd-muted-foreground">El docente titular no se ha presentado a este bloque de clase</div>
+    </div>
+  </div>
+
+  <div className="mb-4 space-y-1.5 rounded-lg border border-fd-border bg-fd-primary/5 p-3 text-xs">
+    <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+      <span className="flex items-center gap-1.5"><BookOpen className="size-3.5 text-fd-primary" /> Clase: <span className="font-medium">Ciencias Naturales</span></span>
+      <span className="flex items-center gap-1.5"><Users className="size-3.5 text-fd-primary" /> Grupo: <span className="font-medium">5-2</span></span>
+    </div>
+    <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+      <span className="flex items-center gap-1.5"><Layers className="size-3.5 text-fd-primary" /> Periodo: <span className="font-medium">Segundo Periodo</span></span>
+      <span className="flex items-center gap-1.5"><Clock className="size-3.5 text-fd-primary" /> Hora: <span className="font-medium">09:00 - 10:00 · Jueves</span></span>
+    </div>
+    <div className="flex items-center gap-1.5"><User className="size-3.5 text-fd-primary" /> Titular: <span className="font-medium">ANDRÉS FELIPE CASTRO</span></div>
+  </div>
+
+  <Field label="Docente delegado" type="select" placeholder="SANDRA PATRICIA RUIZ — disponible" full />
+
+  <div className="mt-3">
+    <div className="mb-1.5 text-xs font-medium text-fd-muted-foreground">TIPO DE PERMISO</div>
+    <div className="space-y-2">
+      <div className="rounded-lg border-2 border-fd-success bg-fd-success/5 p-3 text-xs">
+        <div className="mb-0.5 flex items-center gap-1.5 font-semibold">
+          <span className="flex size-3.5 shrink-0 items-center justify-center rounded-full border-2 border-fd-primary">
+            <span className="size-1.5 rounded-full bg-fd-primary" />
+          </span>
+          SOLO ASISTENCIA
+        </div>
+        <div className="text-fd-muted-foreground">El delegado únicamente registra quién asistió a la clase.</div>
+      </div>
+      <div className="rounded-lg border border-fd-border p-3 text-xs">
+        <div className="mb-0.5 flex items-center gap-1.5 font-semibold">
+          <span className="size-3.5 shrink-0 rounded-full border-2 border-fd-border" />
+          ASISTENCIA + NOTAS
+        </div>
+        <div className="text-fd-muted-foreground">El delegado puede ingresar notas; las puedes ver normalmente en tu sección de notas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div className="mt-3"><Field label="Notas (opcional)" type="textarea" placeholder="Observaciones sobre este reemplazo..." full /></div>
+
+  <Callout2 icon={Info}>Toda la información quedará registrada con trazabilidad: quién la ingresó, quién autorizó y quién debe validarla, conforme al SIEE institucional.</Callout2>
+
+  <div className="flex justify-end gap-2">
+    <Btn>Cancelar</Btn>
+    <span className="inline-flex items-center gap-1.5 rounded-lg bg-fd-success px-3 py-1.5 text-xs font-medium text-white">
+      <CheckCircle2 className="size-3.5" /> Confirmar reemplazo
+    </span>
+  </div>
+</Frame>
+
+- **Docente delegado**: el docente que va a sustituirte en esa clase; el
+  buscador solo muestra docentes **disponibles** en ese horario.
+- **Tipo de permiso**:
+  - **Solo asistencia**: el delegado únicamente puede marcar quién asistió.
+  - **Asistencia + Notas**: el delegado también puede ingresar notas de esa
+    clase; tú las sigues viendo con normalidad en tu propio módulo de
+    [Registrar notas](/sistema-gestion-escolar/profesor/modulos/registrar-notas).
+- **Notas (opcional)**: observaciones libres sobre el motivo del reemplazo.
+
+<Callout type="info">
+  Todo reemplazo queda registrado con **trazabilidad**: quién lo ingresó,
+  quién lo autorizó y quién debe validarlo, conforme al SIEE institucional.
+</Callout>
+
+<Steps>
+<Step>
+
+### Abre el menú del bloque
+
+En el bloque de la clase que no vas a poder dictar, haz clic en el botón de
+**tres puntos** (⋮) de su esquina superior derecha y selecciona **Delegar
+clase**.
+
+</Step>
+<Step>
+
+### Elige el docente delegado
+
+En **Asignar reemplazo**, selecciona, entre los docentes **disponibles** en
+ese horario, quién va a sustituirte.
+
+</Step>
+<Step>
+
+### Define el tipo de permiso
+
+Elige **Solo asistencia** si el delegado únicamente debe marcar quién
+asistió, o **Asistencia + Notas** si también va a calificar esa clase.
+
+</Step>
+<Step>
+
+### Confirma el reemplazo
+
+Agrega una nota si lo necesitas y haz clic en **Confirmar reemplazo**. Esa
+clase le aparecerá al docente delegado en **Pendientes de hoy**, en su
+[Dashboard](/sistema-gestion-escolar/profesor/general/dashboard), con
+acceso directo para registrarla como si fuera su propia clase.
+
+</Step>
+</Steps>

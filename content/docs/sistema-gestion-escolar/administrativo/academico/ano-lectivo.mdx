@@ -19,11 +19,12 @@ import { Frame, Toolbar, TabBtn, Table, Tr, Td, Badge, Btn, FieldGroupTitle, Fie
     <TabBtn active icon={ListIcon}>Años registrados</TabBtn>
     <TabBtn icon={CalendarPlus}>Crear año lectivo</TabBtn>
   </Toolbar>
-  <Table columns={['Año lectivo', 'Fecha inicio', 'Fecha fin', 'Estado', 'Acciones']}>
+  <Table columns={['Año lectivo', 'Fecha inicio', 'Fecha fin', 'Duración', 'Estado', 'Acciones']}>
     <Tr>
       <Td>2027</Td>
       <Td muted>9/10/2026</Td>
       <Td muted>20/10/2026</Td>
+      <Td muted>1 mes</Td>
       <Td><Badge tone="success">Activo</Badge></Td>
       <Td muted>Año activo</Td>
     </Tr>
@@ -31,6 +32,7 @@ import { Frame, Toolbar, TabBtn, Table, Tr, Td, Badge, Btn, FieldGroupTitle, Fie
       <Td>2028</Td>
       <Td muted>19/8/2026</Td>
       <Td muted>9/9/2026</Td>
+      <Td muted>1 mes</Td>
       <Td><Badge>Inactivo</Badge></Td>
       <Td><Btn tone="success">Activar</Btn></Td>
     </Tr>

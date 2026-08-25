@@ -6,8 +6,8 @@ description: Guía de uso de "Registrar asistencia".
 Este módulo permite registrar la asistencia diaria de tus estudiantes por
 curso y materia, hora de clase por hora de clase.
 
-import { CalendarCheck, ArrowLeftRight, Eye, Pencil, BookOpen, CheckCircle2, ChevronDown, ArrowLeft, Sparkles } from 'lucide-react';
-import { Frame, FakeInput, SectionTitle, Field, FieldGrid, Btn, Table, Tr, Td, Badge, Toolbar, TabBtn } from '@/components/docs-mockup';
+import { CalendarCheck, Eye, Pencil, BookOpen, CheckCircle2, ChevronDown, ArrowLeft, Sparkles } from 'lucide-react';
+import { Frame, FakeInput, SectionTitle, Btn, Table, Tr, Td, Badge, Toolbar, TabBtn } from '@/components/docs-mockup';
 
 <Frame>
   <SectionTitle icon={CalendarCheck}>Registro de Asistencia</SectionTitle>
@@ -196,46 +196,10 @@ correspondiente.
 
 ## Delegar una clase a otro docente
 
-Si no puedes asistir a la institución, puedes **delegar** una de tus clases
-a otro docente para que la registre en tu lugar.
-
-<Frame>
-  <SectionTitle icon={ArrowLeftRight}>Delegar clase — 3-1 Matemáticas</SectionTitle>
-  <div className="mb-3 text-xs text-fd-muted-foreground">
-    Elige la clase de hoy que quieres delegar y a qué docente se la
-    encargas.
-  </div>
-  <FieldGrid>
-    <Field label="Clase a delegar" type="select" placeholder="07:00 - 07:55 · 3-1 Matemáticas" />
-    <Field label="Docente que la sustituye" type="select" placeholder="Selecciona un docente" />
-  </FieldGrid>
-  <div className="mt-3"><Btn tone="primary" icon={ArrowLeftRight}>Delegar clase</Btn></div>
-</Frame>
-
-<Steps>
-<Step>
-
-### Elige la clase a delegar
-
-En **Registrar asistencia**, selecciona la clase de hoy que no vas a poder
-dictar.
-
-</Step>
-<Step>
-
-### Elige el docente que la sustituye
-
-Selecciona al docente que va a dictar la clase en tu lugar.
-
-</Step>
-<Step>
-
-### Confirma la delegación
-
-Haz clic en **Delegar clase**. Esa clase le aparecerá al otro docente en
-**Pendientes de hoy**, en su
+Si no puedes asistir a la institución, o el titular no se presentó a un
+bloque de clase, se le puede **asignar un reemplazo** a otro docente desde
+el [Horario](/sistema-gestion-escolar/profesor/modulos/horario#delegar-una-clase-a-otro-docente)
+(botón de **tres puntos** ⋮ de ese bloque de clase). Esa clase le aparecerá
+al docente delegado en **Pendientes de hoy**, en su
 [Dashboard](/sistema-gestion-escolar/profesor/general/dashboard), con
-acceso directo para registrar la asistencia como si fuera su propia clase.
-
-</Step>
-</Steps>
+acceso directo para registrarla como si fuera su propia clase.
